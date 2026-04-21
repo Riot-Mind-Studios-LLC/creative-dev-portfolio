@@ -1,0 +1,75 @@
+<!--
+  *    Academy Awards GLS
+  *    Adrian Velazquez
+  *    Creative Developer
+  *    2019
+      --------------------
+  *    Email: adrian.velazquez@merkleyandpartners.com
+  *    For: Mercedes Benz
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta -->
+    <meta charset="UTF-8" lang="en" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="ad.size" content="width=300,height=250" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- css -->
+    <!-- all elements are styled and positioned in the scripts.js file -->
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+    <!-- js -->
+    <!-- studio enabler -->
+    <script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
+    <!-- dc studio exit clicktag -->
+    <script>var clickTag = "https://www.google.com";</script>
+    <!-- dc studio served tweenmax -->
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.20.0_d360d9a082ccc13b1a1a9b153f86b378_min.js"></script>
+    <!-- machine lib js -->
+    <script src="machine.min.js"></script>
+    <!-- banner animation script -->
+    <script src="main.js"></script>
+    <!-- polite load js -->
+    <script>
+      "use strict";
+      /* initialize enabler
+      ================================================= */
+      if (Enabler.isInitialized()) {
+        init();
+      } else {
+        Enabler.addEventListener(studio.events.StudioEvent.INIT, init);
+      }
+      /* run when enabler is ready and page is loaded
+      ================================================= */
+      function init() {
+        if (Enabler.isPageLoaded()) {
+          enable_handlers();
+        } else {
+          Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, enable_handlers);
+        }
+      }
+      /* setup hit (clickable) element with DC Enabler
+      ================================================= */
+      function enable_handlers() {
+        // exit element
+        var hit = document.getElementById("hit");
+        // init the handlers
+        hit.addEventListener("click", function() {
+          Enabler.exit("Background Exit");
+          window.open(window.clickTag);
+        });
+      };
+    </script>
+    <!-- Banner Title -->
+    <title>Academy Awards GLS - 300x250</title>
+  </head>
+  <!-- all elements are dynamically created using javascript generated in the main.js file -->
+  <!-- do not insert any html inside of the body tags -->
+  <!-- banner -->
+  <body onload="machine.main();"></body>
+  <!-- banner -->
+</html>

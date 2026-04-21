@@ -1,0 +1,213 @@
+/************************************
+
+*    Banner Boy Banner for Mini
+*    Adrian Velazquez
+*    Digital Media Developer
+*    2018
+    *****************
+*    hire_adrianV@yahoo.com
+
+************************************/
+@charset "UTF-8";
+
+/* utility positioning and reset for all elements */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  text-rendering: optimizeLegibility;
+}
+body, body * {
+	vertical-align: baseline;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	margin: 0;
+	width: 300px;
+	height: 250px;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+div {
+  display: block;
+  position: absolute;
+}
+:focus {
+	outline: none;
+}
+::-moz-focus-inner {
+	border: 0;
+}
+
+/* set the dimensions of banner and elements here */
+.dimensions {
+  width: 300px;
+  height: 250px;
+	background-size: 300px 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* render layout dimensions and setup */
+#banner {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+	overflow: hidden;
+	display: block;
+  background-color: transparent;
+	cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+/* hides all elements until called in the javascript */
+.hidden {
+	opacity: 0;
+}
+
+/* image setup */
+#logo,
+#logo-frame,
+#cta-bg,
+#cta-txt,
+#cta-arrow-1,
+#cta-arrow-2,
+#mini-lights,
+#mini-car,
+#mini-endFrame,
+#mini-endFrame-blue,
+#mini-endFrame-orange,
+#mini-endFrame-red,
+#txt-1,
+#txt-2,
+#txt-3,
+#txt-4,
+#txt-5
+{
+	background-repeat: no-repeat;
+	background-size: contain;
+  /* size calculation for 2x image assets */
+  width: calc(600/2);
+  height: calc(500/2);
+}
+
+/* backgrounds */
+#bg-blue {
+	background-color: #07a2d4;
+}
+#bg-orange {
+	background-color: #dd8601;
+}
+#bg-red {
+	background-color: #93121b;
+}
+
+/* mini car assets */
+.rim{
+  background-repeat: no-repeat;
+	background-size: contain;
+  width: 44px;
+  height: 44px;
+}
+#mini-rim-front {
+	background-image: url('../img/mini-rim-front.png');
+  top: 149px;
+  left: 214px;
+}
+#mini-rim-rear {
+	background-image: url('../img/mini-rim-rear.png');
+  top: 149px;
+  left: 42px;
+}
+#mini-lights {
+	background-image: url('../img/mini-lights.png');
+}
+#mini-car {
+	background-image: url('../img/mini-car.png');
+}
+#mini-endFrame {
+	background-image: url('../img/mini-endFrame.png');
+}
+#mini-endFrame-blue {
+	background-image: url('../img/mini-endFrame-blue.png');
+}
+#mini-endFrame-orange {
+	background-image: url('../img/mini-endFrame-orange.png');
+}
+#mini-endFrame-red {
+	background-image: url('../img/mini-endFrame-red.png');
+}
+
+/* logo assets */
+#logo {
+	background-image: url('../img/logo.png');
+}
+#logo-frame {
+	background-image: url('../img/logo-frame.png');
+}
+#logo-bg {
+	background-color: #000;
+}
+
+/* cta assets */
+#cta-bg {
+	background-image: url('../img/cta-bg.png');
+}
+#cta-txt {
+	background-image: url('../img/cta-txt.png');
+}
+#cta-arrow-1 {
+	background-image: url('../img/cta-arrow.png');
+}
+#cta-arrow-2 {
+	background-image: url('../img/cta-arrow.png');
+  left: 5px;
+}
+
+/* text assets */
+#txt-1 {
+	background-image: url('../img/txt-1.png');
+}
+#txt-2 {
+	background-image: url('../img/txt-2.png');
+}
+#txt-3 {
+	background-image: url('../img/txt-3.png');
+}
+#txt-4 {
+	background-image: url('../img/txt-4.png');
+}
+#txt-5 {
+	background-image: url('../img/txt-5.png');
+}
+
+/* swatch assets */
+#palette{
+  top: 16px;
+  left: 142px;
+}
+.swatch{
+  background-repeat: no-repeat;
+	background-size: contain;
+  width: 20px;
+  height: 20px;
+  margin: 5px 5px;
+  float: left;
+  cursor: pointer;
+}
+#swatch-blue {
+	background-image: url('../img/swatch-blue.jpg');
+}
+#swatch-orange {
+	background-image: url('../img/swatch-orange.jpg');
+  left: 27px;
+}
+#swatch-red {
+	background-image: url('../img/swatch-red.jpg');
+  left: 53px;
+}
+#swatch-blue:hover, #swatch-orange:hover, #swatch-red:hover{
+  border: 1px solid #fff;
+}

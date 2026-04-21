@@ -1,0 +1,109 @@
+<!--
+  *    MY CAPSSA Patient Awareness V1
+  *    Adrian Velazquez
+  *    Creative Developer
+  *    2021
+      --------------------
+  *    Email: adrian.velazquez@merkleyandpartners.com
+  *    For: MYCAPSSA
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta -->
+    <meta charset="UTF-8" lang="en" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="ad.size" content="width=160,height=600" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- css -->
+    <style>
+      body {margin: 0; color: #363636;}
+      /*gotham font*/
+      @font-face {
+      font-family: 'Gothamy';
+      src: local('Gotham Book'), local('Gotham-Book');
+      font-weight: normal;
+      font-style: normal;
+      font-variant: normal;
+      }
+      @font-face {
+      font-family: 'Gothamy';
+      src: local('Gotham Bold'), local('Gotham-Bold');
+      font-weight: bold;
+      font-style: normal;
+      font-variant: normal;
+      }
+      /*isi a styling*/
+      #isi_a > a {
+        color: #236092;
+      }
+      #isi_a > a:visited {
+        color: rgb(35, 96, 146);
+      }
+      #isi_a > a:hover {
+        color: rgb(77, 77, 79);
+      }
+      #isi_a > a:active {
+        color: rgb(35, 96, 146);
+      }
+      /*track bar styling*/
+      ::-webkit-scrollbar {/* Width */
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {/* Track */
+        margin-top: 15px;
+        background: #dfe5e6;
+      }
+      ::-webkit-scrollbar-thumb {/* Handle */
+        background: #464646;
+      }
+      ::-webkit-scrollbar-thumb:hover {/* Handle on hover */
+        background: orange;
+      }
+    </style><!-- all elements are styled and positioned in the scripts.js file -->
+    <!-- js -->
+    <script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script><!-- studio enabler -->
+    <script type="text/javascript">var clickTag = "https://hcp.mycapssa.com/";</script><!-- dc studio exit clicktag -->
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.20.0_d360d9a082ccc13b1a1a9b153f86b378_min.js"></script><!-- dc studio served tweenmax -->
+    <script src="machine.min.js"></script><!-- machine lib js -->
+    <script src="main.js"></script><!-- banner animation script -->
+    <script> // polite load js
+      "use strict";
+      /* initialize enabler
+      ================================================= */
+      if (Enabler.isInitialized()) {
+        init();
+      } else {
+        Enabler.addEventListener(studio.events.StudioEvent.INIT, init);
+      };
+      /* run when enabler is ready and page is loaded
+      ================================================= */
+      function init() {
+        if (Enabler.isPageLoaded()) {
+          enable_handlers();
+        } else {
+          Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, enable_handlers);
+        }
+      };
+      /* setup hit (clickable) element with DC Enabler
+      ================================================= */
+      function enable_handlers() {
+        // exit element
+        var hit = document.getElementById("hit");
+        // init the handlers
+        hit.addEventListener("click", function() {
+          Enabler.exit("Background Exit");
+          // open new window on hit click
+          window.open(window.clickTag);
+        });
+      };
+    </script>
+    <!-- Banner Title -->
+    <title>MYCAPSSA Awareness V1 160x600</title>
+  </head>
+  <!-- all elements are dynamically created using javascript generated in the main.js file -->
+  <!-- do not insert any html inside of the body tags -->
+  <!-- banner -->
+  <body onload="machine.main();"></body>
+  <!-- banner -->
+</html>
