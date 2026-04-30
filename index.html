@@ -548,12 +548,70 @@
     letter-spacing: 0.04em;
   }
 
+  /* ─── Recommendations section ─── */
+  .rec-list {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 80px;
+  }
+
+  .rec-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .rec-item:first-child {
+    border-top: 1px solid var(--rule);
+  }
+
+  .rec-who {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 2px;
+  }
+
+  .rec-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--contact-text);
+    letter-spacing: 0.04em;
+  }
+
+  .rec-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-lo);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  .rec-company {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--navy);
+    letter-spacing: 0.03em;
+  }
+
+  .rec-quote {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    font-weight: 300;
+    font-style: italic;
+  }
+
   /* ─── Responsive ─── */
   @media (max-width: 800px) {
     .header-inner { grid-template-columns: 1fr; }
     .contact { text-align: left; align-items: flex-start; }
     .tools-block { grid-template-columns: 1fr; }
     .tools-action { align-items: flex-start; }
+    .rec-item { grid-template-columns: 1fr; gap: 12px; }
     .mosaic { display: flex; flex-direction: column; align-items: center; }
     .mosaic .bc { width: 100%; max-width: 400px; }
     .bw { overflow-x: auto; }
@@ -593,55 +651,6 @@
 
     </div>
   </header>
-
-  <!-- ═══ WORKFLOW TOOLS ═══ -->
-  <div class="section-header">
-    <span class="section-label">Workflow Tools</span>
-    <div class="section-rule"></div>
-  </div>
-
-  <div class="tools-block">
-
-    <div class="tools-copy">
-      <h2>Banner Staging &amp; Review Site</h2>
-      <p>
-        Production doesn't end when the banners are built. Getting them reviewed, approved, and delivered cleanly requires just as much care as the code itself. This staging site is a custom-built internal tool I developed to manage that entire handoff process — giving art directors, project managers, and clients a single organized destination to view live banners, track status, and pull what they need without back-and-forth emails or shared drives.
-      </p>
-      <p>
-        Each project gets its own instance of the site, configured per campaign. Banners are organized by IAB size, displayed as live-running units with fallback image thumbnails, and paired with download links for source files and a modal lightbox for full-size preview. A manifest-driven file drawer exposes every asset inside each banner package. Status badges track each unit from Draft through In Review, Approved, and Delivered. A linked report page auto-generates a full project summary — banner counts, file totals, runtimes, and a delivery timeline — from the same data, with a clean print-to-PDF output for records.
-      </p>
-      <div class="tools-features">
-        <span class="tools-tag">Live Banner Preview</span>
-        <span class="tools-tag">Lightbox Modal</span>
-        <span class="tools-tag">Status Tracking</span>
-        <span class="tools-tag">File Manifest</span>
-        <span class="tools-tag">Source Downloads</span>
-        <span class="tools-tag">Auto Report</span>
-        <span class="tools-tag">Print to PDF</span>
-        <span class="tools-tag">IAB Size Support</span>
-        <span class="tools-tag">Vanilla JS</span>
-      </div>
-    </div>
-
-    <div class="tools-action">
-      <!-- <span class="tools-action-label">Live Demo</span> -->
-      <a href="demo/index.html" target="_blank" rel="noopener" class="demo-btn">
-        <svg viewBox="0 0 12 12"><path d="M7 1h4v4M11 1L5 7M2 3H1v8h8V9"/></svg>
-        Open Demo
-      </a>
-      <div class="tools-built">
-        <span class="tools-built-label">Built With</span>
-        <div class="tools-built-list">
-          <span>HTML · CSS · Vanilla JavaScript</span>
-          <span>Claude.ai</span>
-          <span>VS Code</span>
-          <span>Chrome DevTools</span>
-          <span>GitHub Pages</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
 
   <!-- ═══ WORK ═══ -->
   <div class="section-header">
@@ -805,6 +814,121 @@
     </div>
 
   </div><!-- /mosaic -->
+
+  <!-- ═══ WORKFLOW TOOLS ═══ -->
+  <div class="section-header">
+    <span class="section-label">Workflow Tools</span>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="tools-block">
+
+    <div class="tools-copy">
+      <h2>Banner Staging &amp; Review Site</h2>
+      <p>
+        Production doesn't end when the banners are built. Getting them reviewed, approved, and delivered cleanly requires just as much care as the code itself. This staging site is a custom-built internal tool I developed to manage that entire handoff process — giving art directors, project managers, and clients a single organized destination to view live banners, track status, and pull what they need without back-and-forth emails or shared drives.
+      </p>
+      <p>
+        Each project gets its own instance of the site, configured per campaign. Banners are organized by IAB size, displayed as live-running units with fallback image thumbnails, and paired with download links for source files and a modal lightbox for full-size preview. A manifest-driven file drawer exposes every asset inside each banner package. Status badges track each unit from Draft through In Review, Approved, and Delivered. A linked report page auto-generates a full project summary — banner counts, file totals, runtimes, and a delivery timeline — from the same data, with a clean print-to-PDF output for records.
+      </p>
+      <div class="tools-features">
+        <span class="tools-tag">Live Banner Preview</span>
+        <span class="tools-tag">Lightbox Modal</span>
+        <span class="tools-tag">Status Tracking</span>
+        <span class="tools-tag">File Manifest</span>
+        <span class="tools-tag">Source Downloads</span>
+        <span class="tools-tag">Auto Report</span>
+        <span class="tools-tag">Print to PDF</span>
+        <span class="tools-tag">IAB Size Support</span>
+        <span class="tools-tag">Vanilla JS</span>
+      </div>
+    </div>
+
+    <div class="tools-action">
+      <span class="tools-action-label">Live Demo</span>
+      <a href="demo/index.html" target="_blank" rel="noopener" class="demo-btn">
+        <svg viewBox="0 0 12 12"><path d="M7 1h4v4M11 1L5 7M2 3H1v8h8V9"/></svg>
+        Open Demo
+      </a>
+      <div class="tools-built">
+        <span class="tools-built-label">Built With</span>
+        <div class="tools-built-list">
+          <span>HTML · CSS · Vanilla JavaScript</span>
+          <span>Claude.ai</span>
+          <span>VS Code</span>
+          <span>Chrome DevTools</span>
+          <span>GitHub Pages</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ RECOMMENDATIONS ═══ -->
+  <div class="section-header">
+    <span class="section-label">Recommendations</span>
+    <div class="section-rule"></div>
+    <span class="section-count">5</span>
+  </div>
+
+  <div class="rec-list">
+
+    <div class="rec-item">
+      <div class="rec-who">
+        <span class="rec-name">Nichole Cruzalegui</span>
+        <span class="rec-title">Digital Developer</span>
+        <span class="rec-company">Omnicom Production</span>
+      </div>
+      <p class="rec-quote">
+        Adrian is consistently dependable, delivers quality work on tight timelines, and is always collaborative with the team. His attention to detail and problem-solving abilities make him an asset to any project.
+      </p>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-who">
+        <span class="rec-name">Saki Hoshiko</span>
+        <span class="rec-title">Digital Project Manager / Producer</span>
+        <span class="rec-company">Merkley + Partners</span>
+      </div>
+      <p class="rec-quote">
+        An absolute powerhouse when it comes to HTML5 banner production — constantly impressive in his speed and attention to detail, handling complex versioning and resizing on quick turnarounds while taking feedback incredibly well.
+      </p>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-who">
+        <span class="rec-name">Frank Cagnetto</span>
+        <span class="rec-title">Senior Project Manager</span>
+        <span class="rec-company">Omnicom Production</span>
+      </div>
+      <p class="rec-quote">
+        Adrian consistently delivered banner campaigns ahead of schedule with outstanding attention to detail, working across bilingual campaigns in both French and English with equal speed and precision.
+      </p>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-who">
+        <span class="rec-name">Simon Abrams</span>
+        <span class="rec-title">Creative Developer / Photographer</span>
+        <span class="rec-company">Bannerboy Corporation</span>
+      </div>
+      <p class="rec-quote">
+        Over several years across two jobs, Adrian has grown tremendously as both a developer and a team member — a motivated self-learner who is always willing to put in the work to deliver on schedule.
+      </p>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-who">
+        <span class="rec-name">Erik Hofman-Bang</span>
+        <span class="rec-title">Co-Founder</span>
+        <span class="rec-company">Bannerboy Corporation</span>
+      </div>
+      <p class="rec-quote">
+        Adrian has a great eye for snappy, short-form storytelling in banner form, and his determination and work ethic coupled with diverse experience bring a fresh perspective to every project.
+      </p>
+    </div>
+
+  </div>
 
   <!-- ═══ FOOTER ═══ -->
   <footer>
