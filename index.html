@@ -92,7 +92,34 @@
     letter-spacing: 0.14em;
     color: var(--navy);
     text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .avail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #5db88a;
     margin-bottom: 14px;
+  }
+
+  .avail-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #5db88a;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(93,184,138,0.6);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(93,184,138,0.6); }
+    50%       { opacity: 0.5; box-shadow: 0 0 2px rgba(93,184,138,0.2); }
   }
 
   h1 {
@@ -212,28 +239,28 @@
 
   /* ─── MOSAIC GRID ───────────────────────────────────────────
      Columns : 160px | 300px | 300px | 300px   gap: 16px
-     Row tracks: 311px | 311px | 288px | 128px  gap: 16px
+     Row tracks: 311px | 311px | 288px | 128px | 128px  gap: 16px
 
      Block A (rows 1–2, 638px):
        Col 1, rows 1–2 : 160×600  skyscraper  (project-07)
        Col 2, row 1    : 300×250              (project-01)
        Col 3, row 1    : 300×250              (project-02)
-       Col 4, rows 1–2 : 300×600              (project-10)  ← new
+       Col 4, rows 1–2 : 300×600              (project-10)
        Col 2, row 2    : 300×250              (project-03)
        Col 3, row 2    : 300×250              (project-04)
 
      Block B (row 3, 288px): 970×250 billboard (project-08)
-     Block C (row 4, 128px): 728×90  leaderboard (project-09)
+     Block C (row 4, 128px): 970×90  large leaderboard (project-11)
+     Block D (row 5, 128px): 728×90  leaderboard (project-09)
 
-     Total height : 638 + 16 + 288 + 16 + 128 = 1086px
+     Total height : 638 + 16 + 288 + 16 + 128 + 16 + 128 = 1230px
      Total width  : 1136px
-     Delta        : 50px (4.4% off square)
   ─────────────────────────────────────────────────────────── */
 
   .mosaic {
     display: grid;
     grid-template-columns: 162px 302px 302px 302px;
-    grid-template-rows: 311px 311px 288px 128px;
+    grid-template-rows: 311px 311px 288px 128px 128px;
     gap: 16px;
     justify-content: center;
     padding-bottom: 80px;
@@ -328,6 +355,7 @@
 
   /* Center wide banners (billboard + leaderboard) */
   .slot-bill .bw,
+  .slot-970  .bw,
   .slot-lead .bw { justify-content: center; align-items: center; }
 
   /* Hide size label on the narrow 160px skyscraper card — not enough room */
@@ -377,8 +405,11 @@
   /* Row 3 full-width: 970×250 billboard */
   .slot-bill { grid-column: 1 / 5; grid-row: 3; }
 
-  /* Row 4 full-width: 728×90 leaderboard */
-  .slot-lead { grid-column: 1 / 5; grid-row: 4; }
+  /* Row 4 full-width: 970×90 large leaderboard */
+  .slot-970  { grid-column: 1 / 5; grid-row: 4; }
+
+  /* Row 5 full-width: 728×90 leaderboard */
+  .slot-lead { grid-column: 1 / 5; grid-row: 5; }
 
   /* ─── Footer ─── */
   footer {
@@ -628,6 +659,9 @@
 
       <div>
         <div class="eyebrow">Portfolio — HTML5 Ad Banners</div>
+        <div class="avail-badge">
+          <span class="avail-dot"></span>Available for Work
+        </div>
         <h1>Adrian Velazquez</h1>
         <div class="title-bar">
           Creative Developer <span>/</span> HTML Ad Specialist <span>/</span> JavaScript Animator
@@ -635,6 +669,7 @@
         <p class="bio">
           11+ years hand-coding HTML5 ad banners for brands across broadcast, finance, CPG, and entertainment.
           Every frame here is built from scratch — no templates, no generators — using GreenSock's TweenMax and TimelineMax for frame-precise animation control that tools can't replicate.
+          Currently available for new opportunities — remote or hybrid, NYC market.
         </p>
       </div>
 
@@ -656,7 +691,7 @@
   <div class="section-header">
     <span class="section-label">Selected Work</span>
     <div class="section-rule"></div>
-    <span class="section-count">8 projects</span>
+    <span class="section-count">9 projects</span>
   </div>
 
   <div class="mosaic">
@@ -740,7 +775,7 @@
     <!-- Col 2, row 2 · 300×250 -->
     <div class="bc slot-r2c2">
       <div class="bm">
-        <span class="bm-client">Mercedes Benz</span>
+        <span class="bm-client">Captain D's</span>
         <div class="bm-right">
           <span class="bm-size">300 × 250</span>
           <a class="dl-btn" href="assets/project-03.zip" download>
@@ -778,7 +813,7 @@
     <!-- Row 3 full · 970×250 billboard -->
     <div class="bc slot-bill">
       <div class="bm">
-        <span class="bm-client">Mercedes Benz</span>
+        <span class="bm-client">BAND-AID</span>
         <div class="bm-right">
           <span class="bm-size">970 × 250</span>
           <a class="dl-btn" href="assets/project-08.zip" download>
@@ -794,7 +829,26 @@
       </div>
     </div>
 
-    <!-- Row 4 full · 728×90 leaderboard -->
+    <!-- Row 4 full · 970×90 large leaderboard -->
+    <div class="bc slot-970">
+      <div class="bm">
+        <span class="bm-client">Mercedes Benz</span>
+        <div class="bm-right">
+          <span class="bm-size">970 × 90</span>
+          <a class="dl-btn" href="assets/project-11.zip" download>
+            <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+          </a>
+        </div>
+      </div>
+      <div class="bw">
+        <iframe src="banners/project-11/index.html" width="970" height="90" scrolling="no" title="Project 11 — 970×90"></iframe>
+        <button class="rb" onclick="replayBanner(this)" title="Replay" style="bottom:6px; right:12px;">
+          <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Row 5 full · 728×90 leaderboard -->
     <div class="bc slot-lead">
       <div class="bm">
         <span class="bm-client">White Castle</span>

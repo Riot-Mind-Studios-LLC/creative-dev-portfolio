@@ -1,157 +1,202 @@
-/*
-  Academy Awards GLS
-  Adrian Velazquez
-  Creative Developer
-  2019
-  Email: adrian.velazquez@merkleyandpartners.com
-  For: Mercedes Benz
-*/
+/* Banner Info
+------------------
+Captain Ds - Cajun Promo | Cajun Catfish
+Adrian Velazquez
+Creative Developer
+2023
+Email: adrian.velazquez@merkleyandpartners.com
+------------------
+For: Captain Ds
+------------------ */
 
-/* Setup - size, preload assets
+/*
+Setup - size, preload assets
 ================================================= */
 var machine = machine || {};
-machine.main = function(){
-  // banner size
-  var width = 300;
-  var height = 250;
-
-  // preload images array
-  var images = [
-    "bg.jpg",
-  	"txt_1.png",
-    "txt_1_1.png",
-  	"txt_2.png",
-  	"cta.png",
-  	"logo.png",
-    "flash.png"
-  ];
+machine.main = function() {
+  var width = 300,// change banner width
+      height = 250,// change banner height
+      images = [// preload image assets
+        "bg.jpg", 
+        "txt_1.png", 
+        "txt_2_1.png", 
+        "txt_2.png", 
+        "txt_2_2.png", 
+        "txt_3.png", 
+        "txt_3_1.png", 
+        "txt_4.png", 
+        "food_1.png", 
+        "food_2.png", 
+        "food_3.png", 
+        "cta.png", 
+        "logo.png"
+      ];
 
   /* Create Elements
 	=============================================================== */
   machine.preloadImages(images, function() {
-
     // banner container element
     var banner = machine.createElement({id: "banner", width: width, height: height, backgroundColor: "#000", overflow: "hidden", cursor: "pointer", boxSizing: "border-box", parent: document.body});
-
-    // create banner elements here
-    var bg = machine.createElement({id: "bg", backgroundImage: "bg.jpg", retina: true, parent: banner});
-    var txt_2 = machine.createElement({id: "txt_2", backgroundImage: "txt_2.png", retina: true, parent: banner});
-    var cta = machine.createElement({id: "cta", backgroundImage: "cta.png", left: 11, top: 205, retina: true, parent: banner});
-    var bg_cover = machine.createElement({id: "bg_cover", backgroundColor: "#000", width: width, height: height, parent: banner});
-    var logo = machine.createElement({id: "logo", backgroundImage: "logo.png", retina: true, parent: banner});
-    var txt_1 = machine.createElement({id: "txt_1", backgroundImage: "txt_1.png", retina: true, parent: banner});
-    var txt_1_1 = machine.createElement({id: "txt_1_1", backgroundImage: "txt_1_1.png", retina: true, parent: banner});
-    // paparazzi flash assets
-    var flash_0 = machine.createElement({id: "flash_0", backgroundImage: "flash.png", left: 76, top: 163, retina: true, parent: banner});
-    var flash_1 = machine.createElement({id: "flash_1", backgroundImage: "flash.png", left: 208, top: 4, retina: true, parent: banner});
-    var flash_2 = machine.createElement({id: "flash_2", backgroundImage: "flash.png", left: 9, top: 41, retina: true, parent: banner});
-    var flash_3 = machine.createElement({id: "flash_3", backgroundImage: "flash.png", left: 171, top: 176, retina: true, parent: banner});
-    var flash_4 = machine.createElement({id: "flash_4", backgroundImage: "flash.png", left: 60, top: -20, retina: true, parent: banner});
-    var flash_5 = machine.createElement({id: "flash_5", backgroundImage: "flash.png", left: 60, top: 101, retina: true, parent: banner});
-    var flash_6 = machine.createElement({id: "flash_6", backgroundImage: "flash.png", left: 184, top: 41, retina: true, parent: banner});
-    var flash_7 = machine.createElement({id: "flash_7", backgroundImage: "flash.png", left: 113, top: 18, retina: true, parent: banner});
-    var flash_8 = machine.createElement({id: "flash_8", backgroundImage: "flash.png", left: 147, top: 125, retina: true, parent: banner});
-    var flash_9 = machine.createElement({id: "flash_9", backgroundImage: "flash.png", top: 125, retina: true, parent: banner});
-    // create banner elements here
-
-    // hit, border, studio enabler exit element
-    var hit = machine.createElement({id: "hit", width: width, height: height, border: "solid 1px #ccc", boxSizing: "border-box", parent: banner});
+        // create banner elements in here
+            var bg = machine.createElement({id: "bg", backgroundImage: "bg.jpg", retina: false, parent: banner});
+            // txt
+            var txt_1 = machine.createElement({id: "txt_1", backgroundImage: "txt_1.png", retina: true, parent: banner});
+            var txt_2_1 = machine.createElement({id: "txt_2_1", backgroundImage: "txt_2_1.png", retina: true, parent: banner});
+            // txt + containers
+            var txt_2_container = machine.createElement({id: "txt_2_container", overflow: "hidden", left: 111, top: 8, parent: banner});
+                var txt_2 = machine.createElement({id: "txt_2", backgroundImage: "txt_2.png", retina: true, parent: txt_2_container});
+            var txt_2_2_container = machine.createElement({id: "txt_2_2_container", overflow: "hidden", left: 42, top: 61, parent: banner});
+                var txt_2_2 = machine.createElement({id: "txt_2_2", backgroundImage: "txt_2_2.png", retina: true, parent: txt_2_2_container});
+            var txt_3_container = machine.createElement({id: "txt_3_container", overflow: "hidden", left: 13, top: 29, parent: banner});
+                var txt_3 = machine.createElement({id: "txt_3", backgroundImage: "txt_3.png", retina: true, parent: txt_3_container});
+            var txt_3_1_container = machine.createElement({id: "txt_3_1_container", overflow: "hidden", left: 119, top: 59, parent: banner});
+                var txt_3_1 = machine.createElement({id: "txt_3_1", backgroundImage: "txt_3_1.png", retina: true, parent: txt_3_1_container});
+            var txt_4_container = machine.createElement({id: "txt_4_container", overflow: "hidden", left: 82, top: 40, parent: banner});
+                var txt_4 = machine.createElement({id: "txt_4", backgroundImage: "txt_4.png", retina: true, parent: txt_4_container});
+            // food
+            var food_container = machine.createElement({id: "food_container", width: width * 3, height: height, overflow: "hidden", parent: banner});
+                var food_1 = machine.createElement({id: "food_1", backgroundImage: "food_1.png", retina: false, parent: food_container});
+                var food_2 = machine.createElement({id: "food_2", backgroundImage: "food_2.png", retina: false, parent: food_container});
+                var food_3 = machine.createElement({id: "food_3", backgroundImage: "food_3.png", retina: false, parent: food_container});
+            // misc
+            var cta = machine.createElement({id: "cta", backgroundImage: "cta.png", left: 167, top: 220, retina: true, parent: banner});
+            var logo = machine.createElement({id: "logo", backgroundImage: "logo.png", left: 10, top: 186, retina: true, parent: banner});
+            var hit = machine.createElement({id: "hit", width: width, height: height, border: "solid 1px #ccc", boxSizing: "border-box", parent: banner});
+        // create banner elements in here
 
     /* Element Workers - vars, const, obj, arrays
 	  =============================================================== */
-    var assets = [txt_1, txt_1_1, txt_2, cta];
-    var flashes = [flash_0, flash_1, flash_2, flash_3, flash_4, flash_5, flash_6, flash_7, flash_8, flash_9];
-    var frame_1 = [txt_1, txt_1_1, bg_cover];
-    var endframe = [txt_2, cta];
+    // frame text assets
+      var frame_2_txt= [txt_2_container, txt_2_1, txt_2_2_container];
 
-    /* Asset Adjustments - set elements for animation
+    /* Asset Adjustments - set attributes to elements for animation
 	  =============================================================== */
-    TweenMax.set(assets, {opacity: 0});
-    TweenMax.set(flashes, {opacity: 0});
-    TweenMax.set(endframe, {y: -5})
+    // set attributes to elements for animation
+      // food
+      TweenMax.set(food_2, {x: width});
+      TweenMax.set(food_3, {x: width * 2});
+      // txt containers
+      TweenMax.set(txt_2_container, {width: txt_2.get("width"), height: txt_2.get("height")});
+      TweenMax.set(txt_2_2_container, {width: txt_2_2.get("width"), height: txt_2_2.get("height")});
+      TweenMax.set(txt_3_container, {width: txt_3.get("width"), height: txt_3.get("height")});
+      TweenMax.set(txt_3_1_container, {width: txt_3_1.get("width"), height: txt_3_1.get("height")});
+      TweenMax.set(txt_4_container, {width: txt_4.get("width"), height: txt_4.get("height")});
+      // txt
+      TweenMax.set(frame_2_txt, {y: -height});
+      TweenMax.set(txt_3, {y: txt_3_container.get("height")});
+      TweenMax.set(txt_3_1, {y: -txt_3_1_container.get("height")});
+      TweenMax.set(txt_4, {y: -txt_4_container.get("height")});
 
     /* Animations - individual timelines for aminations
 	  =============================================================== */
-    // flash the lights
-    var paparazzi_attack = function(){// flash function
-      var flash_tl = new builderTimeLine({repeat: 1});// flash timeline, plays twice
-      for(let i = 0; i < flashes.length; i++){// flash loop
-        flash_tl// flash animations
-          .fromTo(flashes[i], 0.60,
-            {opacity: 0.8, scale: getRandom(2,4)},
-            {opacity: 0, scale: 0.8, ease: Power3.easeOut, delay: getRandom(0,7)*0.1, repeat: getRandom(2,3), immediateRender: false}
-        );
-      };
-      return flash_tl;// return the flash animation
-    };
-
-    // fade elements in
-    var fade_in = function(obj){
+    // txt 1 out animation
+    var txt_1_out = function(obj){
       return new builderTimeLine()
-        .to(obj, 0.75, {opacity: 1, ease: Power2.easeInOut});
+        .to(obj, 1.5, {opacity: 0, y: 100, scale: 0, ease: Power2.easeInOut});
     };
-
-    // fade elements out
-    var fade_out = function(obj){
+    // txt slide in animation
+    var txt_slide_in = function(obj){
       return new builderTimeLine()
-        .to(obj, 0.75, {opacity: 0, ease: Power1.easeInOut});
+        .to(obj, 1.5, {y: 0, x: 0, ease: Power2.easeInOut});
     };
-
-    // endframe animation
-    endframe.in = new builderTimeLine()
-      .staggerTo(endframe, 0.75, {opacity: 1, y: 0}, 0.5);
+    // slide food animation
+    var slide_food = function(obj, dist){
+      return new builderTimeLine()
+        .to(obj, 1.5, {x: dist, ease: Power2.easeInOut});
+    };
+    // txt 2_1 slide animation
+    var txt_2_1_slide = function(obj){
+      return new builderTimeLine()
+        .to(obj, 1.5, {x: 40, ease: Power2.easeInOut});
+    };
+    // txt 2_1 reset animation
+    var txt_2_1_reset = function(obj){
+      return new builderTimeLine()
+        .to(obj, 1.5, {x: 0, y: -20, ease: Power2.easeInOut});
+    };
+    // unmask txt animation
+    var unmask_txt = function(obj){
+      return new builderTimeLine()
+        .to(obj, 1.5, {y: 0, ease: Power2.easeInOut});
+    };
+    // mask txt down animation
+    var mask_txt_down = function(obj){
+      return new builderTimeLine()
+        .to(obj, 1.5, {y: obj.get("height"), ease: Power2.easeInOut});
+    };
+    // mask txt up animation
+    var mask_txt_up = function(obj){
+      return new builderTimeLine()
+        .to(obj, 1.5, {y: -obj.get("height"), ease: Power2.easeInOut});
+    };
+    // pulse the logo
+    var logo_pulse = function(obj){
+      return new builderTimeLine({repeat: 9, yoyo: true})
+      .to(logo, 1.25, {scale: 1.05, transformOrigin: "center center", ease: Power2.easeInOut});
+    };
 
     /* Main timeline - chain of animations
 	  =============================================================== */
-    main_tl = new builderTimeLine()
-      .offset(0.1)
-      .add("frame 1")
-        .add(fade_in(txt_1))
-        .chain(0.5)
-        .add(fade_in(txt_1_1))
-        .offset(0.75)
-      .add("paparazzi attack!")
-        .add(paparazzi_attack())
-        .chain(1.5)
-        .add(fade_out(frame_1))
-        .chain()
-      .add("endframe")
-        .add(endframe.in)
-      ;
+    main_tl = new builderTimeLine({onComplete: run_cta})
+        .add(logo_pulse(logo))
+      // offset
+        .offset(1.75)
+      // frame 1
+        .add(txt_1_out(txt_1))
+        .offset(0)
+        .add(txt_slide_in(frame_2_txt))
+        .chain(2)
+      // frame 2
+        .add(slide_food(food_container, -width))
+        .offset(0)
+        .add(txt_2_1_slide(txt_2_1))
+        .offset(0.5)
+        .add(unmask_txt(txt_3))
+        .offset(0)
+        .add(mask_txt_down(txt_2_2))
+        .offset(0)
+        .add(unmask_txt(txt_3_1))
+        .chain(2)
+      // frame 3
+        .add(slide_food(food_container, -width*2))
+        .offset(0)
+        .add(mask_txt_up(txt_2))
+        .offset(0)
+        .add(mask_txt_up(txt_3))
+        .offset(0)
+        .add(mask_txt_down(txt_3_1))
+        .offset(0.5)
+        .add(txt_2_1_reset(txt_2_1))
+        .offset(0.25)
+        .add(unmask_txt(txt_4));
 
-      // scrubber(main_tl);
+      // un-comment debug & scrubber for production
+        // scrubber(main_tl);
+        // console.log("==========================================");
+        // console.log("MAIN TIMELINE: ");
+        // console.log(main_tl);
 
-    /* User Interactions - clickthroughs, exits, events
+    /* User Interactions - cta functionality
 	  =============================================================== */
-    // cta animation on over
-    hit.addEventListener("mouseenter", function(){
-      return new builderTimeLine()
-        .to(cta, 0.35, {scale: 1.05, ease: Power3.easeOut});
-    });
-
-    // cta animation on out
-    hit.addEventListener("mouseleave", function(){
-      return new builderTimeLine()
-        .to(cta, 0.15, {scale: 1, ease: Power3.easeIn});
-    });
-
-    /* Helper functions - utilities for banner
-  	=============================================================== */
-    function getRandom(min, max){// get random number function
-      var r = Math.floor(Math.random() * (max-min + 1) + min);
-      return r;
+    // cta animation
+    function run_cta(){
+      hit.addEventListener("mouseenter", function(){
+        return new builderTimeLine({repeat: 1, yoyo: true})
+          .to(cta, 0.5, {scale: 1.03, ease: Power3.easeInOut});
+      });
     }
 
-    /* Scrubber
-  	=============================================================== */
-  	function scrubber(tl) {
-  		if (window.location.origin == "http://localhost:8080" || window.location.origin == "file://"){
-  			machine.include(["../machine_scrubber.min.js"], function(){
-  				if (machine.scrubberController)
-            machine.scrubberController.create({"Academy Awards GLS: 300x250": tl});
-  			});
-  		};
-  	};
+  }); // preloadImages()
+}; // main()
 
-  });
-};
+/* DeBugger - uncomment for production
+=============================================================== */
+// var local_host = "http://localhost:8080",
+//     local_file = "file://",
+//     staging_server = "https://banners.merkleyandpartners.com/";
+
+// if (window.location.origin == local_host || window.location.origin == local_file){
+//     console.log("==========================================");
+//     console.log("INCLUDES: ");
+//     machine.include(["../deBug.min.js"]);
+// }

@@ -1,11 +1,11 @@
 /* Banner Info
 ------------------
-Mercedes Benz Canada CPO April GLE
+Band-Aid OS 2025 Non-New
 Adrian Velazquez
 Creative Developer
 2025
 ------------------
-For: Mercedes Benz
+For: Band-Aid
 ------------------ */
 
 /*
@@ -16,132 +16,124 @@ machine.main = function() {
   var width = 970,// change banner width
       height = 250,// change banner height
       images = [// preload image assets
-        "bg_1.jpg",
-      	"bg_2.jpg",
-      	"bg_3.jpg",
-      	"txt_3.png",
-      	"txt_2.png",
-      	"txt_1.png",
-      	"logo.png",
-        "cta_txt.png",
-        "cta_txt_active.png"
+        "pack_bg.jpg",
+        "wound_bg_1.jpg",
+        "wound_bg_2.jpg",
+        "wound_bg_3.jpg",
+        "wound_bg_4.jpg",
+        "wound_bg_5.jpg",
+        "cta.png",
+        "txt_1.png",
+        "txt_1_1.png",
+        "txt_2.png",
+        "txt_3.png",
+        "txt_4.png",
+        "txt_num_1.png",
+        "txt_num_2.png",
+        "txt_num_3.png",
+        "txt_num_4.png",
+        "txt_num_5.png"
       ];
 
   /* Create Elements
 	=============================================================== */
   machine.preloadImages(images, function() {
     // banner container element
-    var banner = machine.createElement({id: "banner", width: width, height: height, backgroundColor: "#000", overflow: "hidden", cursor: "pointer", boxSizing: "border-box", parent: document.body});
+    var banner = machine.createElement({id: "banner", width: width, height: height, backgroundColor: "#fff", overflow: "hidden", cursor: "pointer", boxSizing: "border-box", parent: document.body});
         // create banner elements in here
-            var bg_container = machine.createElement({id:"bg_container", width: width, height: "100%", parent: banner});
-                var bg_1 = machine.createElement({id:"bg_1", backgroundImage: "bg_1.jpg", retina: false, parent: bg_container});
-                var bg_2 = machine.createElement({id:"bg_2", backgroundImage: "bg_2.jpg", retina: false, parent: bg_container});
-                var bg_3 = machine.createElement({id:"bg_3", backgroundImage: "bg_3.jpg", retina: false, parent: bg_container});
+            // txt assets
+            var pack_bg = machine.createElement({id:"pack_bg", backgroundImage: "pack_bg.jpg", left: 500, top: 0, retina: true, parent: banner});
+            var txt_4 = machine.createElement({id:"txt_4", backgroundImage: "txt_4.png", retina: true, parent: banner});
             var txt_3 = machine.createElement({id:"txt_3", backgroundImage: "txt_3.png", retina: true, parent: banner});
+            // wound bg assets
+            var wound_bg_container = machine.createElement({id:"wound_bg_container", left: 0, top: 0, overflow: "hidden", parent: banner});
+                var wound_bg_5 = machine.createElement({id:"wound_bg_5", backgroundImage: "wound_bg_5.jpg", retina: true, parent: wound_bg_container});
+                var wound_bg_4 = machine.createElement({id:"wound_bg_4", backgroundImage: "wound_bg_4.jpg", retina: true, parent: wound_bg_container});
+                var wound_bg_3 = machine.createElement({id:"wound_bg_3", backgroundImage: "wound_bg_3.jpg", retina: true, parent: wound_bg_container});
+                var wound_bg_2 = machine.createElement({id:"wound_bg_2", backgroundImage: "wound_bg_2.jpg", retina: true, parent: wound_bg_container});
+                var wound_bg_1 = machine.createElement({id:"wound_bg_1", backgroundImage: "wound_bg_1.jpg", retina: true, parent: wound_bg_container});
+            // txt assets
             var txt_2 = machine.createElement({id:"txt_2", backgroundImage: "txt_2.png", retina: true, parent: banner});
+            var txt_1_1 = machine.createElement({id:"txt_1_1", backgroundImage: "txt_1_1.png", retina: true, parent: banner});
             var txt_1 = machine.createElement({id:"txt_1", backgroundImage: "txt_1.png", retina: true, parent: banner});
-            var logo = machine.createElement({id:"logo", backgroundImage: "logo.png", retina: true, parent: banner});
-            var cta_box = machine.createElement({id:"cta_box", width: 106, height: 34, left: 738, top: 106, border: "1px solid #ffffff", backgroundColor: "transparent", overflow: "hidden", parent: banner});
-                var cta_txt = machine.createElement({id:"cta_txt", backgroundImage: "cta_txt.png", retina: true, left: 0, top: 0, parent: cta_box});
-                var cta_txt_active = machine.createElement({id:"cta_txt_active", backgroundImage: "cta_txt_active.png", retina: true, left: 0, top: 0, parent: cta_box});
+            // txt num assets
+            var txt_num_container = machine.createElement({id:"txt_num_container", left: 22, top: 54, overflow: "hidden", parent: banner});
+                var txt_num_5 = machine.createElement({id:"txt_num_5", backgroundImage: "txt_num_5.png", retina: true, parent: txt_num_container});
+                var txt_num_4 = machine.createElement({id:"txt_num_4", backgroundImage: "txt_num_4.png", retina: true, parent: txt_num_container});
+                var txt_num_3 = machine.createElement({id:"txt_num_3", backgroundImage: "txt_num_3.png", retina: true, parent: txt_num_container});
+                var txt_num_2 = machine.createElement({id:"txt_num_2", backgroundImage: "txt_num_2.png", retina: true, parent: txt_num_container});
+                var txt_num_1 = machine.createElement({id:"txt_num_1", backgroundImage: "txt_num_1.png", retina: true, parent: txt_num_container});
+            // cta
+            var cta = machine.createElement({id:"cta", backgroundImage: "cta.png", left: 876, top: 213, retina: true, parent: banner});
             // hit, border, studio enabler exit element
             var hit = machine.createElement({id: "hit", width: width, height: height, border: "solid 1px #ccc", boxSizing: "border-box", parent: banner});
         // create banner elements in here
 
-    // get bgs and banner individual dimenions
-      var bg_1_height = bg_1.get("height");
-      var bg_2_height = bg_2.get("height");
-      var bg_3_height = bg_3.get("height");
-      var banner_height = height;
-
     /* Asset Adjustments - set attributes to elements for animation
 	  =============================================================== */
     // set attributes to elements for animation
-      TweenMax.set([txt_1, txt_2, txt_3, cta_box], {opacity: 0, y: "+15"});
-      TweenMax.set(cta_txt_active, {y: -cta_box.get("height")});
-      
-    // stack the bg images
-      function stack_bgs(){
-        // set the bg container based on total bg dimensions
-          TweenMax.set(bg_container, {height: bg_stacked_height, overflow: "hidden"});
-        // stack bgs using their stacked dimensions
-          TweenMax.set(bg_1, {y: 0});// bg_1
-          TweenMax.set(bg_2, {y: bg_1_height});// bg_2
-          TweenMax.set(bg_3, {y: bg_2_height + bg_1_height});// bg_3
-      }
-      
-    // bg distance to travel calculations
-      var move = {
-        // pan_dist_1: function(){
-        //   var move_1 = -bg_1_height -  (-banner_height);
-        //   console.log("bg 1 moved:" + move_1 + " px");
-        //   return move_1;
-        // },
-        pan_dist_2: function(){
-          var move_2 = -bg_1_height + -bg_2_height - (-banner_height);
-          console.log("bg 2 moved:" + move_2 + " px");
-          return move_2;
-        },
-        pan_dist_3: function(){
-          var move_3 = -bg_1_height + -bg_2_height + -bg_3_height - (-banner_height);
-          console.log("bg 3 moved:" + move_3 + " px");
-          return move_3;
-        }
-      };
+    TweenMax.set([txt_1_1, cta], {opacity: 0});
+    TweenMax.set(cta, {y: +10});
+    TweenMax.set(txt_num_container, {height: txt_num_5.get("height"), width: txt_num_5.get("width")});
+    TweenMax.set([txt_num_2, txt_num_3, txt_num_4, txt_num_5], {scale: 0, y: txt_num_container.get("height")});
+    TweenMax.set(wound_bg_container, {height: wound_bg_1.get("height"), width: wound_bg_1.get("width")});
 
     /* Animations - individual timelines for aminations
 	  =============================================================== */
-    // bg panning animation
-    var slide_in = function(dist){
+    // fade in animation
+    var fade_in = function(obj){
       return new builderTimeLine()
-        .to(bg_container, 2.25, {y: dist, ease: Power1.easeInOut});
+        .to(obj, 1, {opacity: 1, y: 0, x: 0, ease: Power2.easeInOut});
     };
-    // txt in animation
-    var txt_in = function(obj){
+    // num slide animation
+    var num_slide = function([obj, obj_2]){
       return new builderTimeLine()
-        .to(obj, 1, {opacity: 1, y: 0, ease: Power2.easeInOut});
+        .to(obj, 1, {y: -txt_num_container.get("height"), scale: 0, ease: Power2.easeInOut})// slide out
+        .offset(0)
+        .to(obj_2, 1, {y: 0, scale: 1, ease: Power2.easeInOut});// slide in
     };
-    // txt out annimation
-    var txt_out = function(obj, dist){
+    // wound bg slide animation
+    var wound_bg_timelapse = function(obj){
       return new builderTimeLine()
-        .to(obj, 2.25, {y: dist, ease: Power1.easeInOut});
+        .to(obj, 0.75, {opacity: 0, TransformOrigin: "center center", ease: Power2.easeInOut})// slide
     };
-    // fade out annimation
-    var fade_out = function(obj, dist){
+    // quick_fade animation
+    var quick_fade = function([obj, obj_2]){
       return new builderTimeLine()
-        .to(obj, 1, {opacity: 0, ease: Power1.easeInOut});
-    };
-    // obj in animation
-    var obj_in = function(obj){
-      return new builderTimeLine()
-        .to(obj, 1, {opacity: 1, x: 0, y: 0, ease: Power2.easeInOut});
+        .to(obj, 0.5, {opacity: 0, ease: Power2.easeInOut})// fade out
+        .offset(0)
+        .to(obj_2, 1, {opacity: 1, ease: Power2.easeInOut});// fade in
     };
 
     /* Main timeline - chain of animations
 	  =============================================================== */
     main_tl = new builderTimeLine({onComplete: run_cta})
-      // stack bgs
-        .add(stack_bgs)
       // offset
-        .offset(0.1)
+      .offset(1.25)
       // frame 1
-        .add(txt_in(txt_1))
-        .chain(1)
-        .add(txt_out(txt_1, -height))
-        .offset(0)
+      .add(wound_bg_timelapse(wound_bg_1))
+      .offset(0)
+      .add(quick_fade([txt_1, txt_1_1]))
       // frame 2
-        .add(slide_in(move.pan_dist_2))
-        .offset(2)
-        .add(txt_in(txt_2))
-        .chain(1)
-        .add(txt_out(txt_2, -height))
-        .offset(0)
+      .offset(0.25)
+      .add(num_slide([txt_num_1, txt_num_2]))
+      .chain(0.2)
       // frame 3
-        .add(slide_in(move.pan_dist_3))
-        .offset(2)
-        .add(txt_in(txt_3))
-        .offset(0.25)
-        .add(obj_in(cta_box));
+      .add(wound_bg_timelapse(wound_bg_2))
+      .offset(0.25)
+      .add(num_slide([txt_num_2, txt_num_3]))
+      .chain(0.2)
+      // frame 4
+      .add(wound_bg_timelapse(wound_bg_3))
+      .offset(0.25)
+      .add(num_slide([txt_num_3, txt_num_4]))
+      .chain(0.2)
+      // endframe
+      .add(wound_bg_timelapse(wound_bg_4))
+      .offset(0.25)
+      .add(num_slide([txt_num_4, txt_num_5]))
+      .offset(0.5)
+      .add(fade_in(cta));
 
       // un-comment debug & scrubber for production
         // scrubber(main_tl);
@@ -153,31 +145,10 @@ machine.main = function() {
 	  =============================================================== */
     // cta animation
     function run_cta(){
-      // cta animation on over
       hit.addEventListener("mouseenter", function(){
-        return new builderTimeLine()
-          .to(cta_box, 0.5, {backgroundColor: "#fff", ease: Power3.easeInOut})
-          .offset(0)
-          .to(cta_txt, 0.5, {y: cta_box.get("height"), transformOrigin: "center center", ease: Power3.easeInOut})
-          .offset(0)
-          .to(cta_txt_active, 0.5, {y: 0, transformOrigin: "center center", ease: Power3.easeInOut});
+        return new builderTimeLine({repeat: 1, yoyo: true})
+          .to(cta, 0.5, {scale: 1.05, ease: Power3.easeInOut});
       });
-      // cta animation on out
-      hit.addEventListener("mouseleave", function(){
-        return new builderTimeLine()
-          .to(cta_box, 0.5, {backgroundColor: "transparent", ease: Power3.easeInOut})
-          .offset(0)
-          .to(cta_txt_active, 0.5, {y: -cta_box.get("height"), transformOrigin: "center center", ease: Power3.easeInOut})
-          .offset(0)
-          .to(cta_txt, 0.5, {y: 0, transformOrigin: "center center", ease: Power3.easeInOut});
-      });
-    }
-
-    /* Helper functions - utilities for banner
-  	=============================================================== */
-    // get total, stacked bg dimensions
-    function bg_stacked_height(){
-      return bg_1_height + bg_2_height + bg_3_height;
     }
 
   }); // preloadImages()
