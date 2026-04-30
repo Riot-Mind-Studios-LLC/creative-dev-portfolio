@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ========== HEAD ========== -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  BANNER STAGING SITE — index.html                                    ║
+  ║  Version: 1.0                                                        ║
+  ║                                                                      ║
+  ║  SECURITY NOTE:                                                      ║
+  ║  This file has no authentication. Access is controlled by            ║
+  ║  obscurity — share the link only with intended recipients.           ║
+  ║  To add HTTP Basic Auth, place this project on an Apache server      ║
+  ║  and add .htaccess + .htpasswd files to the root directory.          ║
+  ║  Contact your host for setup instructions if needed.                 ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+
+  FOLDER STRUCTURE
+  ─────────────────────────────────────────────
+staging/
+├── index.html       ← this file
+├── report.html      ← project report file
+├── styles.css       ← this css file
+├── main.js          ← this javascript file
+├── manifest.json    ← this manifest file
+├── README.md        ← instructions
+├── logo.png         ← this studio logo file
+├── banners/         ← live banner folders (one per size)
+├── images/          ← fallback JPG thumbnails (one per banner)
+├── zips/            ← downloadable project zip files
+└── assets/          ← design decks
+  ─────────────────────────────────────────────
+
+  NAMING CONVENTION:
+  All image, banner folder, and zip file names should match the
+  banner size exactly (e.g., 300x250, 728x90, 160x600).
+  This keeps the structure predictable and easy to update.
+
+  HOW TO ADD A NEW BANNER SIZE:
+  1. Copy one of the existing <section class="size-block"> blocks below.
+  2. Update the section id, the <h2> size label, and all file references.
+  3. Drop the banner folder into /banners/[size]/
+  4. Drop the fallback image into /images/[size].jpg
+  5. Drop the zip file into /zips/[size].zip
+  6. Update the banner name, runtime, file size, and last modified fields.
+
+  IAB STANDARD SIZES FOR REFERENCE:
+  ─ Medium Rectangle:  300×250
+  ─ Leaderboard:       728×90
+  ─ Wide Skyscraper:   160×600
+  ─ Half Page:         300×600
+  ─ Large Rectangle:   336×280
+  ─ Billboard:         970×250
+  ─ Large Leaderboard: 970×90
+  ─ Portrait:          300×1050
+  ─ Smartphone Banner: 320×50
+  ─ Large Mobile:      320×100
+  ─ Interstitial:      640×480
+-->
+
+
+<!-- 1. UPDATE: PROJECT NAME -->
+    <title>Client / Project Name</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+<!-- ========== HEAD ========== -->
+
+
+
+  <body>
+<!-- ========== TOP BAR========== -->
+    <div class="topbar"><div class="topbar-left"><img src="logo.png" alt="Agency Logo" class="topbar-logo"><span class="topbar-label">Banner Staging — Confidential</span></div><div class="topbar-right"><a href="report.html" rel="noopener" class="topbar-report-link">Project Report ↗</a><span class="topbar-notice">For internal review only. Do not distribute.</span></div></div>
+<!-- ========== TOP BAR========== -->
+
+
+
+<!-- ========== PAGE HEADER ========== -->
+    <div class="page-header">
+      <div class="wrap">
+
+<!-- 2. UPDATE: Project title - Replace "Project Name" with the actual project/campaign name. -->
+        <div class="report-eyebrow">Ad Banner Staging & Review</div>
+        <h1 class="project-title">Project Title / Project Name</h1>
+
+<!-- Project meta fields - Fill in each .meta-value with the actual project data. Add or remove .meta-field blocks as needed. -->
+        <div class="project-meta">
+
+<!-- 3. UPDATE: client -->
+          <div class="meta-field">
+            <div class="meta-label">Client</div>
+            <div class="meta-value">Client Name</div>
+          </div>
+<!-- 4. UPDATE: campaign -->
+          <div class="meta-field">
+            <div class="meta-label">Campaign</div>
+            <div class="meta-value">Campaign Name</div>
+          </div>
+<!-- 5. UPDATE: concept -->
+          <div class="meta-field">
+            <div class="meta-label">Concept</div>
+            <div class="meta-value">Concept Name</div>
+          </div>
+<!-- 6. UPDATE: CTA -->
+          <div class="meta-field">
+            <div class="meta-label">CTA Treatment</div>
+            <div class="meta-value">Call To Action</div>
+          </div>
+<!-- 7. UPDATE: Project Start Date -->
+          <div class="meta-field">
+            <div class="meta-label">Project Start Date</div>
+            <div class="meta-value">Month DD, YYYY</div>
+          </div>
+<!-- 8. UPDATE: Delivery Date -->
+          <div class="meta-field">
+            <div class="meta-label">Delivery Date</div>
+            <div class="meta-value">Month DD, YYYY</div>
+          </div>
+<!-- 9. UPDATE: Ad Server / Platform -->
+          <div class="meta-field">
+            <div class="meta-label">Ad Server / Platform</div>
+                <!-- <div class="meta-value">Google Ad Manager</div> -->
+                <!-- <div class="meta-value">DoubleClick</div> -->
+                <!-- <div class="meta-value">Flashtalking</div> -->
+                <!-- <div class="meta-value">Sizmek</div> -->
+                 <div class="meta-value">Service</div>
+          </div>
+
+        </div>
+
+        <!-- PRINT BUTTON: Hidden in print output via @media print -->
+        <div class="print-btn-wrap" style="margin-top: 16px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;">
+
+          <!-- Standards reference -->
+          <div class="standards-block">
+            <div class="standards-title">Ad Standards Reference</div>
+            <div class="standards-grid">
+              <div class="standards-item">
+                <span class="standards-label">IAB</span>
+                <span class="standards-value">Max Weight: 200KB initial · 2.2MB total</span>
+                <span class="standards-sep">·</span>
+                <span class="standards-value">Max Runtime: 30s · 3 loops</span>
+                <a class="standards-link" href="https://www.iab.com/guidelines/iab-new-ad-portfolio/" target="_blank" rel="noopener">View Standards ↗</a>
+              </div>
+              <div class="standards-item">
+                <span class="standards-label">Google</span>
+                <span class="standards-value">Max Weight: 150KB</span>
+                <span class="standards-sep">·</span>
+                <span class="standards-value">Max Runtime: 30s · 3 loops</span>
+                <a class="standards-link" href="https://support.google.com/adspolicy/answer/94230" target="_blank" rel="noopener">View Standards ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action buttons / Design Deck-->
+          <div style="display: flex; gap: 8px; flex-shrink: 0; align-items: center;">
+            <a href="assets/deck.pdf" target="_blank" rel="noopener" style="font-family: var(--font-mono);font-size: 10px;letter-spacing: 0.1em;text-transform: uppercase;color: var(--text-mid);background: transparent;border: 1px solid var(--rule);border-radius: var(--radius);padding: 7px 14px;text-decoration: none;display: inline-flex;align-items: center;gap: 6px;transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;"
+              onmouseover="this.style.background='var(--accent-light)'; this.style.color='var(--accent)'; this.style.borderColor='var(--accent)';" onmouseout="this.style.background='transparent'; this.style.color='var(--text-mid)'; this.style.borderColor='var(--rule)';">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor"><path d="M1 1h7l3 3v7H1V1zm7 0v3h3M4 7h4M4 9h2"/></svg>
+              Design Deck
+            </a>
+
+<!-- 10. UPDATE: Google HTML5 BannerValidation Link -->
+            <a class="validate-btn"
+              href="https://h5validator.appspot.com/dcm/asset"
+              target="_blank" rel="noopener">
+              Validate
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+<!-- ========== PAGE HEADER ========== -->
+
+
+
+<!-- ========== STICKY NAV ========== -->
+<!-- 11. UPDATE: Add one .nav-link per size section in this project. The href must match the id on the corresponding .size-block section. Add or remove .nav-link + .nav-divider pairs to match your sizes. -->
+    <nav class="sticky-nav">
+      <div class="sticky-nav-inner">
+        <!-- 160x600 -->
+        <a class="nav-link" href="#s-160x600">160 x 600</a>
+
+        <!-- 300x250 -->
+         <div class="nav-divider"></div>
+        <a class="nav-link" href="#s-300x250">300 × 250</a>
+
+        <!-- 300x600 -->
+        <div class="nav-divider"></div>
+        <a class="nav-link" href="#s-300x600">300 x 600</a>
+
+        <!-- 300x50 -->
+        <!-- <div class="nav-divider"></div> -->
+        <!-- <a class="nav-link" href="#s-300x50">300 x 50</a> -->
+
+        <!-- 320x50 -->
+        <div class="nav-divider"></div>
+        <a class="nav-link" href="#s-320x50">320 x 50</a>
+
+        <!-- 728x90 -->
+        <div class="nav-divider"></div>
+        <a class="nav-link" href="#s-728x90">728 x 90</a>
+
+        <!-- 970x90 -->
+        <div class="nav-divider"></div>
+        <a class="nav-link" href="#s-970x90">970 x 90</a>
+
+        <!-- 970x250 -->
+        <div class="nav-divider"></div>
+        <a class="nav-link" href="#s-970x250">970 x 250</a>
+      </div>
+    </nav>
+<!-- ========== STICKY NAV ========== -->
+
+
+
+<!-- ========== MAIN ========== -->
+    <main>
+      <div class="wrap">
+      <!--
+      ════════════════════════════════════════════════════════════════
+      HOW TO ADD A NEW BANNER SIZE SECTION:
+      1. Copy the entire <section class="size-block"> block below.
+      2. Update the section id to match the new size (e.g., id="s-300x600").
+      3. Update the <span class="size-label"> to show the correct size.
+      4. Update the <span class="size-tag"> to the IAB format name.
+      5. Update all file paths: images/, banners/, zips/ references.
+      6. Update the banner name, file size, runtime, and last modified.
+
+      IAB SIZE TAG NAMES FOR REFERENCE:
+      ─ 300×250   → Medium Rectangle
+      ─ 728×90    → Leaderboard
+      ─ 160×600   → Wide Skyscraper
+      ─ 300×600   → Half Page
+      ─ 970×90    → Large Leaderboard
+      ─ 970×250   → Billboard
+      ─ 336×280   → Large Rectangle
+      ─ 300×50    → Mobile Banner
+      ─ 320×50    → Mobile Banner
+      ─ 320×100   → Large Mobile Banner
+      ════════════════════════════════════════════════════════════════
+      -->
+
+
+<!-- ========== USER INSTRUCTIONS / HOW TO USE THIS SITE SECTION ========== -->
+      <div class="instructions-block">
+
+        <div class="instructions-header">
+          <span class="instructions-title">How to Use This Page</span>
+          <button class="instructions-toggle" onclick="toggleInstructions(this)">Hide</button>
+        </div>
+
+        <div class="instructions-body" id="instructionsBody">
+
+          <div class="instructions-grid">
+
+            <div class="instruction-item">
+              <span class="instruction-icon">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 10l3-3 2 2 3-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="instruction-content">
+                <span class="instruction-label">Fallback Image</span>
+                <span class="instruction-desc">Click the thumbnail image in the preview column to open the full-size fallback image in a new browser window. You can download the image directly from there.</span>
+              </div>
+            </div>
+
+            <div class="instruction-item">
+              <span class="instruction-icon">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="instruction-content">
+                <span class="instruction-label">Launch Banner</span>
+                <span class="instruction-desc">Click the Launch Banner link in the Banner column to open and preview the animated banner at full size in an overlay. Use the Replay button to restart the animation and the Close button to dismiss.</span>
+              </div>
+            </div>
+
+            <div class="instruction-item">
+              <span class="instruction-icon">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 4h12M2 8h8M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <div class="instruction-content">
+                <span class="instruction-label">Show Files</span>
+                <span class="instruction-desc">Click the Show Files button in the Files column to expand a list of all source files included in that banner unit. Click Hide Files to collapse the list.</span>
+              </div>
+            </div>
+
+            <div class="instruction-item">
+              <span class="instruction-icon">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 2v8M5 7l3 3 3-3M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="instruction-content">
+                <span class="instruction-label">Download Zip</span>
+                <span class="instruction-desc">Click the Download Zip button to download a compressed archive of all source files for that banner size directly to your computer.</span>
+              </div>
+            </div>
+
+            <div class="instruction-item">
+              <span class="instruction-icon">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6M8 5v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <div class="instruction-content">
+                <span class="instruction-label">Design Deck</span>
+                <span class="instruction-desc">Click the Design Deck button at the top of the page to open the project's creative brief and design reference document in a new browser window.</span>
+              </div>
+            </div>
+
+            <div class="instruction-item">
+              <span class="instruction-icon">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <div class="instruction-content">
+                <span class="instruction-label">Print / Save as PDF</span>
+                <span class="instruction-desc">Click the Print / Save as PDF button to open your browser's print dialog. Select Save as PDF as the destination to export a clean record of this staging page without buttons or navigation.</span>
+              </div>
+            </div>
+
+            <div class="instruction-item">
+              <span class="instruction-icon">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v4M8 11v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <div class="instruction-content">
+                <span class="instruction-label">Validate</span>
+                <span class="instruction-desc">Click the Validate button to open the HTML5 validation results for this project in a new browser window. This confirms the banner code meets current web standards.</span>
+              </div>
+            </div>
+
+            <div class="instruction-item">
+              <span class="instruction-icon">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h12M8 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="instruction-content">
+                <span class="instruction-label">Banner Navigation</span>
+                <span class="instruction-desc">Use the navigation bar at the top of the page to jump directly to any banner size section. The active section is highlighted as you scroll.</span>
+              </div>
+            </div>
+
+            <div class="instruction-item">
+              <span class="instruction-icon">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 3h12v10H2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5 7h6M5 9.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <div class="instruction-content">
+                <span class="instruction-label">Project Report</span>
+                <span class="instruction-desc">Click the Project Report link in the top bar to open a full production summary for this project in a new browser window. The report includes banner counts, file totals, status overview, timeline, and a full banner breakdown.</span>
+              </div>
+            </div>
+
+            <div class="instruction-item">
+              <span class="instruction-icon">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 2v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+              <div class="instruction-content">
+                <span class="instruction-label">Clickthrough URL</span>
+                <span class="instruction-desc">Click Show Files on any banner row to expand the file drawer. The Clickthrough URL link on the right side of the drawer opens the banner's destination URL in a new browser window.</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+<!-- ========== USER INSTRUCTIONS / HOW TO USE THIS SITE SECTION ========== -->
+
+
+
+<!-- ========== BANNERS ========== -->
+<!-- ========== ADD MORE SIZE SECTIONS HERE - Copy any size-block section above and update the values. Remove any size sections that are not part of this project. ========== -->
+
+<!-- ========== SIZE SECTION: 160x600 ========== -->
+        <section class="size-block" id="s-160x600">
+          <div class="size-header"><span class="size-label">160 × 600</span><div class="size-rule"></div><span class="size-tag">Wide Skyscraper</span></div>
+          <div class="banner-table-wrap">
+            <table class="banner-table">
+              <thead><tr><th>Fallback Image</th><th class="col-name">Banner</th><th>Status</th><th>Latest Version</th><th>File Size</th><th>Runtime</th><th>Notes</th><th class="col-files-toggle">Files</th><th class="col-download">Download Zip</th></tr></thead>
+              <tbody>
+                
+                <tr>
+                  <!-- PREVIEW: Update image path and href to match this banner's size -->
+                  <td class="col-preview"><a class="thumb-link" href="images/160x600.jpg" target="_blank" rel="noopener" title="Open full image"><img class="thumb-img" src="images/160x600.jpg" alt="160x600 banner preview"></a></td>
+                  <!-- BANNER NAME: Update href and link text -->
+                  <td class="col-name"><a class="banner-link" href="#" onclick="openModal(event, 'banners/160x600/index.html', '160x600', 160, 600)"> Launch Banner </a></td>
+
+<!-- ** UPDATE STATUS: Set class to one of: status-draft | status-inreview | status-approved | status-delivered - Update the text to match: Draft | In Review | Approved | Delivered -->
+                  <!-- <td class="col-status"><span class="status-badge status-draft">Draft</span></td> -->
+                  <td class="col-status"><span class="status-badge status-inreview">In Review</span></td>
+                  <!-- <td class="col-status"><span class="status-badge status-approved">Approved</span></td> -->
+                  <!-- <td class="col-status"><span class="status-badge status-delivered">Delivered</span></td> -->
+
+                  <!-- VERSION: Auto-populated from file last modified date. Do not edit. -->
+                  <td class="col-version" id="version-160x600"></td>
+
+<!-- ** UPDATE FILE SIZE: Update with actual compressed zip size -->
+                  <td class="col-filesize">117 KB</td>
+
+<!-- ** UPDATE RUNTIME: Update with actual animation duration in seconds -->
+                  <td class="col-runtime">15s</td>
+
+<!-- ** UPDATE NOTES: Update with the last edit date of the banner files -->
+                  <td class="col-modified">Couple Notes</td>
+
+                  <!-- File button toggle -->
+                  <td class="col-files-toggle"><button class="files-toggle-btn" data-size="160x600" onclick="toggleFiles(this)">Show Files</button></td>
+
+                  <!-- DOWNLOAD: Update href to match this banner's zip file -->
+                  <td class="col-download"><a class="dl-btn" href="zips/160x600.zip" download><svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z" /></svg> Download </a></td>
+                </tr>
+
+                <!-- FILES DRAWER: 160x600 — do not edit this row manually -->
+                <tr class="files-drawer" id="drawer-160x600" style="display: none;">
+                  <td colspan="9" class="files-drawer-cell">
+                    <div class="files-drawer-inner">
+                      <span class="files-drawer-label">Banner Files</span>
+                      <ul class="files-list" id="files-160x600"></ul>
+                      <div class="drawer-cta-block">
+                        <span class="drawer-cta-label">Clickthrough URL</span>
+<!-- ** UPDATE: Replace href with the actual clickthrough destination URL -->
+                        <a class="drawer-cta-link"
+                        href="https://www.google.com/"
+                        target="_blank" rel="noopener">View URL ↗</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+<!-- ========== SIZE SECTION: 160x600 ========== -->
+
+
+
+<!-- ========== SIZE SECTION: 300×250 ========== -->
+        <section class="size-block" id="s-300x250">
+          <div class="size-header"><span class="size-label">300 × 250</span><div class="size-rule"></div><span class="size-tag">Medium Rectangle</span></div>
+          <div class="banner-table-wrap">
+            <table class="banner-table">
+              <thead><tr><th>Fallback Image</th><th class="col-name">Banner</th><th>Status</th><th>Latest Version</th><th>File Size</th><th>Runtime</th><th>Notes</th><th class="col-files-toggle">Files</th><th class="col-download">Download Zip</th></tr></thead>
+              <tbody>
+                
+                <tr>
+                  <!-- PREVIEW: Update image path and href to match this banner's size -->
+                  <td class="col-preview"><a class="thumb-link" href="images/300x250.jpg" target="_blank" rel="noopener" title="Open full image"><img class="thumb-img" src="images/300x250.jpg" alt="300x250 banner preview"></a></td>
+                  <!-- BANNER NAME: Update href and link text -->
+                  <td class="col-name"><a class="banner-link" href="#" onclick="openModal(event, 'banners/300x250/index.html', '300×250', 300, 250)"> Launch Banner </a></td>
+
+<!-- ** UPDATE STATUS: Set class to one of: status-draft | status-inreview | status-approved | status-delivered - Update the text to match: Draft | In Review | Approved | Delivered -->
+                  <td class="col-status"><span class="status-badge status-draft">Draft</span></td>
+                  <!-- <td class="col-status"><span class="status-badge status-inreview">In Review</span></td> -->
+                  <!-- <td class="col-status"><span class="status-badge status-approved">Approved</span></td> -->
+                  <!-- <td class="col-status"><span class="status-badge status-delivered">Delivered</span></td> -->
+
+                  <!-- VERSION: Auto-populated from file last modified date. Do not edit. -->
+                  <td class="col-version" id="version-300x250"></td>
+
+<!-- ** UPDATE FILE SIZE: Update with actual compressed zip size -->
+                  <td class="col-filesize">175 KB</td>
+
+<!-- ** UPDATE RUNTIME: Update with actual animation duration in seconds -->
+                  <td class="col-runtime">15s</td>
+
+<!-- ** UPDATE NOTES: Update with the last edit date of the banner files -->
+                  <td class="col-modified">A Few Notes</td>
+
+                  <!-- File button toggle -->
+                  <td class="col-files-toggle"><button class="files-toggle-btn" data-size="300x250" onclick="toggleFiles(this)">Show Files</button></td>
+
+                  <!-- DOWNLOAD: Update href to match this banner's zip file -->
+                  <td class="col-download"><a class="dl-btn" href="zips/300x250.zip" download><svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z" /></svg> Download </a></td>
+                </tr>
+
+                <!-- FILES DRAWER: 300x250 — do not edit this row manually -->
+                <!-- 300x250 -->
+                <tr class="files-drawer" id="drawer-300x250" style="display: none;">
+                  <td colspan="9" class="files-drawer-cell">
+                    <div class="files-drawer-inner">
+                      <span class="files-drawer-label">Banner Files</span>
+                      <ul class="files-list" id="files-300x250"></ul>
+                      <div class="drawer-cta-block">
+                        <span class="drawer-cta-label">Clickthrough URL</span>
+<!-- ** UPDATE: Replace href with the actual clickthrough destination URL -->
+                        <a class="drawer-cta-link"
+                        href="https://www.google.com/"
+                        target="_blank" rel="noopener">View URL ↗</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+<!-- ========== SIZE SECTION: 300×250 ========== -->
+
+
+
+<!-- ========== SIZE SECTION: 300×600 ========== -->
+        <section class="size-block" id="s-300x600">
+          <div class="size-header"><span class="size-label">300 × 600</span><div class="size-rule"></div><span class="size-tag">Half Page</span></div>
+          <div class="banner-table-wrap">
+            <table class="banner-table">
+              <thead><tr><th>Fallback Image</th><th class="col-name">Banner</th><th>Status</th><th>Latest Version</th><th>File Size</th><th>Runtime</th><th>Notes</th><th class="col-files-toggle">Files</th><th class="col-download">Download Zip</th></tr></thead>
+              <tbody>
+                
+                <tr>
+                  <!-- PREVIEW: Update image path and href to match this banner's size -->
+                  <td class="col-preview"><a class="thumb-link" href="images/300x600.jpg" target="_blank" rel="noopener" title="Open full image"><img class="thumb-img" src="images/300x600.jpg" alt="300x600 banner preview"></a></td>
+                  <!-- BANNER NAME: Update href and link text -->
+                  <td class="col-name"><a class="banner-link" href="#" onclick="openModal(event, 'banners/300x600/index.html', '300×600', 300, 600)"> Launch Banner </a></td>
+
+<!-- ** UPDATE STATUS: Set class to one of: status-draft | status-inreview | status-approved | status-delivered - Update the text to match: Draft | In Review | Approved | Delivered -->
+                  <!-- <td class="col-status"><span class="status-badge status-draft">Draft</span></td> -->
+                  <td class="col-status"><span class="status-badge status-inreview">In Review</span></td>
+                  <!-- <td class="col-status"><span class="status-badge status-approved">Approved</span></td> -->
+                  <!-- <td class="col-status"><span class="status-badge status-delivered">Delivered</span></td> -->
+
+                  <!-- VERSION: Auto-populated from file last modified date. Do not edit. -->
+                  <td class="col-version" id="version-300x600"></td>
+
+<!-- ** UPDATE FILE SIZE: Update with actual compressed zip size -->
+                  <td class="col-filesize">167 KB</td>
+
+<!-- ** UPDATE RUNTIME: Update with actual animation duration in seconds -->
+                  <td class="col-runtime">15s</td>
+
+<!-- ** UPDATE NOTES: Update with the last edit date of the banner files -->
+                  <td class="col-modified">Some Notes</td>
+
+                  <!-- File button toggle -->
+                  <td class="col-files-toggle"><button class="files-toggle-btn" data-size="300x600" onclick="toggleFiles(this)">Show Files</button></td>
+
+                  <!-- DOWNLOAD: Update href to match this banner's zip file -->
+                  <td class="col-download"><a class="dl-btn" href="zips/300x600.zip" download><svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z" /></svg> Download </a></td>
+                </tr>
+
+                <!-- FILES DRAWER: 300x600 — do not edit this row manually -->
+                <tr class="files-drawer" id="drawer-300x600" style="display: none;">
+                  <td colspan="9" class="files-drawer-cell">
+                    <div class="files-drawer-inner">
+                      <span class="files-drawer-label">Banner Files</span>
+                      <ul class="files-list" id="files-300x600"></ul>
+                      <div class="drawer-cta-block">
+                        <span class="drawer-cta-label">Clickthrough URL</span>
+<!-- ** UPDATE: Replace href with the actual clickthrough destination URL -->
+                        <a class="drawer-cta-link"
+                        href="https://www.google.com/"
+                        target="_blank" rel="noopener">View URL ↗</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+<!-- ========== SIZE SECTION: 300×600 ========== -->
+
+
+
+<!-- ========== SIZE SECTION: 320×50 ========== -->
+        <section class="size-block" id="s-320x50">
+          <div class="size-header"><span class="size-label">320 × 50</span><div class="size-rule"></div><span class="size-tag">Mobile Banner</span></div>
+          <div class="banner-table-wrap">
+            <table class="banner-table">
+              <thead><tr><th>Fallback Image</th><th class="col-name">Banner</th><th>Status</th><th>Latest Version</th><th>File Size</th><th>Runtime</th><th>Notes</th><th class="col-files-toggle">Files</th><th class="col-download">Download Zip</th></tr></thead>
+              <tbody>
+                
+                <tr>
+                  <!-- PREVIEW: Update image path and href to match this banner's size -->
+                  <td class="col-preview"><a class="thumb-link" href="images/320x50.jpg" target="_blank" rel="noopener" title="Open full image"><img class="thumb-img" src="images/320x50.jpg" alt="320x50 banner preview"></a></td>
+                  <!-- BANNER NAME: Update href and link text -->
+                  <td class="col-name"><a class="banner-link" href="#" onclick="openModal(event, 'banners/320x50/index.html', '320×50', 320, 50)"> Launch Banner </a></td>
+
+<!-- ** UPDATE STATUS: Set class to one of: status-draft | status-inreview | status-approved | status-delivered - Update the text to match: Draft | In Review | Approved | Delivered -->
+                  <!-- <td class="col-status"><span class="status-badge status-draft">Draft</span></td> -->
+                  <!-- <td class="col-status"><span class="status-badge status-inreview">In Review</span></td> -->
+                  <td class="col-status"><span class="status-badge status-approved">Approved</span></td>
+                  <!-- <td class="col-status"><span class="status-badge status-delivered">Delivered</span></td> -->
+
+                  <!-- VERSION: Auto-populated from file last modified date. Do not edit. -->
+                  <td class="col-version" id="version-320x50"></td>
+
+<!-- ** UPDATE FILE SIZE: Update with actual compressed zip size -->
+                  <td class="col-filesize">126 KB</td>
+
+<!-- ** UPDATE RUNTIME: Update with actual animation duration in seconds -->
+                  <td class="col-runtime">5s</td>
+
+<!-- ** UPDATE NOTES: Update with the last edit date of the banner files -->
+                  <td class="col-modified">Some More Notes</td>
+
+                  <!-- File button toggle -->
+                  <td class="col-files-toggle"><button class="files-toggle-btn" data-size="320x50" onclick="toggleFiles(this)">Show Files</button></td>
+
+                  <!-- DOWNLOAD: Update href to match this banner's zip file -->
+                  <td class="col-download"><a class="dl-btn" href="zips/320x50.zip" download><svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z" /></svg> Download </a></td>
+                </tr>
+
+                <!-- FILES DRAWER: 320x50 — do not edit this row manually -->
+                <tr class="files-drawer" id="drawer-320x50" style="display: none;">
+                  <td colspan="9" class="files-drawer-cell">
+                    <div class="files-drawer-inner">
+                      <span class="files-drawer-label">Banner Files</span>
+                      <ul class="files-list" id="files-320x50"></ul>
+                      <div class="drawer-cta-block">
+                        <span class="drawer-cta-label">Clickthrough URL</span>
+<!-- ** UPDATE: Replace href with the actual clickthrough destination URL -->
+                        <a class="drawer-cta-link"
+                        href="https://www.google.com/"
+                        target="_blank" rel="noopener">View URL ↗</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+<!-- ========== SIZE SECTION: 320×50 ========== -->
+
+
+
+<!-- ========== SIZE SECTION: 728×90 ========== -->
+        <section class="size-block" id="s-728x90">
+          <div class="size-header"><span class="size-label">728 × 90</span><div class="size-rule"></div><span class="size-tag">Leaderboard</span></div>
+          <div class="banner-table-wrap">
+            <table class="banner-table">
+              <thead><tr><th>Fallback Image</th><th class="col-name">Banner</th><th>Status</th><th>Latest Version</th><th>File Size</th><th>Runtime</th><th>Notes</th><th class="col-files-toggle">Files</th><th class="col-download">Download Zip</th></tr></thead>
+              <tbody>
+                
+                <tr>
+                  <!-- PREVIEW: Update image path and href to match this banner's size -->
+                  <td class="col-preview"><a class="thumb-link" href="images/728x90.jpg" target="_blank" rel="noopener" title="Open full image"><img class="thumb-img" src="images/728x90.jpg" alt="728x90 banner preview"></a></td>
+                  <!-- BANNER NAME: Update href and link text -->
+                  <td class="col-name"><a class="banner-link" href="#" onclick="openModal(event, 'banners/728x90/index.html', '728×90', 728, 90)"> Launch Banner </a></td>
+
+<!-- ** UPDATE STATUS: Set class to one of: status-draft | status-inreview | status-approved | status-delivered - Update the text to match: Draft | In Review | Approved | Delivered -->
+                  <!-- <td class="col-status"><span class="status-badge status-draft">Draft</span></td> -->
+                  <!-- <td class="col-status"><span class="status-badge status-inreview">In Review</span></td> -->
+                  <!-- <td class="col-status"><span class="status-badge status-approved">Approved</span></td> -->
+                  <td class="col-status"><span class="status-badge status-delivered">Delivered</span></td>
+
+                  <!-- VERSION: Auto-populated from file last modified date. Do not edit. -->
+                  <td class="col-version" id="version-728x90"></td>
+
+<!-- ** UPDATE FILE SIZE: Update with actual compressed zip size -->
+                  <td class="col-filesize">195 KB</td>
+
+<!-- ** UPDATE RUNTIME: Update with actual animation duration in seconds -->
+                  <td class="col-runtime">10s</td>
+
+<!-- ** UPDATE NOTES: Update with the last edit date of the banner files -->
+                  <td class="col-modified">Even More Notes</td>
+
+                  <!-- File button toggle -->
+                  <td class="col-files-toggle"><button class="files-toggle-btn" data-size="728x90" onclick="toggleFiles(this)">Show Files</button></td>
+
+                  <!-- DOWNLOAD: Update href to match this banner's zip file -->
+                  <td class="col-download"><a class="dl-btn" href="zips/728x90.zip" download><svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z" /></svg> Download </a></td>
+                </tr>
+
+                <!-- FILES DRAWER: 728x90 — do not edit this row manually -->
+                <tr class="files-drawer" id="drawer-728x90" style="display: none;">
+                  <td colspan="9" class="files-drawer-cell">
+                    <div class="files-drawer-inner">
+                      <span class="files-drawer-label">Banner Files</span>
+                      <ul class="files-list" id="files-728x90"></ul>
+                      <div class="drawer-cta-block">
+                        <span class="drawer-cta-label">Clickthrough URL</span>
+<!-- ** UPDATE: Replace href with the actual clickthrough destination URL -->
+                        <a class="drawer-cta-link"
+                        href="https://www.google.com/"
+                        target="_blank" rel="noopener">View URL ↗</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+<!-- ========== SIZE SECTION: 728×90 ========== -->
+
+
+
+<!-- ========== SIZE SECTION: 970×90 ========== -->
+        <section class="size-block" id="s-970x90">
+          <div class="size-header"><span class="size-label">970 × 90</span><div class="size-rule"></div><span class="size-tag">Large Leaderboard</span></div>
+          <div class="banner-table-wrap">
+            <table class="banner-table">
+              <thead><tr><th>Fallback Image</th><th class="col-name">Banner</th><th>Status</th><th>Latest Version</th><th>File Size</th><th>Runtime</th><th>Notes</th><th class="col-files-toggle">Files</th><th class="col-download">Download Zip</th></tr></thead>
+              <tbody>
+                
+                <tr>
+                  <!-- PREVIEW: Update image path and href to match this banner's size -->
+                  <td class="col-preview"><a class="thumb-link" href="images/970x90.jpg" target="_blank" rel="noopener" title="Open full image"><img class="thumb-img" src="images/970x90.jpg" alt="970x90 banner preview"></a></td>
+                  <!-- BANNER NAME: Update href and link text -->
+                  <td class="col-name"><a class="banner-link" href="#" onclick="openModal(event, 'banners/970x90/index.html', '970×90', 970, 90)"> Launch Banner </a></td>
+
+<!-- ** UPDATE STATUS: Set class to one of: status-draft | status-inreview | status-approved | status-delivered - Update the text to match: Draft | In Review | Approved | Delivered -->
+                  <!-- <td class="col-status"><span class="status-badge status-draft">Draft</span></td> -->
+                  <!-- <td class="col-status"><span class="status-badge status-inreview">In Review</span></td> -->
+                  <td class="col-status"><span class="status-badge status-approved">Approved</span></td>
+                  <!-- <td class="col-status"><span class="status-badge status-delivered">Delivered</span></td> -->
+
+                  <!-- VERSION: Auto-populated from file last modified date. Do not edit. -->
+                  <td class="col-version" id="version-970x90"></td>
+
+<!-- ** UPDATE FILE SIZE: Update with actual compressed zip size -->
+                  <td class="col-filesize">198 KB</td>
+
+<!-- ** UPDATE RUNTIME: Update with actual animation duration in seconds -->
+                  <td class="col-runtime">15s</td>
+
+<!-- ** UPDATE NOTES: Update with the last edit date of the banner files -->
+                  <td class="col-modified">Lots More Notes</td>
+
+                  <!-- File button toggle -->
+                  <td class="col-files-toggle"><button class="files-toggle-btn" data-size="970x90" onclick="toggleFiles(this)">Show Files</button></td>
+
+                  <!-- DOWNLOAD: Update href to match this banner's zip file -->
+                  <td class="col-download"><a class="dl-btn" href="zips/970x90.zip" download><svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z" /></svg> Download </a></td>
+                </tr>
+
+                <!-- FILES DRAWER: 970x90 — do not edit this row manually -->
+                <tr class="files-drawer" id="drawer-970x90" style="display: none;">
+                  <td colspan="9" class="files-drawer-cell">
+                    <div class="files-drawer-inner">
+                      <span class="files-drawer-label">Banner Files</span>
+                      <ul class="files-list" id="files-970x90"></ul>
+                      <div class="drawer-cta-block">
+                        <span class="drawer-cta-label">Clickthrough URL</span>
+<!-- ** UPDATE: Replace href with the actual clickthrough destination URL -->
+                        <a class="drawer-cta-link"
+                        href="https://www.google.com/"
+                        target="_blank" rel="noopener">View URL ↗</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+<!-- ========== SIZE SECTION: 970×90 ========== -->
+
+
+
+<!-- ========== SIZE SECTION: 970×250 ========== -->
+        <section class="size-block" id="s-970x250">
+          <div class="size-header"><span class="size-label">970 × 250</span><div class="size-rule"></div><span class="size-tag">Billboard</span></div>
+          <div class="banner-table-wrap">
+            <table class="banner-table">
+              <thead><tr><th>Fallback Image</th><th class="col-name">Banner</th><th>Status</th><th>Latest Version</th><th>File Size</th><th>Runtime</th><th>Notes</th><th class="col-files-toggle">Files</th><th class="col-download">Download Zip</th></tr></thead>
+              <tbody>
+                
+                <tr>
+                  <!-- PREVIEW: Update image path and href to match this banner's size -->
+                  <td class="col-preview"><a class="thumb-link" href="images/970x250.jpg" target="_blank" rel="noopener" title="Open full image"><img class="thumb-img" src="images/970x250.jpg" alt="970x250 banner preview"></a></td>
+                  <!-- BANNER NAME: Update href and link text -->
+                  <td class="col-name"><a class="banner-link" href="#" onclick="openModal(event, 'banners/970x250/index.html', '970×250', 970, 250)"> Launch Banner </a></td>
+
+<!-- ** UPDATE STATUS: Set class to one of: status-draft | status-inreview | status-approved | status-delivered - Update the text to match: Draft | In Review | Approved | Delivered -->
+                  <td class="col-status"><span class="status-badge status-draft">Draft</span></td>
+                  <!-- <td class="col-status"><span class="status-badge status-inreview">In Review</span></td> -->
+                  <!-- <td class="col-status"><span class="status-badge status-approved">Approved</span></td> -->
+                  <!-- <td class="col-status"><span class="status-badge status-delivered">Delivered</span></td> -->
+
+                  <!-- VERSION: Auto-populated from file last modified date. Do not edit. -->
+                  <td class="col-version" id="version-970x250"></td>
+
+<!-- ** UPDATE FILE SIZE: Update with actual compressed zip size -->
+                  <td class="col-filesize">199 KB</td>
+
+<!-- ** UPDATE RUNTIME: Update with actual animation duration in seconds -->
+                  <td class="col-runtime">15s</td>
+
+<!-- ** UPDATE NOTES: Update with the last edit date of the banner files -->
+                  <td class="col-modified">Things Are Getting Notey</td>
+
+                  <!-- File button toggle -->
+                  <td class="col-files-toggle"><button class="files-toggle-btn" data-size="970x250" onclick="toggleFiles(this)">Show Files</button></td>
+
+                  <!-- DOWNLOAD: Update href to match this banner's zip file -->
+                  <td class="col-download"><a class="dl-btn" href="zips/970x250.zip" download><svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z" /></svg> Download </a></td>
+                </tr>
+
+                <!-- FILES DRAWER: 970x250 — do not edit this row manually -->
+                <tr class="files-drawer" id="drawer-970x250" style="display: none;">
+                  <td colspan="9" class="files-drawer-cell">
+                    <div class="files-drawer-inner">
+                      <span class="files-drawer-label">Banner Files</span>
+                      <ul class="files-list" id="files-970x250"></ul>
+                      <div class="drawer-cta-block">
+                        <span class="drawer-cta-label">Clickthrough URL</span>
+<!-- ** UPDATE: Replace href with the actual clickthrough destination URL -->
+                        <a class="drawer-cta-link"
+                        href="https://www.google.com/"
+                        target="_blank" rel="noopener">View URL ↗</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+<!-- ========== SIZE SECTION: 970×250 ========== -->
+
+<!-- ========== ADD MORE SIZE SECTIONS HERE - Copy any size-block section above and update the values. Remove any size sections that are not part of this project. ========== -->
+<!-- ========== BANNERS ========== -->
+
+
+
+      </div>
+    </main>
+<!-- ========== MAIN ========== -->
+
+
+
+<!-- ========== FOOTER ========== -->
+    <footer>
+      <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:16px;">
+
+<!-- 12. UPDATE: Replace "Project Name" and "Client Name" in the footer. -->
+        <span class="footer-left">Project Name &nbsp;·&nbsp; Client Name</span>
+        <span class="footer-right">Confidential — For Review Only</span>
+
+      </div>
+    </footer>
+<!-- ========== FOOTER ========== -->
+
+
+
+<!-- ========== LIGHTBOX MODAL ========== -->
+    <div class="modal-overlay" id="bannerModal" onclick="closeModal(event)">
+      <div class="modal-box" id="modalBox">
+        <div class="modal-bar">
+          <span class="modal-title" id="modalTitle"></span>
+          <div class="modal-controls">
+            <button class="modal-btn" onclick="replayModal()" title="Replay"><svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z" /></svg> Replay </button>
+            <button class="modal-btn modal-btn-close" onclick="closeModalDirect()" title="Close"><svg viewBox="0 0 12 12"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" /></svg> Close </button>
+          </div>
+        </div>
+        <div class="modal-frame-wrap"><iframe id="modalFrame" src="" scrolling="no" frameborder="0"></iframe></div>
+      </div>
+    </div>
+<!-- ========== LIGHTBOX MODAL ========== -->
+
+
+
+<!-- ========== SCRIPTS ========== -->
+    <script src="main.js"></script>
+<!-- ========== SCRIPTS ========== -->
+
+  </body>
+</html>

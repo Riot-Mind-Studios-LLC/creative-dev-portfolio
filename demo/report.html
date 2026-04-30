@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────────
+   TOKENS
+   ───────────────────────────────────────────── */
+:root {
+  --bg:            #f5f5f2;
+  --bg-card:       #ffffff;
+  --bg-header:     #ffffff;
+  --accent:        #1a3a5c;
+  --accent-mid:    #2b5c8a;
+  --accent-light:  #e8eef4;
+  --rule:          #e0e0da;
+  --rule-light:    #ebebea;
+  --text-hi:       #111111;
+  --text-mid:      #555550;
+  --text-lo:       #999990;
+  --text-label:    #1a3a5c;
+  --tag-bg:        #eaf0f7;
+  --tag-text:      #2b5c8a;
+  --radius:        4px;
+  --radius-lg:     8px;
+  --shadow-card:   0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --font-mono:     'DM Mono', monospace;
+  --font-body:     'DM Sans', sans-serif;
+  --transition:    0.18s ease;
+  --status-draft-bg:        #f0f0e8;
+  --status-draft-text:      #7a7a60;
+  --status-draft-border:    #d8d8c8;
+  --status-review-bg:       #fff8e6;
+  --status-review-text:     #8a6200;
+  --status-review-border:   #f0d880;
+  --status-approved-bg:     #eaf4ee;
+  --status-approved-text:   #2a7a44;
+  --status-approved-border: #a8d8b8;
+  --status-delivered-bg:    #e8eef4;
+  --status-delivered-text:  #1a3a5c;
+  --status-delivered-border:#a8c0d8;
+}
+
+/* ─────────────────────────────────────────────
+   RESET
+   ───────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg);
+  color: var(--text-hi);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ─────────────────────────────────────────────
+   LAYOUT
+   ───────────────────────────────────────────── */
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─────────────────────────────────────────────
+   TOP BAR
+   ───────────────────────────────────────────── */
+.topbar {
+  background: var(--accent);
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.topbar-left { display: flex; align-items: center; gap: 12px; }
+.topbar-logo { height: 22px; width: auto; display: block; opacity: 0.85; }
+.topbar-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.topbar-right { display: flex; align-items: center; gap: 20px; }
+.topbar-notice {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.4);
+}
+.topbar-back {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7eb8e8;
+  text-decoration: none;
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+.topbar-back:hover { color: #ffffff; }
+
+/* ─────────────────────────────────────────────
+   PAGE HEADER
+   ───────────────────────────────────────────── */
+.page-header {
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--rule);
+  padding: 48px 0 40px;
+}
+.report-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+  margin-bottom: 10px;
+}
+.report-title {
+  font-family: var(--font-mono);
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 500;
+  color: var(--text-hi);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+.report-title span { color: var(--accent-mid); }
+
+/* ─────────────────────────────────────────────
+   PROJECT META GRID
+   ───────────────────────────────────────────── */
+.project-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+  margin-bottom: 16px;
+}
+.meta-field {
+  padding: 16px 20px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.meta-field:nth-child(4n)        { border-right: none; }
+.meta-field:last-child           { border-right: none; }
+.meta-field:nth-last-child(-n+3) { border-bottom: none; }
+.meta-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+  margin-bottom: 5px;
+}
+.meta-value {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-hi);
+  line-height: 1.4;
+}
+
+/* Print button */
+.header-actions { display: flex; justify-content: flex-end; margin-top: 16px; }
+.print-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.print-btn:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ─────────────────────────────────────────────
+   MAIN
+   ───────────────────────────────────────────── */
+main { padding: 48px 0 80px; }
+
+/* ─────────────────────────────────────────────
+   SECTION HEADER
+   ───────────────────────────────────────────── */
+.section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.section-rule { flex: 1; height: 1px; background: var(--rule); }
+
+/* ─────────────────────────────────────────────
+   STATS ROW
+   ───────────────────────────────────────────── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-card);
+}
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+}
+
+/* ─────────────────────────────────────────────
+   STATUS SUMMARY
+   ───────────────────────────────────────────── */
+.status-summary { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  border: 1px solid;
+}
+.status-pill-count { font-size: 14px; font-weight: 500; }
+.pill-draft     { background: var(--status-draft-bg);    color: var(--status-draft-text);    border-color: var(--status-draft-border); }
+.pill-inreview  { background: var(--status-review-bg);   color: var(--status-review-text);   border-color: var(--status-review-border); }
+.pill-approved  { background: var(--status-approved-bg); color: var(--status-approved-text); border-color: var(--status-approved-border); }
+.pill-delivered { background: var(--status-delivered-bg);color: var(--status-delivered-text);border-color: var(--status-delivered-border); }
+
+/* ─────────────────────────────────────────────
+   BANNER TABLE
+   ───────────────────────────────────────────── */
+.report-block { margin-bottom: 48px; }
+.report-table-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 13px;
+  table-layout: fixed;
+}
+.report-table thead {
+  background: var(--accent-light);
+  border-bottom: 1px solid var(--rule);
+}
+.report-table th {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  padding: 12px 16px;
+  text-align: left;
+  white-space: nowrap;
+}
+.report-table tbody tr { border-bottom: 1px solid var(--rule-light); }
+.report-table tbody tr:last-child { border-bottom: none; }
+.report-table td {
+  padding: 14px 16px;
+  color: var(--text-mid);
+  font-weight: 300;
+  vertical-align: middle;
+}
+.rc-size     { width: 110px; }
+.rc-type     { width: 160px; }
+.rc-status   { width: 110px; }
+.rc-filesize { width: 100px; }
+.rc-runtime  { width: 90px; font-family: var(--font-mono); font-size: 12px; }
+.rc-files    { width: 80px; font-family: var(--font-mono); font-size: 12px; text-align: center; }
+.rc-notes    { width: 200px; padding-right: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.size-mono { font-family: var(--font-mono); font-size: 12px; color: var(--text-hi); font-weight: 500; }
+.type-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tag-text);
+  background: var(--tag-bg);
+  padding: 3px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.status-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+  border: 1px solid;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.status-draft     { background: var(--status-draft-bg);    color: var(--status-draft-text);    border-color: var(--status-draft-border); }
+.status-inreview  { background: var(--status-review-bg);   color: var(--status-review-text);   border-color: var(--status-review-border); }
+.status-approved  { background: var(--status-approved-bg); color: var(--status-approved-text); border-color: var(--status-approved-border); }
+.status-delivered { background: var(--status-delivered-bg);color: var(--status-delivered-text);border-color: var(--status-delivered-border); }
+
+/* ─────────────────────────────────────────────
+   TIMELINE
+   ───────────────────────────────────────────── */
+.timeline-block {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.timeline-point { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
+.timeline-point-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+}
+.timeline-point-date { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--text-hi); }
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 18px;
+  margin-left: 20px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+.timeline-dot-end { background: var(--accent-mid); }
+.timeline-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-mid) 100%);
+  margin-top: 18px;
+  min-width: 40px;
+  opacity: 0.3;
+}
+.timeline-arrow { font-family: var(--font-mono); font-size: 12px; color: var(--text-lo); margin-top: 18px; padding: 0 24px; flex-shrink: 0; }
+
+/* ─────────────────────────────────────────────
+   LOADING / ERROR
+   ───────────────────────────────────────────── */
+.loading {
+  text-align: center;
+  padding: 80px 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+}
+.error-notice {
+  background: #fff8f8;
+  border: 1px solid #f0c0c0;
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #8a3030;
+  text-align: center;
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────── */
+footer { border-top: 1px solid var(--rule); padding: 24px 0; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.footer-left, .footer-right { font-family: var(--font-mono); font-size: 10px; color: var(--text-lo); letter-spacing: 0.06em; }
+
+/* ─────────────────────────────────────────────
+   PRINT
+   ───────────────────────────────────────────── */
+@media print {
+
+  .topbar         { display: none !important; }
+  .header-actions { display: none !important; }
+
+  body { background: #ffffff; }
+
+  .wrap {
+    max-width: 100%;
+    padding: 0 16pt;
+  }
+
+  .page-header {
+    background: #ffffff;
+    border-bottom: 1px solid #cccccc;
+    padding: 24pt 0 20pt;
+  }
+
+  /* Meta grid */
+  .project-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid #cccccc;
+    border-radius: 0;
+    overflow: visible;
+    background: #ffffff;
+  }
+  .meta-field {
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    border-top: none;
+    border-left: none;
+    padding: 8pt 12pt;
+  }
+  .meta-field:nth-child(4n)        { border-right: none; }
+  .meta-field:last-child           { border-right: none; }
+  .meta-field:nth-last-child(-n+3) { border-bottom: none; }
+  .meta-label { color: #666666; font-size: 7pt; }
+  .meta-value { color: #000000; font-size: 10pt; }
+
+  /* Stats */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8pt;
+  }
+  .stat-card {
+    box-shadow: none;
+    border: 1px solid #cccccc;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Section headers */
+  .section-header { margin-bottom: 10pt; }
+  .section-rule   { background: #cccccc; }
+  .section-label  { color: #000000; }
+
+  /* Timeline */
+  .timeline-block { box-shadow: none; border: 1px solid #cccccc; break-inside: avoid; }
+
+  /* Banner table */
+  .report-block { break-inside: avoid; }
+
+  .report-table-wrap {
+    box-shadow: none;
+    border: 1px solid #cccccc;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .report-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+  }
+
+  .report-table thead {
+    background: #eeeeee !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .report-table th {
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    border-top: none;
+    border-left: none;
+    padding: 6pt 8pt;
+    font-size: 7pt;
+    color: #333333;
+    white-space: nowrap;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .report-table td {
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    border-top: none;
+    border-left: none;
+    padding: 6pt 8pt;
+    font-size: 8pt;
+    color: #333333;
+    white-space: nowrap;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .report-table th:last-child,
+  .report-table td:last-child {
+    border-right: none;
+  }
+
+  .report-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .rc-size     { width: auto; }
+  .rc-type     { width: auto; }
+  .rc-status   { width: auto; }
+  .rc-filesize { width: auto; }
+  .rc-files    { width: auto; }
+  .rc-notes    { width: auto; white-space: normal; }
+  .rc-runtime  { display: none; }
+
+  .status-badge {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-size: 7pt;
+    padding: 2pt 5pt;
+  }
+
+  .type-tag {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-size: 7pt;
+  }
+
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .topbar { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .timeline-block { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .timeline-line { display: none; }
+  .timeline-dot { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══ TOP BAR ══ -->
+<div class="topbar">
+  <div class="topbar-left">
+    <img src="logo.png" alt="Agency Logo" class="topbar-logo">
+    <span class="topbar-label">Project Report — Confidential</span>
+  </div>
+  <div class="topbar-right">
+    <a href="index.html" class="topbar-back">← Back to Staging</a>
+    <span class="topbar-notice">For internal review only. Do not distribute.</span>
+  </div>
+</div>
+
+<!-- ══ PAGE HEADER ══ -->
+<div class="page-header">
+  <div class="wrap">
+    <div class="report-eyebrow">Banner Production Report</div>
+    <h1 class="report-title" id="reportTitle">Loading...</h1>
+    <div class="project-meta" id="projectMeta">
+      <div class="loading">Reading project data...</div>
+    </div>
+    <div class="header-actions">
+      <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<main>
+  <div class="wrap" id="mainContent">
+    <div class="loading">Building report...</div>
+  </div>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="footer-left" id="footerLeft">Project Report</span>
+      <span class="footer-right">Confidential — For Review Only</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   REPORT.HTML — Auto-populates from index.html + manifest.json
+   ══════════════════════════════════════════════════════════════ */
+
+var IAB_NAMES = {
+  '300x250':  'Medium Rectangle',
+  '728x90':   'Leaderboard',
+  '160x600':  'Wide Skyscraper',
+  '300x600':  'Half Page',
+  '970x250':  'Billboard',
+  '970x90':   'Large Leaderboard',
+  '336x280':  'Large Rectangle',
+  '320x50':   'Mobile Banner',
+  '300x50':   'Mobile Banner',
+  '320x100':  'Large Mobile Banner',
+  '640x480':  'Interstitial',
+  '300x1050': 'Portrait'
+};
+
+Promise.all([
+  fetch('index.html').then(function(r) {
+    if (!r.ok) throw new Error('Could not load index.html');
+    return r.text();
+  }),
+  fetch('manifest.json').then(function(r) {
+    if (!r.ok) throw new Error('Could not load manifest.json');
+    return r.json();
+  })
+])
+.then(function(results) { buildReport(results[0], results[1]); })
+.catch(function(err) {
+  document.getElementById('mainContent').innerHTML =
+    '<div class="error-notice">Could not load project data. Make sure this page is served from a web server, not opened via file://.<br><br>Error: ' + err.message + '</div>';
+  document.getElementById('projectMeta').innerHTML =
+    '<div class="error-notice">Unable to read index.html</div>';
+});
+
+function buildReport(html, manifest) {
+
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(html, 'text/html');
+
+  /* ── 1. Meta fields ── */
+  var metaFields = doc.querySelectorAll('.meta-field');
+  var meta = {};
+  metaFields.forEach(function(field) {
+    var label = field.querySelector('.meta-label');
+    var value = field.querySelector('.meta-value');
+    if (label && value) {
+      var key = label.textContent.trim().toLowerCase().replace(/\s+/g, '_').replace(/\//g, '_');
+      meta[key] = value.textContent.trim();
+    }
+  });
+
+  /* ── 2. Banner sections ── */
+  var sections = doc.querySelectorAll('.size-block');
+  var banners  = [];
+  sections.forEach(function(section) {
+    var sizeLabel  = section.querySelector('.size-label');
+    var sizeTag    = section.querySelector('.size-tag');
+    var statusEl   = section.querySelector('.status-badge');
+    var fileSizeEl = section.querySelector('.col-filesize');
+    var runtimeEl  = section.querySelector('.col-runtime');
+    var notesEl    = section.querySelector('.col-modified');
+    var sizeDisplay = sizeLabel ? sizeLabel.textContent.trim() : '—';
+    var sizeKey     = sizeDisplay.replace(/\s/g,'').replace('×','x');
+    var fileCount   = 0;
+    if (manifest[sizeKey] && Array.isArray(manifest[sizeKey])) {
+      fileCount = manifest[sizeKey].length;
+    }
+    banners.push({
+      size:        sizeDisplay,
+      sizeKey:     sizeKey,
+      type:        sizeTag ? sizeTag.textContent.trim() : (IAB_NAMES[sizeKey] || '—'),
+      status:      statusEl ? statusEl.textContent.trim() : '—',
+      statusClass: statusEl ? statusEl.className.replace('status-badge','').trim() : '',
+      fileSize:    fileSizeEl ? fileSizeEl.textContent.trim() : '—',
+      runtime:     runtimeEl ? runtimeEl.textContent.trim() : '—',
+      notes:       notesEl ? notesEl.textContent.trim() : '—',
+      fileCount:   fileCount
+    });
+  });
+
+  /* ── 3. Status counts ── */
+  var statusCounts = { draft: 0, inreview: 0, approved: 0, delivered: 0 };
+  banners.forEach(function(b) {
+    if (b.statusClass.indexOf('draft')     > -1) statusCounts.draft++;
+    if (b.statusClass.indexOf('inreview')  > -1) statusCounts.inreview++;
+    if (b.statusClass.indexOf('approved')  > -1) statusCounts.approved++;
+    if (b.statusClass.indexOf('delivered') > -1) statusCounts.delivered++;
+  });
+
+  /* ── 4. Total files ── */
+  var totalFiles = 0;
+  Object.keys(manifest).forEach(function(k) {
+    if (Array.isArray(manifest[k])) totalFiles += manifest[k].length;
+  });
+
+  /* ── 5. Title ── */
+  var projectTitle = doc.querySelector('.project-title');
+  var titleText = projectTitle ? projectTitle.textContent.trim() : 'Project Report';
+  document.title = titleText + ' — Project Report';
+  document.getElementById('reportTitle').innerHTML = titleText + ' <span>/ Report</span>';
+
+  /* ── 6. Footer ── */
+  var client = meta['client'] || '';
+  document.getElementById('footerLeft').textContent = [titleText, client].filter(Boolean).join(' · ');
+
+  /* ── 7. Meta block ── */
+  var metaOrder = [
+    { key: 'client',               label: 'Client' },
+    { key: 'campaign',             label: 'Campaign' },
+    { key: 'concept',              label: 'Concept' },
+    { key: 'cta_treatment',        label: 'CTA Treatment' },
+    { key: 'ad_server___platform', label: 'Ad Server' },
+    { key: 'project_start_date',   label: 'Start Date' },
+    { key: 'delivery_date',        label: 'Delivery Date' }
+  ];
+  var metaHTML = '';
+  metaOrder.forEach(function(item) {
+    var val = meta[item.key] || '—';
+    metaHTML += '<div class="meta-field"><div class="meta-label">' + item.label + '</div><div class="meta-value">' + val + '</div></div>';
+  });
+  document.getElementById('projectMeta').innerHTML = metaHTML;
+
+  /* ── 8. Main content ── */
+  var out = '';
+
+  /* Stats */
+  var runtimes = [];
+  banners.forEach(function(b) { if (b.runtime !== '—' && runtimes.indexOf(b.runtime) === -1) runtimes.push(b.runtime); });
+  out += '<div class="section-header"><span class="section-label">Summary</span><div class="section-rule"></div></div>';
+  out += '<div class="stats-row">';
+  out += statCard(banners.length, 'Total Banners');
+  out += statCard(banners.length, 'Total Sizes');
+  out += statCard(totalFiles, 'Total Files');
+  out += statCard(runtimes.length === 1 ? runtimes[0] : (runtimes.length === 0 ? '—' : runtimes.join(', ')), 'Runtime');
+  out += '</div>';
+
+  /* Status overview */
+  out += '<div class="section-header"><span class="section-label">Status Overview</span><div class="section-rule"></div></div>';
+  out += '<div class="status-summary">';
+  out += statusPill(statusCounts.draft,     'Draft',     'pill-draft');
+  out += statusPill(statusCounts.inreview,  'In Review', 'pill-inreview');
+  out += statusPill(statusCounts.approved,  'Approved',  'pill-approved');
+  out += statusPill(statusCounts.delivered, 'Delivered', 'pill-delivered');
+  out += '</div>';
+
+  /* Timeline */
+  var startDate    = meta['project_start_date'] || 'TBD';
+  var deliveryDate = meta['delivery_date']       || 'TBD';
+  out += '<div class="section-header"><span class="section-label">Timeline</span><div class="section-rule"></div></div>';
+  out += '<div class="timeline-block">';
+  out += '<div class="timeline-point"><span class="timeline-point-label">Project Start</span><span class="timeline-point-date">' + startDate + '</span></div>';
+  out += '<div class="timeline-dot"></div>';
+  out += '<div class="timeline-line"></div>';
+  out += '<div class="timeline-arrow">→</div>';
+  out += '<div class="timeline-line"></div>';
+  out += '<div class="timeline-dot timeline-dot-end"></div>';
+  out += '<div class="timeline-point"><span class="timeline-point-label">Delivery Date</span><span class="timeline-point-date">' + deliveryDate + '</span></div>';
+  out += '</div>';
+
+  /* Banner breakdown */
+  out += '<div class="section-header"><span class="section-label">Banner Breakdown</span><div class="section-rule"></div></div>';
+  out += '<div class="report-block"><div class="report-table-wrap"><table class="report-table"><thead><tr>';
+  out += '<th class="rc-size">Size</th>';
+  out += '<th class="rc-type">IAB Format</th>';
+  out += '<th class="rc-status">Status</th>';
+  out += '<th class="rc-filesize">File Size</th>';
+  out += '<th class="rc-runtime">Runtime</th>';
+  out += '<th class="rc-files">Files</th>';
+  out += '<th class="rc-notes">Notes</th>';
+  out += '</tr></thead><tbody>';
+  banners.forEach(function(b) {
+    out += '<tr>';
+    out += '<td class="rc-size"><span class="size-mono">' + b.size + '</span></td>';
+    out += '<td class="rc-type"><span class="type-tag">' + b.type + '</span></td>';
+    out += '<td class="rc-status"><span class="status-badge ' + b.statusClass + '">' + b.status + '</span></td>';
+    out += '<td class="rc-filesize">' + b.fileSize + '</td>';
+    out += '<td class="rc-runtime">' + b.runtime + '</td>';
+    out += '<td class="rc-files">' + b.fileCount + '</td>';
+    out += '<td class="rc-notes">' + (b.notes === 'No Notes' ? '—' : b.notes) + '</td>';
+    out += '</tr>';
+  });
+  out += '</tbody></table></div></div>';
+
+  document.getElementById('mainContent').innerHTML = out;
+}
+
+function statCard(value, label) {
+  return '<div class="stat-card"><div class="stat-value">' + value + '</div><div class="stat-label">' + label + '</div></div>';
+}
+function statusPill(count, label, cls) {
+  return '<div class="status-pill ' + cls + '"><span class="status-pill-count">' + count + '</span> ' + label + '</div>';
+}
+</script>
+</body>
+</html>

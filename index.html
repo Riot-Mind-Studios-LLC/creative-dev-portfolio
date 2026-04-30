@@ -428,10 +428,132 @@
   .footer-resume:hover { color: #fff; }
   .footer-resume svg { width: 10px; height: 10px; fill: currentColor; }
 
+  /* ─── Workflow Tools section ─── */
+  .tools-block {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+    padding: 0 0 8px;
+  }
+
+  .tools-copy h2 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-hi);
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  .tools-copy p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 640px;
+  }
+
+  .tools-copy p + p {
+    margin-top: 10px;
+  }
+
+  .tools-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .tools-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-lo);
+    padding: 3px 8px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+  }
+
+  .tools-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    padding-top: 4px;
+  }
+
+  .tools-action-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-lo);
+  }
+
+  .demo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    background: transparent;
+    border: 1px solid var(--navy);
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+
+  .demo-btn:hover {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+
+  .demo-btn svg { width: 11px; height: 11px; fill: currentColor; flex-shrink: 0; }
+
+  .tools-built {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .tools-built-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-lo);
+  }
+
+  .tools-built-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
+  .tools-built-list span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-lo);
+    letter-spacing: 0.04em;
+  }
+
   /* ─── Responsive ─── */
   @media (max-width: 800px) {
     .header-inner { grid-template-columns: 1fr; }
     .contact { text-align: left; align-items: flex-start; }
+    .tools-block { grid-template-columns: 1fr; }
+    .tools-action { align-items: flex-start; }
     .mosaic { display: flex; flex-direction: column; align-items: center; }
     .mosaic .bc { width: 100%; max-width: 400px; }
     .bw { overflow-x: auto; }
@@ -471,6 +593,55 @@
 
     </div>
   </header>
+
+  <!-- ═══ WORKFLOW TOOLS ═══ -->
+  <div class="section-header">
+    <span class="section-label">Workflow Tools</span>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="tools-block">
+
+    <div class="tools-copy">
+      <h2>Banner Staging &amp; Review Site</h2>
+      <p>
+        Production doesn't end when the banners are built. Getting them reviewed, approved, and delivered cleanly requires just as much care as the code itself. This staging site is a custom-built internal tool I developed to manage that entire handoff process — giving art directors, project managers, and clients a single organized destination to view live banners, track status, and pull what they need without back-and-forth emails or shared drives.
+      </p>
+      <p>
+        Each project gets its own instance of the site, configured per campaign. Banners are organized by IAB size, displayed as live-running units with fallback image thumbnails, and paired with download links for source files and a modal lightbox for full-size preview. A manifest-driven file drawer exposes every asset inside each banner package. Status badges track each unit from Draft through In Review, Approved, and Delivered. A linked report page auto-generates a full project summary — banner counts, file totals, runtimes, and a delivery timeline — from the same data, with a clean print-to-PDF output for records.
+      </p>
+      <div class="tools-features">
+        <span class="tools-tag">Live Banner Preview</span>
+        <span class="tools-tag">Lightbox Modal</span>
+        <span class="tools-tag">Status Tracking</span>
+        <span class="tools-tag">File Manifest</span>
+        <span class="tools-tag">Source Downloads</span>
+        <span class="tools-tag">Auto Report</span>
+        <span class="tools-tag">Print to PDF</span>
+        <span class="tools-tag">IAB Size Support</span>
+        <span class="tools-tag">Vanilla JS</span>
+      </div>
+    </div>
+
+    <div class="tools-action">
+      <!-- <span class="tools-action-label">Live Demo</span> -->
+      <a href="demo/index.html" target="_blank" rel="noopener" class="demo-btn">
+        <svg viewBox="0 0 12 12"><path d="M7 1h4v4M11 1L5 7M2 3H1v8h8V9"/></svg>
+        Open Demo
+      </a>
+      <div class="tools-built">
+        <span class="tools-built-label">Built With</span>
+        <div class="tools-built-list">
+          <span>HTML · CSS · Vanilla JavaScript</span>
+          <span>Claude.ai</span>
+          <span>VS Code</span>
+          <span>Chrome DevTools</span>
+          <span>GitHub Pages</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
   <!-- ═══ WORK ═══ -->
   <div class="section-header">
