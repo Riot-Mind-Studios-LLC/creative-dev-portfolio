@@ -260,7 +260,7 @@
   .mosaic {
     display: grid;
     grid-template-columns: 162px 302px 302px 302px;
-    grid-template-rows: 311px 311px 288px 128px 128px;
+    grid-template-rows: 311px 311px 88px 288px 128px 128px;
     gap: 16px;
     justify-content: center;
     padding-bottom: 80px;
@@ -353,34 +353,13 @@
 
   .bw iframe { display: block; border: none; flex-shrink: 0; }
 
-  /* Center wide banners (billboard + leaderboard) */
-  .slot-bill .bw,
-  .slot-970  .bw,
-  .slot-lead .bw { justify-content: center; align-items: center; }
+  /* Center wide banners (billboard + large leaderboard + mobile row + leaderboard) */
+  .slot-bill   .bw,
+  .slot-970    .bw,
+  .slot-lead   .bw { justify-content: center; align-items: center; }
 
   /* Hide size label on the narrow 160px skyscraper card — not enough room */
   .slot-sky .bm-size { display: none; }
-
-  /* ─── Replay button ─── */
-  .rb {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    width: 26px;
-    height: 26px;
-    background: rgba(43,92,138,0.85);
-    border: 1px solid rgba(77,157,224,0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, transform 0.2s;
-    z-index: 10;
-  }
-
-  .rb:hover { background: var(--navy); transform: scale(1.1); }
-  .rb svg { width: 10px; height: 10px; fill: #fff; margin-left: 1px; }
 
   /* ─── Grid placements ─── */
 
@@ -402,14 +381,72 @@
   /* Col 3, row 2 */
   .slot-r2c3 { grid-column: 3; grid-row: 2; }
 
-  /* Row 3 full-width: 970×250 billboard */
-  .slot-bill { grid-column: 1 / 5; grid-row: 3; }
+  /* Row 3 full-width: 3x 320×50 mobile banners */
+  .slot-mobile { grid-column: 1 / 5; grid-row: 3; }
 
-  /* Row 4 full-width: 970×90 large leaderboard */
-  .slot-970  { grid-column: 1 / 5; grid-row: 4; }
+  /* Row 4 full-width: 970×250 billboard */
+  .slot-bill { grid-column: 1 / 5; grid-row: 4; }
 
-  /* Row 5 full-width: 728×90 leaderboard */
-  .slot-lead { grid-column: 1 / 5; grid-row: 5; }
+  /* Row 5 full-width: 970×90 large leaderboard */
+  .slot-970  { grid-column: 1 / 5; grid-row: 5; }
+
+  /* Row 6 full-width: 728×90 leaderboard */
+  .slot-lead { grid-column: 1 / 5; grid-row: 6; }
+
+  /* Mobile row inner layout — three cards spread to grid edges */
+  .slot-mobile {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .slot-mobile:hover {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .mobile-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 322px;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+
+  .mobile-card:hover {
+    border-color: var(--navy-dim);
+    box-shadow: 0 0 0 1px var(--navy-dim), 0 8px 32px rgba(0,0,0,0.5);
+  }
+  .rb {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    background: rgba(43,92,138,0.85);
+    border: 1px solid rgba(77,157,224,0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    z-index: 10;
+  }
+
+  .rb:hover { background: var(--navy); transform: scale(1.1); }
+  .rb svg { width: 10px; height: 10px; fill: #fff; margin-left: 1px; }
 
   /* ─── Footer ─── */
   footer {
@@ -691,7 +728,7 @@
   <div class="section-header">
     <span class="section-label">Selected Work</span>
     <div class="section-rule"></div>
-    <span class="section-count">9 projects</span>
+    <span class="section-count">12 projects</span>
   </div>
 
   <div class="mosaic">
@@ -848,7 +885,66 @@
       </div>
     </div>
 
-    <!-- Row 5 full · 728×90 leaderboard -->
+    <!-- Row 5 full · 3× 320×50 mobile banners -->
+    <div class="bc slot-mobile">
+
+      <div class="mobile-card">
+        <div class="bm">
+          <span class="bm-client">Mercedes Benz</span>
+          <div class="bm-right">
+            <span class="bm-size">320 × 50</span>
+            <a class="dl-btn" href="assets/project-12.zip" download>
+              <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+            </a>
+          </div>
+        </div>
+        <div class="bw">
+          <iframe src="banners/project-12/index.html" width="320" height="50" scrolling="no" title="Project 12 — 320×50"></iframe>
+          <button class="rb" onclick="replayBanner(this)" title="Replay" style="bottom:4px; right:6px; width:20px; height:20px;">
+            <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-card">
+        <div class="bm">
+          <span class="bm-client">Mercedes Benz</span>
+          <div class="bm-right">
+            <span class="bm-size">320 × 50</span>
+            <a class="dl-btn" href="assets/project-13.zip" download>
+              <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+            </a>
+          </div>
+        </div>
+        <div class="bw">
+          <iframe src="banners/project-13/index.html" width="320" height="50" scrolling="no" title="Project 13 — 320×50"></iframe>
+          <button class="rb" onclick="replayBanner(this)" title="Replay" style="bottom:4px; right:6px; width:20px; height:20px;">
+            <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-card">
+        <div class="bm">
+          <span class="bm-client">Mercedes Benz</span>
+          <div class="bm-right">
+            <span class="bm-size">320 × 50</span>
+            <a class="dl-btn" href="assets/project-14.zip" download>
+              <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+            </a>
+          </div>
+        </div>
+        <div class="bw">
+          <iframe src="banners/project-14/index.html" width="320" height="50" scrolling="no" title="Project 14 — 320×50"></iframe>
+          <button class="rb" onclick="replayBanner(this)" title="Replay" style="bottom:4px; right:6px; width:20px; height:20px;">
+            <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Row 6 full · 728×90 leaderboard -->
     <div class="bc slot-lead">
       <div class="bm">
         <span class="bm-client">White Castle</span>
