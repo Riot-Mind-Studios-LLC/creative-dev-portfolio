@@ -1,73 +1,55 @@
-<!--
-MB SUV Family - GLC Offer
-Adrian Velazquez
-Creative Developer
-2024
-Email: adrian.velazquez@merkleyandpartners.com
-------------------
-For: Mecedes Benz
--->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- meta tags
-    ================================================= --> 
-    <meta charset="UTF-8" lang="en" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="ad.size" content="width=970,height=90" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <!-- css
-    ================================================= --> 
-    <style>body {margin: 0;}</style>
+<head>
+	<meta charset="UTF-8">
+	<meta name="ad.size" content="width=970,height=90">
+	<!-- main banner styles -->
+	<link rel="stylesheet" href="main.css">
+	<title>Johnsonville Suasage-able / Casserole - 970x90</title>
+</head>
+	<body>
+		<div id="banner">
+			<!-- banner stuff here -->
+			<div class="background2"></div>
+			<div class="background"></div>
 
-    <!-- javascript
-    ================================================= --> 
-    <script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
-    <script type="text/javascript">var clickTag = "https://www.mbusa.com/en/special-offers?model=GLC300W&year=2025&openDisclaimers=true";</script>
-    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.20.0_d360d9a082ccc13b1a1a9b153f86b378_min.js"></script>
-    <script src="machine.min.js"></script>
-    <script src="main.js"></script>
-    <script> "use strict"; // polite load
+<!--<div class="ref"></div>-->
 
-      /* initialize enabler
-      ================================================= */
-          if (Enabler.isInitialized()) {
-            init();
-          } else {
-            Enabler.addEventListener(studio.events.StudioEvent.INIT, init);
-          };
+			<div class="logo"></div>
+			<div id="text">
+				<div class="text txt1"></div>
+				<div class="text txt2"></div>
+				<div class="text txt3"></div>
+			</div>
+			<!--end #text-->
 
-      /* run when enabler is ready and page is loaded
-      ================================================= */
-          function init() {
-            if (Enabler.isPageLoaded()) {
-              enable_handlers();
-            } else {
-              Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, enable_handlers);
-            }
-          };
-
-      /* setup hit (clickable) element with DC Enabler
-      ================================================= */
-          function enable_handlers() {
-            // exit element
-            var hit = document.getElementById("hit");
-            // init the handlers
-            hit.addEventListener("click", function() {
-              Enabler.exit("Background Exit");
-              // open new window on hit click
-              window.open(window.clickTag);
-            });
-          };
-
-    </script>
-    <!-- Banner Title -->
-    <title>MB SUV Family - GLC Offer | 970x90</title>
-  </head>
-  <!-- all elements are dynamically created using javascript generated in the main.js file. do not insert any html inside of the body tags.
-  ========================================================================================================================================= -->
-  <!-- ========== banner ========== -->
-  <body onload="machine.main();"></body>
-  <!-- ========== banner ========== -->
+			<div class="endFrame">
+				<div class="cta"></div>
+				<div class="gradient"></div>
+				<img class="arrow" src="arrow.png" alt="" width="20" height="24" />
+			</div>
+			<div class="txt4"></div>
+		</div>
+		<!--end .banner-->
+		<!-- Greensock -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenLite.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TimelineLite.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/plugins/CSSPlugin.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/easing/EasePack.min.js"></script>
+		<script src="main.js"></script>
+		<script type="text/javascript">
+			/******************************************************************************
+			 *
+			 * Click handler
+			 *
+			 *****************************************************************************/
+			var clickTag = "http://google.com";
+			document.getElementById("banner").addEventListener("click", function() {
+				window.open(window.clickTag);
+			});
+			window.onload = function() {
+				masterTL();
+			};
+		</script>
+	</body>
 </html>

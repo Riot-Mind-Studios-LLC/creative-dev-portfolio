@@ -1,192 +1,77 @@
-/* Banner Info
-------------------
-MB SUV Family - GLC Offer
-Adrian Velazquez
-Creative Developer
-2024
-Email: adrian.velazquez@merkleyandpartners.com
-------------------
-For: Mercedes Benz
------------------- */
+function frame1(){
+  var tl = new TimelineLite();
+  var assets = ["#text", ".background"];
+  TweenLite.set(".background", {x:-2});
+  //TweenLite.set(".background2", {x:-20, scale: 1.1});
+  var position = [".cta", ".txt4"];
+  //TweenLite.set(position, {opacity:0});
 
-/*
-Setup - size, preload assets
-================================================= */
-var machine = machine || {};
-machine.main = function() {
-  var width = 970,// change banner width
-      height = 90,// change banner height
-      images = [// preload image assets
-      "bg_1.jpg", 
-      "bg_2.jpg", 
-      "bg_3.jpg", 
-      "txt_1.png", 
-      "txt_2.png", 
-      "txt_3.png", 
-      "txt_3_1.png",
-      "txt_2_1.png",
-      "txt_1_1.png",  
-      "cta_arrow.png", 
-      "cta_txt.png", 
-      "logo.png"
-      ];
+  tl
+  .staggerFrom(".txt1", 0.5, {opacity:0, y:"+=10", ease:Back.easeOut, scale:.5}, 0.05)
+  .staggerFrom(".txt2", 0.5, {opacity:0, y:"+=10", ease:Back.easeOut, scale:.5}, 0.05, "+=.1")
+  .staggerFrom(".txt3", 0.5, {opacity:0, y:"+=10", ease:Back.easeOut, scale:.5}, 0.05, "+=.1");
 
-  /* Create Elements
-	=============================================================== */
-  machine.preloadImages(images, function() {
-    // banner container element
-    var banner = machine.createElement({id: "banner", width: width, height: height, backgroundColor: "#000", overflow: "hidden", cursor: "pointer", boxSizing: "border-box", parent: document.body});
-        // create banner elements in here
-        var bg_container = machine.createElement({id:"bg_container", width: width, height: "100%", parent: banner});
-            var bg_1 = machine.createElement({id:"bg_1", backgroundImage: "bg_1.jpg", retina: false, parent: bg_container});
-            var bg_2 = machine.createElement({id:"bg_2", backgroundImage: "bg_2.jpg", retina: false, parent: bg_container});
-            var bg_3 = machine.createElement({id:"bg_3", backgroundImage: "bg_3.jpg", retina: false, parent: bg_container});
-        var txt_1_1 = machine.createElement({id:"txt_1_1", backgroundImage: "txt_1_1.png", retina: true, parent: banner});
-        var txt_2_1 = machine.createElement({id:"txt_2_1", backgroundImage: "txt_2_1.png", retina: true, parent: banner});
-        var txt_3_1 = machine.createElement({id:"txt_3_1", backgroundImage: "txt_3_1.png", retina: true, parent: banner});
-        var txt_3 = machine.createElement({id:"txt_3", backgroundImage: "txt_3.png", retina: true, parent: banner});
-        var txt_2 = machine.createElement({id:"txt_2", backgroundImage: "txt_2.png", retina: true, parent: banner});
-        var txt_1 = machine.createElement({id:"txt_1", backgroundImage: "txt_1.png", retina: true, parent: banner});
-        var logo = machine.createElement({id:"logo", backgroundImage: "logo.png", retina: true, parent: banner});
-        var cta_txt = machine.createElement({id:"cta_txt", backgroundImage: "cta_txt.png", retina: true, parent: banner});
-        var cta = machine.createElement({id:"cta", width: 8, height: 8, left: 789, top: 62, border: "1px solid #2ba3d6", borderRadius: "3px", parent: banner});
-            var cta_arrow = machine.createElement({id:"cta_arrow", backgroundImage: "cta_arrow.png", left: 3, top: 2, retina: true, parent: cta});
-        // hit, border, studio enabler exit element
-        var hit = machine.createElement({id: "hit", width: width, height: height, border: "solid 1px #ccc", boxSizing: "border-box", parent: banner});
-        // create banner elements in here
+  tl
+  .to(assets, 0.5, {x:970, ease:Sine.easeIn}, "+=1");
+  return tl;
+}
 
-    /* Asset Adjustments - set attributes to elements for animation
-	  =============================================================== */
-    // set attributes to elements for animation
-    TweenMax.set([txt_1, txt_1_1, txt_2, txt_2_1, txt_3, txt_3_1, cta_txt, cta], {opacity: 0});
-    TweenMax.set([txt_1, txt_1_1, txt_2, txt_2_1, txt_3, txt_3_1], {y: "+15"});
-    // get bgs and banner individual heights
-    var bg_1_height = bg_1.get("height");
-    var bg_2_height = bg_2.get("height");
-    var bg_3_height = bg_3.get("height");
-    var banner_height = height;
+function frame2(){
+  var tl = new TimelineLite();
+  var assets = [".endFrame", ".txt4"];
+  TweenLite.set(".cta", {opacity:0});
+  TweenLite.set(".endFrame", {x:970, y:-96});
 
-    /* Asset Adjustments - set elements for animation
-	  =============================================================== */
-    // stack the bg images
-    function stack_bgs(){
-      // set the bg container based on total bg dimensions
-        TweenMax.set(bg_container, {height: bg_stacked_height, overflow: "hidden"});
-      // stack bgs using their stacked dimensions
-        TweenMax.set(bg_1, {y: 0});// bg_1
-        TweenMax.set(bg_2, {y: bg_1_height});// bg_2
-        TweenMax.set(bg_3, {y: bg_2_height + bg_1_height});// bg_3
-    }
+  tl
+  .staggerTo(".endFrame", 0.5, { x:790, ease:Back.easeOut}, 0.05, "+=.5")
+  .staggerFrom(".txt4", 0.5, {opacity:0, ease:Elastic.easeOut.config(.5, 0.2), scale:.5, onComplete:pulse}, "+=.5")
+    .staggerTo(".endFrame", 0.5, { x:468, ease:Back.easeOut}, "+=2")
+  .to(".txt4", 0.5, {x:-323, ease:Back.easeOut}, "-=.5")
+  .to(".cta", 0, {opacity:1}, "-=.5");
+  return tl;
+}
 
-    /* bg distance to travel calculations
-	  =============================================================== */
-    // bg distance to travel calculations
-    var move = {
-      pan_dist_1: function(){
-        var move_1 = -bg_1_height -  (-banner_height);
-        console.log("bg 1 moved:" + move_1 + " px");
-        return move_1;
-      },
-      pan_dist_2: function(){
-        var move_2 = -bg_1_height + -bg_2_height - (-banner_height);
-        console.log("bg 2 moved:" + move_2 + " px");
-        return move_2;
-      },
-      pan_dist_3: function(){
-        var move_3 = -bg_1_height + -bg_2_height + -bg_3_height - (-banner_height);
-        console.log("bg 3 moved:" + move_3 + " px");
-        return move_3;
-      }
-    };
+function pulse(){
+  var tl = new TimelineLite();
+  tl
+  .staggerTo(".txt4", 2, {ease: Elastic.easeOut.config(.5, 0.2), scale:.75}, 0.05)
+  .staggerTo(".txt4", 2, {ease: Elastic.easeIn.config(.5, 0.2), scale:1}, 0.05, "-=.5")
+  .staggerTo(".txt4", 2, {ease: Elastic.easeOut.config(.5, 0.2), scale:.75}, 0.05)
+  .staggerTo(".txt4", 2, {ease: Elastic.easeIn.config(.5, 0.2), scale:1}, 0.05, "-=.5");
 
-    /* Animations - individual timelines for aminations
-	  =============================================================== */
-    var slide_in = function(dist){
-      return new builderTimeLine()
-        .to(bg_container, 2, {y: dist, ease: Power1.easeInOut});
-    };
-    var txt_slide_out = function(obj, dist){
-      return new builderTimeLine()
-        .to(obj, 2, {y: dist, ease: Power1.easeInOut});
-    };
-    var txt_in = function(obj){
-      return new builderTimeLine()
-        .to(obj, 1, {opacity: 1, y: 0, ease: Power2.easeInOut});
-    };
-    var fade_in = function(obj){
-      return new builderTimeLine()
-        .to(obj, 0.5, {opacity: 1, ease: Power2.easeInOut});
-    };
+  return tl;
+}
 
-    /* Main timeline - chain of animations
-	  =============================================================== */
-    main_tl = new builderTimeLine({onComplete: run_cta})
-      // stack bgs
-      .add(stack_bgs)
-      .offset(0.15)
-      // frame 1
-      .add(txt_in(txt_1))
-      .offset(0.5)
-      .add(txt_in(txt_1_1))
-      .chain(0)
-      .add(slide_in(move.pan_dist_1))
-      .chain(1)
-      .add(txt_slide_out([txt_1, txt_1_1], -height))
-      .offset(0)
-      // frame 2
-      .add(slide_in(-232))
-      .chain(0)
-      .add(txt_in(txt_2))
-      .offset(0.5)
-      .add(txt_in(txt_2_1))
-      .chain(0)
-      .add(slide_in(move.pan_dist_2))
-      .chain(1)
-      .add(txt_slide_out([txt_2, txt_2_1], -height))
-      .offset(0)
-      // frame 3
-      .add(slide_in(move.pan_dist_3))
-      .chain(0)
-      .add(txt_in(txt_3))
-      .offset(0.5)
-      .add(txt_in(txt_3_1))
-      .chain(0)
-      .add(fade_in([cta_txt, cta]));
+function endFrame(){
+  var tl = new TimelineLite();
 
-      // un-comment debug & scrubber for production
-        // scrubber(main_tl);
-        // console.log("==========================================");
-        // console.log("MAIN TIMELINE: ");
-        // console.log(main_tl);
+  tl
+  .to(".arrow", 0.4, {x:"+=10", ease:Strong.easeIn}, "-=0.5")
+  .to(".arrow", 0.6, {x:"-=10", ease:Back.easeOut});
 
-    /* User Interactions - cta functionality
-	  =============================================================== */
-    // cta animation
-    function run_cta(){
-      hit.addEventListener("mouseenter", function(){
-        return new builderTimeLine({repeat: 1, yoyo: true})
-          .to(cta, 0.5, {scale: 1.1, backgroundColor: "#fff", ease: Power2.easeInOut});
-      });
-    }
+  tl
+  .fromTo(".gradient", 1.5, {x:-90, opacity:0}, {x:500, opacity:1, ease:Strong.easeInOut});
+  return tl;
+}
 
-    /* Helper functions - utilities for banner
-  	=============================================================== */
-    // get total, stacked bg dimensions
-    function bg_stacked_height(){
-      return bg_1_height + bg_2_height + bg_3_height;
-    }
+function masterTL(){
+  var masterTL = new TimelineLite({onComplete:addMouseHandlers});
+  masterTL
+  .to("#banner", 0.1, {autoAlpha:1, delay:.02})
+  .add(frame1())
+  .add(frame2())
+  .add(endFrame());
+}
 
-  }); // preloadImages()
-}; // main()
+function addMouseHandlers() {
+    banner.addEventListener("mouseover", ctaOver);
+    banner.addEventListener("mouseout", ctaOut);
+}
 
-/* DeBugger - uncomment for production
-=============================================================== */
-// var local_host = "http://localhost:8080",
-//     local_file = "file://",
-//     staging_server = "https://banners.merkleyandpartners.com/";
+function ctaOver() {
+    TweenLite.to(".arrow", 0.4 ,{x:10, ease:Strong.easeIn});
+}
 
-// if (window.location.origin == local_host || window.location.origin == local_file){
-//     console.log("==========================================");
-//     console.log("INCLUDES: ");
-//     machine.include(["../deBug.min.js"]);
-// }
+function ctaOut() {
+    TweenLite.to(".arrow", 0.6 ,{x:0, ease:Strong.easeOut});
+}
