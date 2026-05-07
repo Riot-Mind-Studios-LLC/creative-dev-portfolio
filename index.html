@@ -673,6 +673,102 @@
     font-style: italic;
   }
 
+  /* ─── Brand Experience collapsible ─── */
+  .brand-intro {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .brand-toggle-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+  }
+
+  .brand-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: none;
+    border: 1px solid var(--navy-dim);
+    border-radius: 2px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    margin-bottom: 0;
+  }
+
+  .brand-toggle:hover { background: var(--navy); color: #fff; }
+
+  .brand-toggle-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+
+  .brand-toggle.open .brand-toggle-arrow { transform: rotate(180deg); }
+
+  .brand-collapse {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+  }
+
+  .brand-collapse.open { max-height: 1200px; }
+
+  .brand-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+  }
+
+  .brand-table thead tr { border-bottom: 1px solid var(--navy-dim); }
+
+  .brand-table th {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-lo);
+    padding: 0 0 10px;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .brand-table th:last-child { text-align: right; }
+  .brand-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .brand-table tbody tr:last-child { border-bottom: none; }
+
+  .brand-table tbody tr:hover .brand-client,
+  .brand-table tbody tr:hover .brand-industry { color: var(--text-hi); }
+
+  .brand-client {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--contact-text);
+    letter-spacing: 0.04em;
+    padding: 11px 0;
+    transition: color 0.2s;
+  }
+
+  .brand-industry {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-lo);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: right;
+    padding: 11px 0;
+    transition: color 0.2s;
+  }
+
   /* ─── Responsive ─── */
   @media (max-width: 800px) {
     .header-inner { grid-template-columns: 1fr; }
@@ -723,6 +819,55 @@
 
     </div>
   </header>
+
+  <!-- ═══ BRAND EXPERIENCE ═══ -->
+  <div class="section-header">
+    <span class="section-label">Brand Experience</span>
+    <div class="section-rule"></div>
+    <span class="section-count">18 brands</span>
+  </div>
+
+  <p class="brand-intro">
+    Over 11 years across five agencies, the work has spanned a wide range of industries and brand categories — from global automotive and pharmaceutical launches to consumer tech, entertainment, and CPG. Every campaign brought different creative constraints, audience requirements, and production standards. The result is a versatile production background built on real brand experience at scale.
+  </p>
+
+  <div class="brand-toggle-row">
+    <button class="brand-toggle" onclick="toggleBrands(this)">
+      <span>View Brand List</span>
+      <span class="brand-toggle-arrow">▾</span>
+    </button>
+  </div>
+
+  <div class="brand-collapse" id="brandCollapse">
+    <table class="brand-table">
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Industry</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="brand-client">Mercedes-Benz</td><td class="brand-industry">Automotive</td></tr>
+        <tr><td class="brand-client">Mini Cooper</td><td class="brand-industry">Automotive</td></tr>
+        <tr><td class="brand-client">Scion</td><td class="brand-industry">Automotive</td></tr>
+        <tr><td class="brand-client">Toyota</td><td class="brand-industry">Automotive</td></tr>
+        <tr><td class="brand-client">Google</td><td class="brand-industry">Technology</td></tr>
+        <tr><td class="brand-client">T-Mobile</td><td class="brand-industry">Telecommunications</td></tr>
+        <tr><td class="brand-client">Spotify</td><td class="brand-industry">Entertainment / Streaming</td></tr>
+        <tr><td class="brand-client">Starbucks</td><td class="brand-industry">Food &amp; Beverage</td></tr>
+        <tr><td class="brand-client">White Castle</td><td class="brand-industry">Food &amp; Beverage</td></tr>
+        <tr><td class="brand-client">Captain D's</td><td class="brand-industry">Food &amp; Beverage</td></tr>
+        <tr><td class="brand-client">Johnsonville</td><td class="brand-industry">Food &amp; Beverage</td></tr>
+        <tr><td class="brand-client">Converse</td><td class="brand-industry">Fashion &amp; Apparel</td></tr>
+        <tr><td class="brand-client">Revlon</td><td class="brand-industry">Beauty &amp; Cosmetics</td></tr>
+        <tr><td class="brand-client">Novartis</td><td class="brand-industry">Pharmaceuticals</td></tr>
+        <tr><td class="brand-client">Idorsia</td><td class="brand-industry">Pharmaceuticals</td></tr>
+        <tr><td class="brand-client">Dexcom</td><td class="brand-industry">Medical Devices</td></tr>
+        <tr><td class="brand-client">Band-Aid</td><td class="brand-industry">Consumer Healthcare</td></tr>
+        <tr><td class="brand-client">Husqvarna</td><td class="brand-industry">Outdoor Power Equipment</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <!-- ═══ WORK ═══ -->
   <div class="section-header">
@@ -1106,6 +1251,21 @@
     setTimeout(function() { frame.src = src; }, 50);
     btn.style.transform = 'scale(0.88) rotate(-45deg)';
     setTimeout(function() { btn.style.transform = ''; }, 300);
+  }
+
+  function toggleBrands(btn) {
+    var collapse = document.getElementById('brandCollapse');
+    var label    = btn.querySelector('span:first-child');
+    var isOpen   = collapse.classList.contains('open');
+    if (isOpen) {
+      collapse.classList.remove('open');
+      btn.classList.remove('open');
+      label.textContent = 'View Brand List';
+    } else {
+      collapse.classList.add('open');
+      btn.classList.add('open');
+      label.textContent = 'Hide Brand List';
+    }
   }
 </script>
 
