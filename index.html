@@ -14,17 +14,17 @@
 
   /* ─── Tokens ─── */
   :root {
-    --bg:           #0c0e12;
-    --bg-card:      #111418;
-    --navy:         #2B5C8A;
-    --navy-dim:     #1e4265;
-    --accent:       #4d9de0;
-    --rule:         rgba(255,255,255,0.07);
-    --text-hi:      #f0f2f5;
-    --text-mid:     #8a95a3;
-    --text-lo:      #4a5260;
-    --contact-text: #c8d4e0;
-    --contact-link: #7eb8e8;
+    --bg:           #f5f2ee;
+    --bg-card:      #ffffff;
+    --navy:         #2B4C6F;
+    --navy-dim:     #3a6491;
+    --accent:       #2B4C6F;
+    --rule:         rgba(0,0,0,0.09);
+    --text-hi:      #2c2825;
+    --text-mid:     #5a5350;
+    --text-lo:      #9a918c;
+    --contact-text: #3a3330;
+    --contact-link: #2B4C6F;
     --font-display: 'Syne', sans-serif;
     --font-body:    'Inter', sans-serif;
     --font-mono:    'DM Mono', monospace;
@@ -50,7 +50,7 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 0;
-    opacity: 0.6;
+    opacity: 0.25;
   }
 
   /* ─── Layout ─── */
@@ -103,7 +103,7 @@
     font-size: 10px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #5db88a;
+    color: #3a8c5e;
     margin-bottom: 14px;
   }
 
@@ -111,15 +111,15 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #5db88a;
+    background: #3a8c5e;
     flex-shrink: 0;
-    box-shadow: 0 0 6px rgba(93,184,138,0.6);
+    box-shadow: 0 0 6px rgba(58,140,94,0.5);
     animation: pulse 2.4s ease-in-out infinite;
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(93,184,138,0.6); }
-    50%       { opacity: 0.5; box-shadow: 0 0 2px rgba(93,184,138,0.2); }
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(58,140,94,0.5); }
+    50%       { opacity: 0.5; box-shadow: 0 0 2px rgba(58,140,94,0.15); }
   }
 
   h1 {
@@ -345,7 +345,7 @@
     flex: 1;
     position: relative;
     overflow: hidden;
-    background: #0a0c10;
+    background: #1a1c20;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -673,6 +673,16 @@
     font-style: italic;
   }
 
+  /* ─── Shared section heading (brand experience, workflow synopsis) ─── */
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-hi);
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
   /* ─── Brand Experience collapsible ─── */
   .brand-intro {
     font-size: 14px;
@@ -769,6 +779,78 @@
     transition: color 0.2s;
   }
 
+  /* ─── Workflow Synopsis collapsible ─── */
+  .synopsis-toggle-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+  }
+
+  .synopsis-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: none;
+    border: 1px solid var(--navy-dim);
+    border-radius: 2px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .synopsis-toggle:hover { background: var(--navy); color: #fff; }
+
+  .synopsis-toggle-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+
+  .synopsis-toggle.open .synopsis-toggle-arrow { transform: rotate(180deg); }
+
+  .synopsis-collapse {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+    margin-bottom: 0;
+  }
+
+  .synopsis-collapse.open {
+    max-height: 4000px;
+    margin-bottom: 48px;
+  }
+
+  .synopsis-body {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding: 8px 0 8px;
+  }
+
+  .synopsis-section h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-hi);
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  .synopsis-section p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .synopsis-section p + p {
+    margin-top: 12px;
+  }
+
   /* ─── Responsive ─── */
   @media (max-width: 800px) {
     .header-inner { grid-template-columns: 1fr; }
@@ -827,6 +909,7 @@
     <span class="section-count">18 brands</span>
   </div>
 
+  <h2 class="section-heading">Industries &amp; Clients</h2>
   <p class="brand-intro">
     Over 11 years across five agencies, the work has spanned a wide range of industries and brand categories — from global automotive and pharmaceutical launches to consumer tech, entertainment, and CPG. Every campaign brought different creative constraints, audience requirements, and production standards. The result is a versatile production background built on real brand experience at scale.
   </p>
@@ -1110,6 +1193,54 @@
 
   </div><!-- /mosaic -->
 
+  <!-- ═══ WORKFLOW SYNOPSIS ═══ -->
+  <div class="section-header">
+    <span class="section-label">Workflow Synopsis</span>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-heading">From Kickoff to Delivery</h2>
+  <p class="brand-intro">
+    Banner development is a production discipline as much as it is a technical one. This synopsis covers the full process — from the first kickoff meeting through final asset delivery — including how I manage creative direction, asset preparation, animation build, cross-size adaptation, staging, compliance, and trafficking. It's the same process I've run across every agency and every campaign for over 11 years.
+  </p>
+
+  <div class="synopsis-toggle-row">
+    <button class="synopsis-toggle" onclick="toggleSynopsis(this)">
+      <span>Read Workflow Synopsis</span>
+      <span class="synopsis-toggle-arrow">▾</span>
+    </button>
+  </div>
+
+  <div class="synopsis-collapse" id="synopsisCollapse">
+    <div class="synopsis-body">
+
+      <div class="synopsis-section">
+        <h3>Kickoff &amp; Planning</h3>
+        <p>Every campaign begins with a kickoff meeting where I align with the creative and production teams on animation treatment, brand tone, hard deadlines, master banner size, resize requirements, and platform-specific standards. I receive creative PSD files for the master banner size — typically a 300x250 — along with a PDF copy of the brief that I reference throughout development for animation direction and brand guidelines.</p>
+      </div>
+
+      <div class="synopsis-section">
+        <h3>Development — Master Banner</h3>
+        <p>I start every project from a custom boilerplate template matched to the animation style the campaign calls for. Because I work with recurring brands, I maintain templates tailored to specific creative directions that accelerate production from the jump. My custom GreenSock framework (TweenMax/TimelineMax) provides pre-built animation methods and functions, timeline manipulation, asset preloading, a scrubber for playing, pausing and scrubbing the animation timeline, and debugging scripts for cross-browser troubleshooting.</p>
+        <p>I create a new PSD file for every banner size, duplicating image assets from the creative PSD handed off to me. All elements are exported individually as JPG or PNG at retina resolution — occasionally SVG when vector assets are involved, which I manipulate in Illustrator if needed. I then use code to scale retina-sized assets back down to banner dimensions, retaining clarity and high resolution across standard and retina-enabled devices.</p>
+        <p>Once assets are exported, I build the banner structure — creating div elements for each image asset, positioning them using GreenSock, and setting starting opacities, positions, and pre-animation states. I then script any custom animation timeline functions the project requires beyond what my framework already provides, and begin constructing the master timeline by chaining and offsetting timeline functions together based on the creative direction. I preview and adjust in Chrome using DevTools throughout the entire build, refining timing, easing, and positioning until the animation matches the intended feel. I verify the banner meets the project's time constraints using my scrubber tool and confirm compliance with IAB and browser standards before delivering.</p>
+      </div>
+
+      <div class="synopsis-section">
+        <h3>Delivery &amp; Staging</h3>
+        <p>Once the master banner is approved, I use it as the foundation for all remaining sizes, which significantly reduces development time per unit and is a core reason I can manage multiple campaigns simultaneously. I adapt animation and layout as needed across sizes — the same animation does not always translate identically at different dimensions, so I make subtle creative decisions to preserve the brand's voice and the creative team's intent across every format.</p>
+        <p>Before final delivery, I compress all image assets to bring each banner's zipped file weight below platform restrictions, verify clicktag functionality, and run all units in current browsers to catch any rendering issues. I then stage the full campaign on a custom PHP-based staging site that I built and maintain as a template. Each campaign gets its own staging instance populated with banner sizes, animation timing, kickoff date, backup images, and brand details. Project managers use the staging site to preview and pre-approve banners before sending the viewing link to clients for final sign-off. The staging site also provides direct download links for zipped banner files per size, backup images for all units, and a link to validate all banners against Google's HTML5 banner validation tool for standards compliance.</p>
+        <p>Once the client fully approves the campaign, project managers download all packaged assets for trafficking to the final ad-serving platform — most commonly DoubleClick, for which I maintain verified enabler scripts in my boilerplate template. For campaigns requiring Flashtalking, I have a separate template built to that platform's specifications.</p>
+      </div>
+
+      <div class="synopsis-section">
+        <h3>Scale &amp; Output</h3>
+        <p>Small campaigns typically involve one creative direction with around four banner sizes. Larger campaigns can include up to five versioned concepts across two or three creative directions, each with up to six sizes. I routinely juggle two to three campaigns simultaneously and have delivered as many as 50 banner units in a single week.</p>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ═══ WORKFLOW TOOLS ═══ -->
   <div class="section-header">
     <span class="section-label">Workflow Tools</span>
@@ -1251,6 +1382,21 @@
     setTimeout(function() { frame.src = src; }, 50);
     btn.style.transform = 'scale(0.88) rotate(-45deg)';
     setTimeout(function() { btn.style.transform = ''; }, 300);
+  }
+
+  function toggleSynopsis(btn) {
+    var collapse = document.getElementById('synopsisCollapse');
+    var label    = btn.querySelector('span:first-child');
+    var isOpen   = collapse.classList.contains('open');
+    if (isOpen) {
+      collapse.classList.remove('open');
+      btn.classList.remove('open');
+      label.textContent = 'Read Workflow Synopsis';
+    } else {
+      collapse.classList.add('open');
+      btn.classList.add('open');
+      label.textContent = 'Hide Workflow Synopsis';
+    }
   }
 
   function toggleBrands(btn) {
