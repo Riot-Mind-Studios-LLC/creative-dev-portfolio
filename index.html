@@ -851,6 +851,61 @@
     margin-top: 12px;
   }
 
+  /* ─── By the Numbers scorecards ─── */
+  .stats-row {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 40px 0 48px;
+    margin-bottom: 0;
+  }
+
+  .stat-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+  }
+
+  .stat-item + .stat-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .stat-suffix {
+    font-size: 0.65em;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    opacity: 0.7;
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-lo);
+  }
+
   /* ─── Responsive ─── */
   @media (max-width: 800px) {
     .header-inner { grid-template-columns: 1fr; }
@@ -901,6 +956,50 @@
 
     </div>
   </header>
+
+  <!-- ═══ BY THE NUMBERS ═══ -->
+  <div class="section-header">
+    <span class="section-label">By the Numbers</span>
+    <div class="section-rule"></div>
+  </div>
+
+  <h2 class="section-heading">The Work Speaks for Itself</h2>
+  <p class="brand-intro">
+    Over a decade of focused, high-volume production across some of the most demanding agency environments in New York. These numbers represent real output — campaigns delivered on time, brands served at scale, and a depth of hands-on experience that comes from doing this work every day for 11 years straight.
+  </p>
+
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-number">
+        <span class="stat-count" data-target="11" data-suffix="+">0</span><span class="stat-suffix">+</span>
+      </div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">
+        <span class="stat-count" data-target="5" data-suffix="">0</span>
+      </div>
+      <div class="stat-label">Agencies</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">
+        <span class="stat-count" data-target="20" data-suffix="+">0</span><span class="stat-suffix">+</span>
+      </div>
+      <div class="stat-label">Brands</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">
+        <span class="stat-count" data-target="10" data-suffix="+">0</span><span class="stat-suffix">+</span>
+      </div>
+      <div class="stat-label">Industries</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">
+        <span class="stat-count" data-target="5000" data-suffix="+">0</span><span class="stat-suffix">+</span>
+      </div>
+      <div class="stat-label">Banners Built</div>
+    </div>
+  </div>
 
   <!-- ═══ BRAND EXPERIENCE ═══ -->
   <div class="section-header">
@@ -1297,6 +1396,11 @@
     <span class="section-count">6</span>
   </div>
 
+  <h2 class="section-heading">From the Team</h2>
+  <p class="brand-intro">
+    These recommendations come from the people who worked alongside me directly — managers, producers, and fellow developers who saw the work up close across multiple agencies and campaigns. Their words reflect what it's actually like to have me on a team.
+  </p>
+
   <div class="rec-list">
 
     <div class="rec-item">
@@ -1394,6 +1498,47 @@
     btn.style.transform = 'scale(0.88) rotate(-45deg)';
     setTimeout(function() { btn.style.transform = ''; }, 300);
   }
+
+  /* ── Count-up animation on scroll ── */
+  (function() {
+    var counts = document.querySelectorAll('.stat-count');
+    var started = false;
+
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function animateCount(el) {
+      var target   = parseInt(el.getAttribute('data-target'), 10);
+      var duration = target >= 1000 ? 2000 : 1000;
+      var start    = null;
+
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        var progress = Math.min((timestamp - start) / duration, 1);
+        var val = Math.floor(easeOut(progress) * target);
+        el.textContent = val.toLocaleString();
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target.toLocaleString();
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    function onScroll() {
+      if (started) return;
+      var row = document.querySelector('.stats-row');
+      if (!row) return;
+      var rect = row.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) {
+        started = true;
+        counts.forEach(function(el) { animateCount(el); });
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
 
   function toggleSynopsis(btn) {
     var collapse = document.getElementById('synopsisCollapse');
