@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banner Grid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+
+  /* ─── Reset ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── Tokens ─── */
+  :root {
+    --bg:           #f5f2ee;
+    --bg-card:      #ffffff;
+    --navy:         #2B4C6F;
+    --navy-dim:     #3a6491;
+    --rule:         rgba(0,0,0,0.09);
+    --text-mid:     #5a5350;
+    --text-lo:      #9a918c;
+    --font-mono:    'DM Mono', monospace;
+    --font-display: 'Syne', sans-serif;
+  }
+
+  /* ─── Base ─── */
+  body {
+    background: var(--bg);
+    font-family: var(--font-mono);
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 32px;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ─── Header ─── */
+  .grid-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding-bottom: 40px;
+    max-width: 1116px;
+    margin: 0 auto;
+  }
+
+  .grid-header-copy h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    color: #2c2825;
+    margin-bottom: 8px;
+  }
+
+  .grid-header-copy p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-mid);
+    /* max-width: 100%; */
+  }
+
+  /* ─── MOSAIC GRID ─── */
+  .mosaic {
+    display: grid;
+    grid-template-columns: 162px 302px 302px 302px;
+    grid-template-rows: 311px 311px 88px 288px 128px 128px;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  /* ─── Banner card ─── */
+  .bc {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    min-width: 0;
+  }
+
+  .bc:hover {
+    border-color: var(--navy-dim);
+    box-shadow: 0 0 0 1px var(--navy-dim), 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  /* ─── Meta bar ─── */
+  .bm {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--rule);
+    height: 36px;
+  }
+
+  .bm-client {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bm-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+
+  .bm-size {
+    font-size: 10px;
+    color: var(--text-lo);
+    white-space: nowrap;
+  }
+
+  /* ─── Download button ─── */
+  .dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--navy);
+    text-decoration: none;
+    padding: 2px 7px;
+    border: 1px solid var(--navy-dim);
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .dl-btn:hover { background: var(--navy); color: #fff; }
+  .dl-btn svg { width: 9px; height: 9px; fill: currentColor; flex-shrink: 0; }
+
+  /* ─── iframe wrapper ─── */
+  .bw {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #1a1c20;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .bw iframe { display: block; border: none; flex-shrink: 0; }
+
+  /* Center wide banners (billboard + large leaderboard + mobile row + leaderboard) */
+  .slot-bill   .bw,
+  .slot-970    .bw,
+  .slot-lead   .bw { justify-content: center; align-items: center; }
+
+  /* Hide size label on the narrow 160px skyscraper card — not enough room */
+  .slot-sky .bm-size { display: none; }
+
+  /* ─── Grid placements ─── */
+  .slot-sky  { grid-column: 1; grid-row: 1 / 3; }
+  .slot-r1c2 { grid-column: 2; grid-row: 1; }
+  .slot-r1c3 { grid-column: 3; grid-row: 1; }
+  .slot-tall { grid-column: 4; grid-row: 1 / 3; }
+  .slot-r2c2 { grid-column: 2; grid-row: 2; }
+  .slot-r2c3 { grid-column: 3; grid-row: 2; }
+  .slot-mobile { grid-column: 1 / 5; grid-row: 3; }
+  .slot-bill { grid-column: 1 / 5; grid-row: 4; }
+  .slot-970  { grid-column: 1 / 5; grid-row: 5; }
+  .slot-lead { grid-column: 1 / 5; grid-row: 6; }
+
+  /* Mobile row inner layout — three cards spread to grid edges */
+  .slot-mobile {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .slot-mobile:hover {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .mobile-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 322px;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+
+  .mobile-card:hover {
+    border-color: var(--navy-dim);
+    box-shadow: 0 0 0 1px var(--navy-dim), 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  /* ─── Replay button ─── */
+  .rb {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    background: rgba(43,92,138,0.85);
+    border: 1px solid rgba(77,157,224,0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    z-index: 10;
+  }
+
+  .rb:hover { background: var(--navy); transform: scale(1.1); }
+  .rb svg { width: 10px; height: 10px; fill: #fff; margin-left: 1px; }
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="grid-header">
+    <div class="grid-header-copy">
+      <h1>HTML5 Ad Banner Work</h1>
+      <p>A selection of hand-coded, animated HTML5 ad banners built for major agency clients across automotive, food &amp; beverage, technology, fashion, and pharmaceutical brands. Every banner below is built entirely in vanilla HTML, CSS, JavaScript, and GreenSock (GSAP) — no templated builders, no drag-and-drop platforms. Click the replay icon on any banner to restart its animation.</p>
+    </div>
+  </div>
+
+  <div class="mosaic">
+
+    <!-- Col 1, rows 1–2 · 160×600 skyscraper -->
+    <div class="bc slot-sky">
+      <div class="bm">
+        <span class="bm-client">Mycapssa</span>
+        <div class="bm-right">
+          <span class="bm-size">160 × 600</span>
+          <a class="dl-btn" href="assets/project-07.zip" download>
+            <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+          </a>
+        </div>
+      </div>
+      <div class="bw">
+        <iframe src="banners/project-07/index.html" width="160" height="600" scrolling="no" title="Project 07 — 160×600"></iframe>
+        <button class="rb" onclick="replayBanner(this)" title="Replay">
+          <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Col 2, row 1 · 300×250 -->
+    <div class="bc slot-r1c2">
+      <div class="bm">
+        <span class="bm-client">Mercedes Benz</span>
+        <div class="bm-right">
+          <span class="bm-size">300 × 250</span>
+          <a class="dl-btn" href="assets/project-01.zip" download>
+            <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+          </a>
+        </div>
+      </div>
+      <div class="bw">
+        <iframe src="banners/project-01/index.html" width="300" height="250" scrolling="no" title="Project 01 — 300×250"></iframe>
+        <button class="rb" onclick="replayBanner(this)" title="Replay">
+          <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Col 3, row 1 · 300×250 -->
+    <div class="bc slot-r1c3">
+      <div class="bm">
+        <span class="bm-client">Mini Cooper</span>
+        <div class="bm-right">
+          <span class="bm-size">300 × 250</span>
+          <a class="dl-btn" href="assets/project-02.zip" download>
+            <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+          </a>
+        </div>
+      </div>
+      <div class="bw">
+        <iframe src="banners/project-02/index.html" width="300" height="250" scrolling="no" title="Project 02 — 300×250"></iframe>
+        <button class="rb" onclick="replayBanner(this)" title="Replay">
+          <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Col 4, rows 1–2 · 300×600 -->
+    <div class="bc slot-tall">
+      <div class="bm">
+        <span class="bm-client">Mercedes Benz</span>
+        <div class="bm-right">
+          <span class="bm-size">300 × 600</span>
+          <a class="dl-btn" href="assets/project-10.zip" download>
+            <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+          </a>
+        </div>
+      </div>
+      <div class="bw">
+        <iframe src="banners/project-10/index.html" width="300" height="600" scrolling="no" title="Project 10 — 300×600"></iframe>
+        <button class="rb" onclick="replayBanner(this)" title="Replay">
+          <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Col 2, row 2 · 300×250 -->
+    <div class="bc slot-r2c2">
+      <div class="bm">
+        <span class="bm-client">Captain D's</span>
+        <div class="bm-right">
+          <span class="bm-size">300 × 250</span>
+          <a class="dl-btn" href="assets/project-03.zip" download>
+            <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+          </a>
+        </div>
+      </div>
+      <div class="bw">
+        <iframe src="banners/project-03/index.html" width="300" height="250" scrolling="no" title="Project 03 — 300×250"></iframe>
+        <button class="rb" onclick="replayBanner(this)" title="Replay">
+          <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Col 3, row 2 · 300×250 -->
+    <div class="bc slot-r2c3">
+      <div class="bm">
+        <span class="bm-client">Converse</span>
+        <div class="bm-right">
+          <span class="bm-size">300 × 250</span>
+          <a class="dl-btn" href="assets/project-04.zip" download>
+            <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+          </a>
+        </div>
+      </div>
+      <div class="bw">
+        <iframe src="banners/project-04/index.html" width="300" height="250" scrolling="no" title="Project 04 — 300×250"></iframe>
+        <button class="rb" onclick="replayBanner(this)" title="Replay">
+          <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Row 4 full · 970×250 billboard -->
+    <div class="bc slot-bill">
+      <div class="bm">
+        <span class="bm-client">State Farm</span>
+        <div class="bm-right">
+          <span class="bm-size">970 × 250</span>
+          <a class="dl-btn" href="assets/project-08.zip" download>
+            <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+          </a>
+        </div>
+      </div>
+      <div class="bw">
+        <iframe src="banners/project-08/index.html" width="970" height="250" scrolling="no" title="Project 08 — 970×250"></iframe>
+        <button class="rb" onclick="replayBanner(this)" title="Replay" style="bottom:12px; right:12px;">
+          <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Row 5 full · 970×90 large leaderboard -->
+    <div class="bc slot-970">
+      <div class="bm">
+        <span class="bm-client">Johnsonville</span>
+        <div class="bm-right">
+          <span class="bm-size">970 × 90</span>
+          <a class="dl-btn" href="assets/project-11.zip" download>
+            <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+          </a>
+        </div>
+      </div>
+      <div class="bw">
+        <iframe src="banners/project-11/index.html" width="970" height="90" scrolling="no" title="Project 11 — 970×90"></iframe>
+        <button class="rb" onclick="replayBanner(this)" title="Replay" style="bottom:6px; right:12px;">
+          <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Row 5 full · 3× 320×50 mobile banners -->
+    <div class="bc slot-mobile">
+
+      <div class="mobile-card">
+        <div class="bm">
+          <span class="bm-client">Facebook</span>
+          <div class="bm-right">
+            <span class="bm-size">320 × 50</span>
+            <a class="dl-btn" href="assets/project-12.zip" download>
+              <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+            </a>
+          </div>
+        </div>
+        <div class="bw">
+          <iframe src="banners/project-12/index.html" width="320" height="50" scrolling="no" title="Project 12 — 320×50"></iframe>
+          <button class="rb" onclick="replayBanner(this)" title="Replay" style="bottom:4px; right:6px; width:20px; height:20px;">
+            <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-card">
+        <div class="bm">
+          <span class="bm-client">Mercedes Benz</span>
+          <div class="bm-right">
+            <span class="bm-size">320 × 50</span>
+            <a class="dl-btn" href="assets/project-13.zip" download>
+              <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+            </a>
+          </div>
+        </div>
+        <div class="bw">
+          <iframe src="banners/project-13/index.html" width="320" height="50" scrolling="no" title="Project 13 — 320×50"></iframe>
+          <button class="rb" onclick="replayBanner(this)" title="Replay" style="bottom:4px; right:6px; width:20px; height:20px;">
+            <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-card">
+        <div class="bm">
+          <span class="bm-client">Chase</span>
+          <div class="bm-right">
+            <span class="bm-size">320 × 50</span>
+            <a class="dl-btn" href="assets/project-14.zip" download>
+              <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+            </a>
+          </div>
+        </div>
+        <div class="bw">
+          <iframe src="banners/project-14/index.html" width="320" height="50" scrolling="no" title="Project 14 — 320×50"></iframe>
+          <button class="rb" onclick="replayBanner(this)" title="Replay" style="bottom:4px; right:6px; width:20px; height:20px;">
+            <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Row 6 full · 728×90 leaderboard -->
+    <div class="bc slot-lead">
+      <div class="bm">
+        <span class="bm-client">White Castle</span>
+        <div class="bm-right">
+          <span class="bm-size">728 × 90</span>
+          <a class="dl-btn" href="assets/project-09.zip" download>
+            <svg viewBox="0 0 12 12"><path d="M6 0v8M3 5l3 3 3-3M1 10h10v2H1z"/></svg>.zip
+          </a>
+        </div>
+      </div>
+      <div class="bw">
+        <iframe src="banners/project-09/index.html" width="728" height="90" scrolling="no" title="Project 09 — 728×90"></iframe>
+        <button class="rb" onclick="replayBanner(this)" title="Replay" style="bottom:6px; right:12px;">
+          <svg viewBox="0 0 12 12"><path d="M10.5 6A4.5 4.5 0 1 1 7.5 1.84V0L10.5 2.5 7.5 5V3.24A3 3 0 1 0 9 6h1.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /mosaic -->
+
+</div><!-- /wrap -->
+
+<script>
+  function replayBanner(btn) {
+    var wrap  = btn.closest('.bw');
+    var frame = wrap.querySelector('iframe');
+    var src   = frame.src;
+    frame.src = '';
+    setTimeout(function() { frame.src = src; }, 50);
+    btn.style.transform = 'scale(0.88) rotate(-45deg)';
+    setTimeout(function() { btn.style.transform = ''; }, 300);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="ad.size" content="width=970,height=90">
+	<!-- main banner styles -->
+	<link rel="stylesheet" href="main.css">
+	<title>Johnsonville Suasage-able / Casserole - 970x90</title>
+</head>
+	<body>
+		<div id="banner">
+			<!-- banner stuff here -->
+			<div class="background2"></div>
+			<div class="background"></div>
+
+<!--<div class="ref"></div>-->
+
+			<div class="logo"></div>
+			<div id="text">
+				<div class="text txt1"></div>
+				<div class="text txt2"></div>
+				<div class="text txt3"></div>
+			</div>
+			<!--end #text-->
+
+			<div class="endFrame">
+				<div class="cta"></div>
+				<div class="gradient"></div>
+				<img class="arrow" src="arrow.png" alt="" width="20" height="24" />
+			</div>
+			<div class="txt4"></div>
+		</div>
+		<!--end .banner-->
+		<!-- Greensock -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenLite.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TimelineLite.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/plugins/CSSPlugin.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/easing/EasePack.min.js"></script>
+		<script src="main.js"></script>
+		<script type="text/javascript">
+			/******************************************************************************
+			 *
+			 * Click handler
+			 *
+			 *****************************************************************************/
+			var clickTag = "http://google.com";
+			document.getElementById("banner").addEventListener("click", function() {
+				window.open(window.clickTag);
+			});
+			window.onload = function() {
+				masterTL();
+			};
+		</script>
+	</body>
+</html>
