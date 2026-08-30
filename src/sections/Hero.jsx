@@ -134,13 +134,13 @@ const Hero = () => {
             </div>
 
             {/* cta section */}
-            <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <a href="#contact">
-                <Button size="lg">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full animate-fade-in animation-delay-300">
+              <a href="#contact" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   Contact Me <ArrowRight className="w-5 h-5 " />
                 </Button>
               </a>
-              <AnimatedBorderButton />
+              <AnimatedBorderButton className="w-full sm:w-auto" />
             </div>
 
             {/* social links */}

@@ -28,7 +28,7 @@ const Footer = () => {
   return (
     <footer className="py-12 border-t border-border">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-16 px-4 sm:px-6">
         <h2 className="text-2xl md:text-3xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
           Built with frustration &
           <span className="font-serif italic font-normal text-white">

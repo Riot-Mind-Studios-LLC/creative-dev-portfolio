@@ -103,7 +103,7 @@ const brands = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-32 relative overflow-hidden">
+    <section id="experience" className="pt-32 relative overflow-hidden">
       {/* bg glow */}
       <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
 
@@ -150,7 +150,7 @@ const Experience = () => {
 
                 {/* content */}
                 <div
-                  className={`pl-8 md:pl-0 ${idx % 2 === 0 ? "md:pr-16 md:text-right" : "md:col-start-2 md:pl-16"}`}
+                  className={`pl-8 md:pl-0 min-w-0 ${idx % 2 === 0 ? "md:pr-16 md:text-right" : "md:col-start-2 md:pl-16"}`}
                 >
                   <div
                     className={`glass p-6 rounded-2xl border border-primary/30 hover:border-primary/50 transition-all duration-500`}
@@ -165,7 +165,7 @@ const Experience = () => {
                       {exp.description}
                     </p>
                     <div
-                      className={`flex-flex-wrap gap-2 mt-4 ${idx % 2 === 0 ? "md:justify-end" : ""}`}
+                      className={`flex flex-wrap gap-2 mt-4 ${idx % 2 === 0 ? "md:justify-end" : ""}`}
                     >
                       {exp.technologies.map((tech, techIdx) => (
                         <span

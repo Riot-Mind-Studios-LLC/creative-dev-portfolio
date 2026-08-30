@@ -53,7 +53,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden pt-32"
     >
       {/* bg glow */}
       <div className="absolute top-0 left-0 w-full h-full">

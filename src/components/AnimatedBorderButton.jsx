@@ -6,7 +6,7 @@ const AnimatedBorderButton = () => {
     <a
       href={`${import.meta.env.BASE_URL}downloads/adrian-velazquez-resume.pdf`}
       download="adrian-velazquez-resume.pdf"
-      className="relative bg-transparent border border-border text-foreground hover:border-primary/50 transition-all duration-1000 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group px-8 py-4 text-lg font-medium rounded-full overflow-visible animated-border inline-flex"
+      className="relative items-center justify-center bg-transparent border border-border text-foreground hover:border-primary/50 transition-all duration-1000 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group px-8 py-4 text-lg font-medium rounded-full overflow-visible animated-border inline-flex"
     >
       <svg
         className="absolute left-0 top-0 w-full h-full pointer-events-none download-cv-border"
