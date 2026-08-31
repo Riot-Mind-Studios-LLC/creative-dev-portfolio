@@ -170,7 +170,7 @@ const Projects = () => {
             reflects my own decisions and iteration; AI has been a resource in
             my learning process, not a replacement for it. This is part of an
             ongoing effort to grow my front-end toolkit beyond my 10+ years of
-            hand-coded HTML5/GSAP work.
+            hand-coded HTML5/GSAP work.<br />
             <a
               href="https://github.com/Riot-Mind-Studios-LLC/react-sandbox"
               target="_blank"
