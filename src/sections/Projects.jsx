@@ -171,6 +171,15 @@ const Projects = () => {
             my learning process, not a replacement for it. This is part of an
             ongoing effort to grow my front-end toolkit beyond my 10+ years of
             hand-coded HTML5/GSAP work.
+            <a
+              href="https://github.com/Riot-Mind-Studios-LLC/react-sandbox"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary-foreground underline"
+            >
+              {" "}
+              See where my current React skills are on GitHub.
+            </a>
           </p>
         </div>
       </div>
