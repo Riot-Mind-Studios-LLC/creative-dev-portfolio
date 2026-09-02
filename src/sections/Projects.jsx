@@ -16,7 +16,7 @@ const projects = [
     description:
       "Don't Forget The Bacon is a fully responsive React grocery list app built from scratch with Vite, Tailwind CSS v4, and GSAP. The app features preset item categories organized in a collapsible accordion, a custom item input, light/dark theme toggle, and list export via download, native share, or email. The standout feature is an animated 'Bacon Meter' built with GSAP's useGSAP() hook — a progress bar that fills as items are added, caps below 100% until bacon makes the list, and plays a celebratory spin animation once it does. State is lifted and shared across components using React's useState, with real-time UI updates driven by one-directional data flow. Built solo as a hands-on introduction to modern front-end tooling.",
     image: project1,
-    tags: ["React", "Vite", "Tailwind CSS", "GSAP", "Claude AI"],
+    tags: ["React", "JSX", "Vite", "Tailwind CSS", "GSAP", "Claude AI"],
     link: "/creative-dev-portfolio/apps/dont-forget-the-bacon/index.html",
   },
   {
@@ -24,7 +24,7 @@ const projects = [
     description:
       "Over the past 10+ years, I've hand-coded HTML5 animated ad banners for major agency clients — building each campaign from the ground up in vanilla HTML, CSS, and JavaScript, animated with GreenSock (TweenMax/TimelineMax/GSAP). My work spans automotive, food & beverage, technology, fashion, and pharmaceutical brands including Mercedes-Benz, Google, T-Mobile, Starbucks, Spotify, Toyota, and Converse, built across five agencies handling high-volume production on tight timelines. Every banner is built to spec against IAB standard sizes and platform requirements (DoubleClick, Flashtalking), with a focus on clean, lightweight code, precise cross-browser performance, and pixel-accurate execution from design to final delivery.",
     image: project2,
-    tags: ["HTML", "CSS", "JS", "GSAP"],
+    tags: ["HTML", "CSS", "JS", "GSAP", "Rich Media", "Ad Banners"],
     link: "/creative-dev-portfolio/apps/banner-projects/index.html",
   },
   {
@@ -36,6 +36,8 @@ const projects = [
       "Ecommerce Operations",
       "Product Design & Development",
       "Systems & Process Management",
+      "Shopify",
+      "Claude AI"
     ],
     link: "https://riotmindstudios.com/",
   },
@@ -44,7 +46,7 @@ const projects = [
     description:
       "A custom-built, client-facing HTML5 banner staging and review platform that streamlines digital campaign production. Built in vanilla HTML, CSS, and JavaScript, it organizes animated banners by IAB size with fallback previews, live playback, source manifests, clickthrough URLs, and downloads. Color-coded badges track production status with automated versioning. Campaign details feed into a report featuring asset counts, status summaries, timelines, and banner breakdowns. Additional features include sticky navigation, HTML5 validation, design deck viewing, ad standards references, onboarding guides, and a JSON-driven manifest for fast campaign deployment.",
     image: project4,
-    tags: ["HTML", "CSS", "JS", "Claude AI"],
+    tags: ["HTML", "CSS", "JS", "Claude AI", "Rich Media", "Ad Banners"],
     link: "/creative-dev-portfolio/apps/banner-staging/index.html",
   },
   {
@@ -52,7 +54,7 @@ const projects = [
     description:
       "Panther Tracker is a vehicle maintenance tracker built for the Ford Panther platform community — Crown Victoria, Grand Marquis, and Town Car owners across the 2003–2011 model years. Built solo with React 19, Vite, Tailwind CSS v4, shadcn/ui with Radix UI primitives, and GSAP for interactive animations, the app covers six sections: vehicle profile management with photo upload, a searchable maintenance log, mileage- and date-based reminders with automatic overdue detection, parts and cost tracking, document storage, and data management tools. The current build runs on browser local storage as a fully working demo, with a planned production version connecting to a real backend for cross-device persistence, serving as a free tool for the Panther enthusiast community.",
     image: project5,
-    tags: ["React", "Vite", "Tailwind CSS", "GSAP", "Claude AI", "Shadcn"],
+    tags: ["React", "JSX", "Vite", "Tailwind CSS", "GSAP", "Claude AI", "Shadcn"],
     link: "/creative-dev-portfolio/apps/panther-tracker/index.html",
   },
   {
@@ -60,7 +62,7 @@ const projects = [
     description:
       "The Data Label Inventory Tracker is a custom inventory app built for Label Co., one of the studios under Riot Mind Studios, to track physical stock of automotive reproduction labels sold to owners of Ford Panther-platform vehicles. It tracks in-house-printed inventory across dozens of model- and year-specific SKUs, then calculates how many complete product bundles can be fulfilled based on the lowest-stocked component — surfacing the exact bottleneck at a glance. Built with React, Vite, and Tailwind CSS using shadcn/ui, it runs entirely client-side with no backend, persisting data through localStorage, and features a responsive, dark-mode interface with low-stock alerts, one-click export, and derived demand tracking for print-on-demand items.",
     image: project6,
-    tags: ["React", "Vite", "Tailwind CSS", "Claude AI", "Shadcn"],
+    tags: ["React", "JSX", "Vite", "Tailwind CSS", "Claude AI", "Shadcn"],
     link: "/creative-dev-portfolio/apps/data-label-inventory-tracker/index.html",
   },
 ];
