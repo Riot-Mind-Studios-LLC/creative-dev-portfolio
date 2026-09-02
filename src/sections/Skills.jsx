@@ -5,18 +5,18 @@ import { useState } from "react";
 
 const skills = [
   // Core / Frontend
-  { name: "HTML", level: 95, category: "frontend" },
-  { name: "CSS", level: 85, category: "frontend" },
-  { name: "JavaScript", level: 90, category: "frontend" },
+  { name: "HTML 5", level: 95, category: "frontend" },
+  { name: "CSS 3", level: 85, category: "frontend" },
+  { name: "JavaScript ES6", level: 90, category: "frontend" },
   { name: "GSAP / GreenSock", level: 95, category: "frontend" },
   { name: "React", level: 40, category: "frontend" },
-  { name: "Shadcn/UI", level: 10, category: "frontend" },
+  { name: "Shadcn", level: 15, category: "frontend" },
   { name: "JSX", level: 35, category: "frontend" },
   { name: "Tailwind CSS", level: 60, category: "frontend" },
   { name: "TypeScript", level: 10, category: "frontend" },
-  { name: "RESTful APIs / Fetch", level: 35, category: "frontend" },
-  { name: "jQuery", level: 25, category: "frontend" },
-  { name: "Radix UI", level: 10, category: "frontend" },
+  { name: "API's", level: 35, category: "frontend" },
+  { name: "jQuery", level: 20, category: "frontend" },
+  { name: "UI / UX", level: 35, category: "frontend" },
 
   // Design & Dev Tools
   { name: "Git / GitHub", level: 60, category: "tools" },
@@ -27,7 +27,7 @@ const skills = [
   { name: "Terminal CLI", level: 75, category: "tools" },
   { name: "Claude Code", level: 55, category: "tools" },
   { name: "Flashtalking", level: 45, category: "tools" },
-  { name: "Canva", level: 85, category: "business" },
+  { name: "Canva", level: 85, category: "tools" },
   { name: "Google Doubleclick", level: 65, category: "tools" },
   { name: "Google Web Designer", level: 35, category: "tools" },
   { name: "Filezilla", level: 75, category: "tools" },
