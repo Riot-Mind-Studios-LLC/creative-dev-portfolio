@@ -174,7 +174,7 @@ const Projects = () => {
             ongoing effort to grow my front-end toolkit beyond my 10+ years of
             hand-coded HTML5/GSAP work.<br />
             <a
-              href="https://github.com/Riot-Mind-Studios-LLC/react-sandbox"
+              href="https://riot-mind-studios-llc.github.io/react-sandbox/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-secondary-foreground underline"
