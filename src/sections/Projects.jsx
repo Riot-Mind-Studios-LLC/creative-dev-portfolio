@@ -1,13 +1,19 @@
 // import dependancies
 import { ArrowUpRight } from "lucide-react";
 
-// import assets
+// import images
 import project1 from "@/assets/project1.png";
 import project2 from "@/assets/project2.png";
 import project3 from "@/assets/project3.png";
 import project4 from "@/assets/project4.png";
 import project5 from "@/assets/project5.png";
 import project6 from "@/assets/project6.png";
+
+// import mini apps
+import ListBuilder from "@/components/demos/ListBuilder.jsx";
+import ExpenseTrackerApp from "@/components/demos/ExpenseTrackerApp.jsx";
+import WeatherApp from "@/components/demos/WeatherApp.jsx";
+import QuotesApp from "@/components/demos/QuotesApp.jsx";
 
 // projects array
 const projects = [
@@ -16,7 +22,15 @@ const projects = [
     description:
       "Don't Forget The Bacon is a fully responsive React grocery list app built from scratch with Vite, Tailwind CSS v4, and GSAP. The app features preset item categories organized in a collapsible accordion, a custom item input, light/dark theme toggle, and list export via download, native share, or email. The standout feature is an animated 'Bacon Meter' built with GSAP's useGSAP() hook — a progress bar that fills as items are added, caps below 100% until bacon makes the list, and plays a celebratory spin animation once it does. State is lifted and shared across components using React's useState, with real-time UI updates driven by one-directional data flow. Built solo as a hands-on introduction to modern front-end tooling.",
     image: project1,
-    tags: ["React", "JSX", "Vite", "Tailwind CSS", "GSAP", "Claude AI"],
+    tags: [
+      "React",
+      "JSX",
+      "Vite",
+      "Tailwind CSS",
+      "GSAP",
+      "Claude AI",
+      "Vibe Coded",
+    ],
     link: "/creative-dev-portfolio/apps/dont-forget-the-bacon/index.html",
   },
   {
@@ -37,7 +51,7 @@ const projects = [
       "Product Design & Development",
       "Systems & Process Management",
       "Shopify",
-      "Claude AI"
+      "Claude AI",
     ],
     link: "https://riotmindstudios.com/",
   },
@@ -54,7 +68,16 @@ const projects = [
     description:
       "Panther Tracker is a vehicle maintenance tracker built for the Ford Panther platform community — Crown Victoria, Grand Marquis, and Town Car owners across the 2003–2011 model years. Built solo with React 19, Vite, Tailwind CSS v4, shadcn/ui with Radix UI primitives, and GSAP for interactive animations, the app covers six sections: vehicle profile management with photo upload, a searchable maintenance log, mileage- and date-based reminders with automatic overdue detection, parts and cost tracking, document storage, and data management tools. The current build runs on browser local storage as a fully working demo, with a planned production version connecting to a real backend for cross-device persistence, serving as a free tool for the Panther enthusiast community.",
     image: project5,
-    tags: ["React", "JSX", "Vite", "Tailwind CSS", "GSAP", "Claude AI", "Shadcn"],
+    tags: [
+      "React",
+      "JSX",
+      "Vite",
+      "Tailwind CSS",
+      "GSAP",
+      "Claude AI",
+      "Shadcn",
+      "Vibe Coded",
+    ],
     link: "/creative-dev-portfolio/apps/panther-tracker/index.html",
   },
   {
@@ -62,8 +85,44 @@ const projects = [
     description:
       "The Data Label Inventory Tracker is a custom inventory app built for Label Co., one of the studios under Riot Mind Studios, to track physical stock of automotive reproduction labels sold to owners of Ford Panther-platform vehicles. It tracks in-house-printed inventory across dozens of model- and year-specific SKUs, then calculates how many complete product bundles can be fulfilled based on the lowest-stocked component — surfacing the exact bottleneck at a glance. Built with React, Vite, and Tailwind CSS using shadcn/ui, it runs entirely client-side with no backend, persisting data through localStorage, and features a responsive, dark-mode interface with low-stock alerts, one-click export, and derived demand tracking for print-on-demand items.",
     image: project6,
-    tags: ["React", "JSX", "Vite", "Tailwind CSS", "Claude AI", "Shadcn"],
+    tags: [
+      "React",
+      "JSX",
+      "Vite",
+      "Tailwind CSS",
+      "Claude AI",
+      "Shadcn",
+      "Vibe Coded",
+    ],
     link: "/creative-dev-portfolio/apps/data-label-inventory-tracker/index.html",
+  },
+  {
+    title: "A List Builder Mini-App",
+    description:
+      "An artist needs an easy way to create a quick list based off their ideas. A simple list builder where a user types an item into an input field and clicks a button to add it to a running list below. Each entry is stored in an array in state and rendered as its own list item, with the input clearing itself after each add and empty submissions blocked by a validation guard.",
+    demo: ListBuilder,
+    tags: ["React", "JSX", "Vite", "Mini-App", "Claude AI"],
+  },
+  {
+    title: "An Expense Tracker Mini-App",
+    description:
+      "A service worker wants a way to track daily tip income and expenses. A daily income and expense tracker built for a tips-based service worker, where a user selects an entry type, enters a description and dollar amount, and adds it to one of two automatically sorted lists. Each entry can be edited or deleted in place, and a running balance at the bottom recalculates itself from the current entries rather than being stored separately. It's a full CRUD app — create, read, update, and delete — built on a single array of entries with unique IDs.",
+    demo: ExpenseTrackerApp,
+    tags: ["React", "JSX", "Vite", "Mini-App", "Claude AI"],
+  },
+  {
+    title: "A Weather Tracker API Mini-App",
+    description:
+      "An amateur storm-tracker wants current weather data from all 50 states. A current-conditions weather lookup where a user selects any US state or territory from a dropdown and sees live data pulled from the Open-Meteo API for that location's capital. Each selection triggers a fetch using that state's stored coordinates, returning temperature, humidity, wind speed, snowfall, day/night status, and the reading's timestamp — with timezone resolved automatically per location so the data reflects local conditions rather than the viewer's own clock.",
+    demo: WeatherApp,
+    tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
+  },
+  {
+    title: "An Random Quote Generator API Mini-App",
+    description:
+      "A student wants inspirational quotes on-demand. A random quote generator where clicking a button fetches a fresh inspirational quote and its author from the DummyJSON API and displays them on the page. Unlike a fetch that runs automatically on load, this one is triggered entirely by the user's click, with the display held empty until the first quote actually arrives.",
+    demo: QuotesApp,
+    tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
   },
 ];
 
@@ -103,26 +162,30 @@ const Projects = () => {
               style={{ animationDelay: `${(idx + 1) * 100}ms` }}
             >
               {/* project images */}
-              <div className="relative overflow-hidden aspect-video">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-900 group-hover:scale-110"
-                />
-                {/* over image gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-60" />
-                {/* overlay project links */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    <ArrowUpRight className="w-5 h-5" />
-                  </a>
+              {project.image && (
+                <div className="relative overflow-hidden aspect-video">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-900 group-hover:scale-110"
+                  />
+                  {/* over image gradient */}
+                  <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-60" />
+                  {/* overlay project links */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3
+                      rounded-full glass hover:bg-primary
+                      hover:text-primary-foreground transition-all"
+                    >
+                      <ArrowUpRight className="w-5 h-5" />
+                    </a>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* project info */}
               <div className="p-6 space-y-4">
@@ -131,12 +194,22 @@ const Projects = () => {
                   <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  {project.link && (
+                    <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  )}
                 </div>
                 {/* project description */}
                 <p className="text-muted-foreground text-sm">
                   {project.description}
                 </p>
+
+                {/* live demo apps */}
+                {project.demo && (
+                  <div className="max-h-80 overflow-y-auto">
+                    <project.demo />
+                  </div>
+                )}
+
                 {/* project tags */}
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, tagIdx) => (
@@ -172,7 +245,8 @@ const Projects = () => {
             reflects my own decisions and iteration; AI has been a resource in
             my learning process, not a replacement for it. This is part of an
             ongoing effort to grow my front-end toolkit beyond my 10+ years of
-            hand-coded HTML5/GSAP work.<br />
+            hand-coded HTML5/GSAP work.
+            {/* <br />
             <a
               href="https://riot-mind-studios-llc.github.io/react-sandbox/"
               target="_blank"
@@ -180,8 +254,8 @@ const Projects = () => {
               className="text-secondary-foreground underline"
             >
               {" "}
-              See where my current React skills are on GitHub.
-            </a>
+              See more mini-apps
+            </a> */}
           </p>
         </div>
       </div>
