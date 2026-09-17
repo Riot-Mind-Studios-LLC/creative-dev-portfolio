@@ -107,7 +107,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="pt-32 relative overflow-hidden">
+    <section id="contact" className="py-32 relative overflow-hidden">
       {/* bg glow */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -128,8 +128,8 @@ const Contact = () => {
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            Want ot hire me or work with me...? I'd love to hear about it. Send me a message and
-            let's chat about how we can work together.
+            Want ot hire me or work with me...? I'd love to hear about it. Send
+            me a message and let's chat about how we can work together.
           </p>
         </div>
 
