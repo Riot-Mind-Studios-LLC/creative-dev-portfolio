@@ -10,12 +10,14 @@ const skills = [
   { name: "JavaScript ES6", level: 90, category: "frontend" },
   { name: "GSAP / GreenSock", level: 95, category: "frontend" },
   { name: "React", level: 40, category: "frontend" },
+  { name: "DOOH Banner Advertising", level: 80, category: "frontend" },
   { name: "Shadcn", level: 15, category: "frontend" },
   { name: "JSX", level: 35, category: "frontend" },
   { name: "Tailwind CSS", level: 60, category: "frontend" },
   { name: "TypeScript", level: 10, category: "frontend" },
   { name: "API's", level: 35, category: "frontend" },
   { name: "jQuery", level: 20, category: "frontend" },
+  { name: "DCO Banner Advertising", level: 80, category: "frontend" },
   { name: "UI / UX", level: 35, category: "frontend" },
 
   // Design & Dev Tools
