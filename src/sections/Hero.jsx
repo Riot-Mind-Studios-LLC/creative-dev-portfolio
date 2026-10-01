@@ -123,9 +123,10 @@ const Hero = () => {
               </h1>
 
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi, I'm Adrian Velazquez — a Creative Developer from{" "}
+                Hi, I'm Adrian Velazquez — a Creative Developer from
+                <br />
                 <span className="font-semibold">New York City</span> that
-                specializes in front-end development with focus in
+                specializes in front-end development with focus on
                 <span className="font-semibold">
                   {" "}
                   Animated Ad Banners and Single Page Apps & Data Driven

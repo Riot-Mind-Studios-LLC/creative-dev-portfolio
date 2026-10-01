@@ -171,13 +171,13 @@ const WeatherApp = () => {
         <option value="al">Alabama</option>
         <option value="ak">Alaska</option>
         <option value="az">Arizona</option>
-        <option value="ar">Arkansa</option>
+        <option value="ar">Arkansas</option>
         <option value="as">American Samoa</option>
         <option value="ca">California</option>
         <option value="co">Colorado</option>
         <option value="ct">Connecticut</option>
         <option value="de">Delaware</option>
-        <option value="dc">Disctrict of Columbia</option>
+        <option value="dc">District of Columbia</option>
         <option value="fl">Florida</option>
         <option value="ga">Georgia</option>
         <option value="gu">Guam</option>
@@ -205,7 +205,7 @@ const WeatherApp = () => {
         <option value="ny">New York</option>
         <option value="nc">North Carolina</option>
         <option value="nd">North Dakota</option>
-        <option value="mp">Northern Marian Islands</option>
+        <option value="mp">Northern Mariana Islands</option>
         <option value="oh">Ohio</option>
         <option value="ok">Oklahoma</option>
         <option value="or">Oregon</option>

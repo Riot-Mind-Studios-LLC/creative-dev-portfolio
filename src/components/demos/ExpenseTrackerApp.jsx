@@ -223,7 +223,7 @@ const ExpenseTrackerApp = () => {
 
       {/* running balance */}
       <section>
-        <h3 className="font-bold">Todays Earnings</h3>
+        <h3 className="font-bold">Today's Earnings</h3>
         <p>$ {currentBalance.toFixed(2)}</p>
       </section>
     </div>

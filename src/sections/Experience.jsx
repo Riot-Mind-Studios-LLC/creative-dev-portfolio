@@ -23,7 +23,7 @@ const experiences = [
     institution: "Omnicom Production",
     description:
       "Continued as Creative Developer following Omnicom's acquisition of Merkley + Partners, maintaining the same high-volume HTML5 production workflow for existing and new accounts. Applied my custom GreenSock framework across simultaneous campaigns, managing full production from comp to final ad-serving delivery. Role concluded with the position's elimination in May 2026.",
-    technologies: [".html", ".css", ".js", ".gasp", ".psd", ".ai", ".php"],
+    technologies: [".html", ".css", ".js", ".gsap", ".psd", ".ai", ".php"],
     current: false,
   },
   {
@@ -32,7 +32,7 @@ const experiences = [
     institution: "Merkley + Partners",
     description:
       "Spent nearly five years as lead hands-on banner developer, building HTML5 ad units for major clients including Mercedes-Benz, Toyota, Converse, and T-Mobile using my custom GreenSock framework. Delivered up to 50 banner units per week across 3–4 simultaneous campaigns, building internal staging tools for client review and QA. Kept high-volume output consistent through the agency's later acquisition by Omnicom Production.",
-    technologies: [".html", ".css", ".js", ".gasp", ".psd", ".ai", ".php"],
+    technologies: [".html", ".css", ".js", ".gsap", ".psd", ".ai", ".php"],
     current: false,
   },
   {
@@ -41,7 +41,7 @@ const experiences = [
     institution: "Bannerboy Corporation",
     description:
       "Worked at a specialized rich media shop focused exclusively on high-volume HTML5 banner output for multiple clients simultaneously. Refined my GreenSock framework to increase build speed without sacrificing animation quality or cross-browser reliability. Managed full production across several concurrent campaigns weekly and built internal staging tools for faster QA turnaround.",
-    technologies: [".html", ".css", ".js", ".gasp", ".psd", ".ai", ".php"],
+    technologies: [".html", ".css", ".js", ".gsap", ".psd", ".ai", ".php"],
     current: false,
   },
   {
@@ -50,7 +50,7 @@ const experiences = [
     institution: "Elizabeth Arden - Contract",
     description:
       "Short-term contract building HTML5 ad banners in-house for Elizabeth Arden's marketing team, applying my established GreenSock production process to brand-specific campaigns. Delivered animated units from comp to final file, managing QA and ad-serving compliance independently. Maintained the same production standards and delivery speed as my agency work, in a tighter brand-side environment.",
-    technologies: [".html", ".css", ".js", ".gasp", ".psd", ".ai"],
+    technologies: [".html", ".css", ".js", ".gsap", ".psd", ".ai"],
     current: false,
   },
   {
@@ -63,7 +63,7 @@ const experiences = [
       ".html",
       ".css",
       ".js",
-      ".gasp",
+      ".gsap",
       ".psd",
       ".ai",
       ".fla",
@@ -185,7 +185,7 @@ const Experience = () => {
         {/* scrolling brands section */}
         <div className="mt-20 animate-fade-in animation-delay-600">
           <p className="text-sm text-muted-foreground mb-6 text-center">
-            Brands I've work with
+            Brands I've worked with
           </p>
 
           <div className="relative overflow-hidden">

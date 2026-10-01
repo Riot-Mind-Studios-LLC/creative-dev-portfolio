@@ -22,15 +22,7 @@ const projects = [
     description:
       "Don't Forget The Bacon is a fully responsive React grocery list app built from scratch with Vite, Tailwind CSS v4, and GSAP. The app features preset item categories organized in a collapsible accordion, a custom item input, light/dark theme toggle, and list export via download, native share, or email. The standout feature is an animated 'Bacon Meter' built with GSAP's useGSAP() hook — a progress bar that fills as items are added, caps below 100% until bacon makes the list, and plays a celebratory spin animation once it does. State is lifted and shared across components using React's useState, with real-time UI updates driven by one-directional data flow. Built solo as a hands-on introduction to modern front-end tooling.",
     image: project1,
-    tags: [
-      "React",
-      "JSX",
-      "Vite",
-      "Tailwind CSS",
-      "GSAP",
-      "Claude AI",
-      "Vibe Coded",
-    ],
+    tags: ["React", "JSX", "Vite", "Tailwind CSS", "GSAP", "Claude AI"],
     link: "/creative-dev-portfolio/apps/dont-forget-the-bacon/index.html",
   },
   {
@@ -76,7 +68,6 @@ const projects = [
       "GSAP",
       "Claude AI",
       "Shadcn",
-      "Vibe Coded",
     ],
     link: "/creative-dev-portfolio/apps/panther-tracker/index.html",
   },
@@ -118,7 +109,7 @@ const projects = [
     tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
   },
   {
-    title: "An Random Quote Generator API Mini-App",
+    title: "A Random Quote Generator API Mini-App",
     description:
       "A student wants inspirational quotes on-demand. A random quote generator where clicking a button fetches a fresh inspirational quote and its author from the DummyJSON API and displays them on the page. Unlike a fetch that runs automatically on load, this one is triggered entirely by the user's click, with the display held empty until the first quote actually arrives.",
     demo: QuotesApp,
