@@ -4,10 +4,10 @@ import { ArrowUpRight } from "lucide-react";
 // import images
 import project1 from "@/assets/project1.png";
 import project2 from "@/assets/project2.png";
-import project3 from "@/assets/project3.png";
+// import project3 from "@/assets/project3.png";
 import project4 from "@/assets/project4.png";
 import project5 from "@/assets/project5.png";
-import project6 from "@/assets/project6.png";
+// import project6 from "@/assets/project6.png";
 
 // import mini apps
 import ListBuilder from "@/components/demos/ListBuilder.jsx";
@@ -41,20 +41,20 @@ const projects = [
     tags: ["HTML", "CSS", "JS", "GSAP", "Rich Media", "Ad Banners"],
     link: "/creative-dev-portfolio/apps/banner-projects/index.html",
   },
-  {
-    title: "Shopify E-Commerce Production & Management",
-    description:
-      "I'm the sole owner and operator of Riot Mind Studios, LLC, a home-based ecommerce company built around four product studios. Label Co. handles in-house design, production, and shipping, while Print Works, Wovn Depot, and Gravity Labs use print-on-demand fulfillment for posters, apparel, and custom accessories. I manage the entire operation independently — from product design and Shopify storefront management to fulfillment logistics, customer service, marketing, and financial systems — using structured processes and disciplined cash management to keep the business lean, organized, and built for sustainable growth.",
-    image: project3,
-    tags: [
-      "Ecommerce Operations",
-      "Product Design & Development",
-      "Systems & Process Management",
-      "Shopify",
-      "Claude AI",
-    ],
-    link: "https://riotmindstudios.com/",
-  },
+  // {
+  //   title: "Shopify E-Commerce Production & Management",
+  //   description:
+  //     "I'm the sole owner and operator of Riot Mind Studios, LLC, a home-based ecommerce company built around four product studios. Label Co. handles in-house design, production, and shipping, while Print Works, Wovn Depot, and Gravity Labs use print-on-demand fulfillment for posters, apparel, and custom accessories. I manage the entire operation independently — from product design and Shopify storefront management to fulfillment logistics, customer service, marketing, and financial systems — using structured processes and disciplined cash management to keep the business lean, organized, and built for sustainable growth.",
+  //   image: project3,
+  //   tags: [
+  //     "Ecommerce Operations",
+  //     "Product Design & Development",
+  //     "Systems & Process Management",
+  //     "Shopify",
+  //     "Claude AI",
+  //   ],
+  //   link: "https://riotmindstudios.com/",
+  // },
   {
     title: "Ad Banner Staging Site",
     description:
@@ -80,22 +80,22 @@ const projects = [
     ],
     link: "/creative-dev-portfolio/apps/panther-tracker/index.html",
   },
-  {
-    title: "Product Inventory Tracker",
-    description:
-      "The Data Label Inventory Tracker is a custom inventory app built for Label Co., one of the studios under Riot Mind Studios, to track physical stock of automotive reproduction labels sold to owners of Ford Panther-platform vehicles. It tracks in-house-printed inventory across dozens of model- and year-specific SKUs, then calculates how many complete product bundles can be fulfilled based on the lowest-stocked component — surfacing the exact bottleneck at a glance. Built with React, Vite, and Tailwind CSS using shadcn/ui, it runs entirely client-side with no backend, persisting data through localStorage, and features a responsive, dark-mode interface with low-stock alerts, one-click export, and derived demand tracking for print-on-demand items.",
-    image: project6,
-    tags: [
-      "React",
-      "JSX",
-      "Vite",
-      "Tailwind CSS",
-      "Claude AI",
-      "Shadcn",
-      "Vibe Coded",
-    ],
-    link: "/creative-dev-portfolio/apps/data-label-inventory-tracker/index.html",
-  },
+  // {
+  //   title: "Product Inventory Tracker",
+  //   description:
+  //     "The Data Label Inventory Tracker is a custom inventory app built for Label Co., one of the studios under Riot Mind Studios, to track physical stock of automotive reproduction labels sold to owners of Ford Panther-platform vehicles. It tracks in-house-printed inventory across dozens of model- and year-specific SKUs, then calculates how many complete product bundles can be fulfilled based on the lowest-stocked component — surfacing the exact bottleneck at a glance. Built with React, Vite, and Tailwind CSS using shadcn/ui, it runs entirely client-side with no backend, persisting data through localStorage, and features a responsive, dark-mode interface with low-stock alerts, one-click export, and derived demand tracking for print-on-demand items.",
+  //   image: project6,
+  //   tags: [
+  //     "React",
+  //     "JSX",
+  //     "Vite",
+  //     "Tailwind CSS",
+  //     "Claude AI",
+  //     "Shadcn",
+  //     "Vibe Coded",
+  //   ],
+  //   link: "/creative-dev-portfolio/apps/data-label-inventory-tracker/index.html",
+  // },
   {
     title: "A List Builder Mini-App",
     description:

@@ -4,52 +4,66 @@
 import { useState } from "react";
 
 const skills = [
-  // Core / Frontend
-  { name: "HTML 5", level: 95, category: "frontend" },
-  { name: "CSS 3", level: 85, category: "frontend" },
-  { name: "JavaScript ES6", level: 90, category: "frontend" },
-  { name: "GSAP / GreenSock", level: 95, category: "frontend" },
-  { name: "React", level: 40, category: "frontend" },
-  { name: "DOOH Banner Advertising", level: 80, category: "frontend" },
-  { name: "Shadcn", level: 15, category: "frontend" },
-  { name: "JSX", level: 35, category: "frontend" },
-  { name: "Tailwind CSS", level: 60, category: "frontend" },
-  { name: "TypeScript", level: 10, category: "frontend" },
-  { name: "API's", level: 35, category: "frontend" },
-  { name: "jQuery", level: 20, category: "frontend" },
-  { name: "DCO Banner Advertising", level: 80, category: "frontend" },
-  { name: "UI / UX", level: 35, category: "frontend" },
+  // Core / Build tools & frameworks
+  { name: "HTML 5", level: 95, category: "build tools & frameworks" },
+  { name: "JSX", level: 40, category: "build tools & frameworks" },
+  { name: "CSS 3", level: 95, category: "build tools & frameworks" },
+  { name: "JavaScript ES6", level: 85, category: "build tools & frameworks" },
+  { name: "Vite", level: 40, category: "build tools & frameworks" },
+  { name: "TypeScript", level: 30, category: "build tools & frameworks" },
+  { name: "React", level: 40, category: "build tools & frameworks" },
+  { name: "Tailwind CSS", level: 55, category: "build tools & frameworks" },
+  { name: "PHP", level: 45, category: "build tools & frameworks" },
+  { name: "JSON", level: 75, category: "build tools & frameworks" },
 
-  // Design & Dev Tools
-  { name: "Git / GitHub", level: 60, category: "tools" },
-  { name: "npm / Node.js", level: 35, category: "tools" },
-  { name: "Gulp.js", level: 10, category: "tools" },
-  { name: "VS Code", level: 95, category: "tools" },
-  { name: "Vite", level: 40, category: "tools" },
-  { name: "Terminal CLI", level: 75, category: "tools" },
-  { name: "Claude Code", level: 55, category: "tools" },
-  { name: "Flashtalking", level: 45, category: "tools" },
-  { name: "Canva", level: 85, category: "tools" },
-  { name: "Google Doubleclick", level: 65, category: "tools" },
-  { name: "Google Web Designer", level: 35, category: "tools" },
-  { name: "Filezilla", level: 75, category: "tools" },
-  { name: "Adobe Photoshop", level: 95, category: "tools" },
-  { name: "Adobe Illustrator", level: 95, category: "tools" },
-  { name: "Affinity", level: 75, category: "tools" },
+  // Software
+  { name: "VS Code", level: 95, category: "software" },
+  { name: "Chrome Dev Tools", level: 95, category: "software" },
+  { name: "Terminal CLI", level: 75, category: "software" },
+  { name: "Git / GitHub", level: 80, category: "software" },
+  { name: "Google Web Designer", level: 35, category: "software" },
+  { name: "Agentic Coding", level: 85, category: "software" },
+  { name: "Flashtalking", level: 45, category: "software" },
+  { name: "Google Doubleclick", level: 65, category: "software" },
+  { name: "Adobe Creative Suite", level: 95, category: "software" },
+  { name: "Affinity", level: 85, category: "software" },
+  { name: "Google Analytics", level: 50, category: "software" },
+  { name: "Meta Business Suite", level: 60, category: "software" },
+  { name: "Claude AI", level: 90, category: "software" },
 
-  // Business
-  { name: "Shopify", level: 95, category: "business" },
-  { name: "SEO", level: 85, category: "business" },
-  { name: "Claude AI", level: 85, category: "business" },
-  { name: "Printful", level: 95, category: "business" },
-  { name: "Asana", level: 80, category: "business" },
-  { name: "ChatGPT", level: 80, category: "business" },
-  { name: "Slack", level: 40, category: "business" },
-  { name: "Google Analytics", level: 40, category: "business" },
-  { name: "Meta Business Suite", level: 60, category: "business" },
+  // Libraries & Platforms
+  { name: "Animated Banners", level: 100, category: "libraries & platforms" },
+  { name: "npm / Node.js", level: 35, category: "libraries & platforms" },
+  { name: "Gulp.js", level: 10, category: "libraries & platforms" },
+  { name: "GSAP", level: 95, category: "libraries & platforms" },
+  {
+    name: "Dynamic Creative Optimization",
+    level: 85,
+    category: "libraries & platforms",
+  },
+  { name: "Shadcn", level: 45, category: "libraries & platforms" },
+  { name: "jQuery", level: 35, category: "libraries & platforms" },
+  {
+    name: "Digital Out-of-Home",
+    level: 85,
+    category: "libraries & platforms",
+  },
+  { name: "lucide-react", level: 95, category: "libraries & platforms" },
+  { name: "ESLint", level: 85, category: "libraries & platforms" },
+  { name: "Ajax", level: 45, category: "libraries & platforms" },
+  { name: "RESTful API's", level: 75, category: "libraries & platforms" },
+  { name: "Shopify", level: 95, category: "libraries & platforms" },
+  { name: "Notion", level: 95, category: "libraries & platforms" },
+  { name: "SEO", level: 85, category: "libraries & platforms" },
+  { name: "Asana", level: 80, category: "libraries & platforms" },
 ];
 
-const categories = ["all", "frontend", "tools", "business"];
+const categories = [
+  "all",
+  "build tools & frameworks",
+  "software",
+  "libraries & platforms",
+];
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState("all");

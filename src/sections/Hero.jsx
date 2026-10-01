@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { SiShopify } from "react-icons/si";
+// import { SiShopify } from "react-icons/si";
 
 // import assets
 import heroBg from "@/assets/hero-bg.jpg";
@@ -17,7 +17,7 @@ const skills = [
   "Google Analytics",
   "JSON",
   "Claude Code",
-  "DOOH Advertising",
+  "Digital Out-of-Home (DOOH) ad development",
   "Adobe Illustrator",
   "RESTful APIs",
   "Shadcn / UI",
@@ -35,7 +35,7 @@ const skills = [
   "JSX",
   "JavaScript (ES6+)",
   "Flashtalking",
-  "DCO Banner Advertising",
+  "Dynamic Creative Optimization (DCO)",
   "HTML5",
   "Git",
   "Tailwind CSS",
@@ -123,12 +123,13 @@ const Hero = () => {
               </h1>
 
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi, I'm Adrian Velazquez — a Creative Developer specializing in
-                front-end development with focus in
+                Hi, I'm Adrian Velazquez — a Creative Developer from{" "}
+                <span className="font-semibold">New York City</span> that
+                specializes in front-end development with focus in
                 <span className="font-semibold">
                   {" "}
-                  Animated Ad Banners, Single Page Apps & Data Driven
-                  Dashboards, and Shopify E-Commerce Operations.{" "}
+                  Animated Ad Banners and Single Page Apps & Data Driven
+                  Dashboards.{" "}
                 </span>
                 I bridge design, code, and business — building products &
                 experiences end-to-end, not just interfaces.
@@ -157,11 +158,11 @@ const Hero = () => {
                   icon: FaGithub,
                   href: "https://github.com/Riot-Mind-Studios-LLC",
                 },
-                {
-                  icon: SiShopify,
-                  href: "https://riotmindstudios.com/",
-                  alt: "Riot Mind Studios",
-                },
+                // {
+                //   icon: SiShopify,
+                //   href: "https://riotmindstudios.com/",
+                //   alt: "Riot Mind Studios",
+                // },
               ].map((social, idx) => (
                 <a
                   key={idx}
