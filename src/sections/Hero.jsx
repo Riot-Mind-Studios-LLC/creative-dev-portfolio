@@ -1,6 +1,6 @@
 // import dependancies
 import { useState } from "react";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { /*ArrowRight,*/ ChevronDown } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 // import { SiShopify } from "react-icons/si";
 
@@ -9,7 +9,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 import profileImg from "@/assets/profile-image.jpg";
 
 // import components
-import Button from "@/components/Button";
+// import Button from "@/components/Button";
 import AnimatedBorderButton from "../components/AnimatedBorderButton";
 
 // skills list
@@ -139,11 +139,11 @@ const Hero = () => {
 
             {/* cta section */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full animate-fade-in animation-delay-300">
-              <a href="#contact" className="w-full sm:w-auto">
+              {/* <a href="#contact" className="w-full sm:w-auto">
                 <Button size="lg" className="w-full sm:w-auto">
                   Contact Me <ArrowRight className="w-5 h-5 " />
                 </Button>
-              </a>
+              </a> */}
               <AnimatedBorderButton className="w-full sm:w-auto" />
             </div>
 
