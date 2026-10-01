@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { SiShopify } from "react-icons/si";
+// import { SiShopify } from "react-icons/si";
 
 const socialLinks = [
   {
@@ -12,7 +12,7 @@ const socialLinks = [
     href: "https://github.com/Riot-Mind-Studios-LLC",
     label: "GitHub",
   },
-  { icon: SiShopify, href: "https://riotmindstudios.com/", label: "SHopify" },
+  // { icon: SiShopify, href: "https://riotmindstudios.com/", label: "SHopify" },
 ];
 
 const footerLinks = [
