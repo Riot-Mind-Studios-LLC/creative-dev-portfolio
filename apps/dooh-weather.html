@@ -1,0 +1,231 @@
+<!-- DOOH Dynamic Weather Creative — WeatherAPI.com (current.json) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic DOOH Billboard Creative</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000000;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        #billboard-canvas {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 5%;
+        }
+
+        .scene.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 8vw;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #ffcc00;
+            font-size: 4vw;
+            font-weight: 700;
+        }
+
+        /* Dynamic elements highlight styling */
+        .dynamic-text {
+            color: #00ffcc;
+            text-transform: uppercase;
+        }
+
+        /* Scale note on scene 3 — sized in vw so it scales with the screen like the rest of the type */
+        .scale-note {
+            margin-top: 30px;
+            color: #ffffff;
+            font-size: 2vw;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="billboard-canvas">
+        <!-- Scene 1: Static Hook -->
+        <div class="scene active" id="scene1">
+            <h1>DIGITAL OUT OF HOME</h1>
+            <p>Real-time updates directly on-screen.</p>
+            <p>Fully Scalable.</p>
+        </div>
+
+        <!-- Scene 2: Dynamic Value Prop (Populated by API) -->
+        <div class="scene" id="scene2">
+            <h1 id="dynamic-headline">Current Status</h1>
+            <p>It is currently <span id="dynamic-value" class="dynamic-text">Loading...</span></p>
+        </div>
+
+        <!-- Scene 3: Actionable Call to Action -->
+        <div class="scene" id="scene3">
+            <h1>Dynamic Creative Advertising</h1>
+            <p>Live data. Local message. Every screen.</p>
+            <!-- Scale note: tells the viewer the layout adapts to any screen size -->
+            <span class="scale-note">Fully scalable. Resizes to fit any screen.</span>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Dynamic DOOH Playback & Data Engine
+         * Data source: WeatherAPI.com — current.json endpoint
+         */
+        const DOOHPlayer = {
+            scenes: document.querySelectorAll('.scene'),
+            durationPerScene: 4000,
+            currentIdx: 0,
+            loopTracker: null,
+
+            // ---------- API CONFIGURATION ----------
+            // Your WeatherAPI.com key. Anything in client-side code is publicly readable,
+            // so treat this key as visible to anyone who opens the file.
+            API_KEY: '0417380de9fa4783800200430262810',
+            API_BASE: 'https://api.weatherapi.com/v1/current.json',
+            UNITS: 'F', // 'F' = Fahrenheit (temp_f), 'C' = Celsius (temp_c)
+            FETCH_TIMEOUT_MS: 2500, // Strict cut-off time for network responses
+
+            // Fallback content if the API fails or times out
+            fallbackData: { headline: "Stay Ready", value: "Perfect Weather" },
+
+            /**
+             * LOCATION LOGIC — which place do we ask the weather for?
+             * 1. If the DOOH network passes the screen's location in the URL
+             *    (ex: dooh_weather.html?q=40.91,-73.78), use that. Most networks can
+             *    append screen lat/lon or ZIP through a URL macro / key-value.
+             * 2. Otherwise use 'auto:ip' — WeatherAPI looks up the location of the
+             *    device making the request (the screen's media player, or your laptop
+             *    when testing). No permission prompt needed.
+             * Think of it like a car's GPS: first trust the address someone typed in,
+             * and only fall back to "where am I parked right now" if no address was given.
+             */
+            getLocationQuery() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get('q') || 'auto:ip';
+            },
+
+            buildEndpoint() {
+                const q = encodeURIComponent(this.getLocationQuery());
+                return `${this.API_BASE}?key=${this.API_KEY}&q=${q}&aqi=no`;
+            },
+
+            async init() {
+                // 1. Always inject fallback data immediately so the screen is never blank
+                this.updateDOM(this.fallbackData.headline, this.fallbackData.value);
+
+                // 2. Try fetching fresh data before starting the loop animation
+                try {
+                    const data = await this.fetchWithTimeout(this.buildEndpoint(), this.FETCH_TIMEOUT_MS);
+
+                    // WeatherAPI response shape (only the fields we use):
+                    // data.location.name          -> "New Rochelle"
+                    // data.current.temp_f/temp_c  -> 54.0
+                    // data.current.condition.text -> "Partly cloudy"
+                    const city = data.location?.name;
+                    const rawTemp = this.UNITS === 'F' ? data.current?.temp_f : data.current?.temp_c;
+                    const condition = data.current?.condition?.text;
+
+                    // Only swap in live data if every piece came back; otherwise keep fallback
+                    if (city && rawTemp !== undefined && condition) {
+                        const headline = `${city} Weather`;
+                        const value = `${Math.round(rawTemp)}°${this.UNITS} & ${condition}`;
+                        this.updateDOM(headline, value);
+                    }
+                } catch (error) {
+                    // Network error, timeout, bad key, or quota hit.
+                    // Fallback copy is already on screen, so do nothing.
+                }
+
+                // 3. Start playback loop
+                this.startPlayback();
+            },
+
+            /**
+             * Fetch helper with a strict timeout built in.
+             * AbortController = a kill switch. If the API hasn't answered in time,
+             * we pull the switch and the fetch rejects instead of hanging.
+             */
+            async fetchWithTimeout(resource, timeout) {
+                const controller = new AbortController();
+                const timer = setTimeout(() => controller.abort(), timeout);
+
+                try {
+                    const response = await fetch(resource, { signal: controller.signal });
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    return await response.json();
+                } finally {
+                    // Runs on success AND failure, so the timer never leaks
+                    clearTimeout(timer);
+                }
+            },
+
+            updateDOM(headline, value) {
+                document.getElementById('dynamic-headline').innerText = headline;
+                document.getElementById('dynamic-value').innerText = value;
+            },
+
+            startPlayback() {
+                this.loopTracker = setInterval(() => this.nextScene(), this.durationPerScene);
+            },
+
+            nextScene() {
+                this.scenes[this.currentIdx].classList.remove('active');
+                this.currentIdx = (this.currentIdx + 1) % this.scenes.length;
+                this.scenes[this.currentIdx].classList.add('active');
+            }
+        };
+
+        // Initialize engine
+        window.addEventListener('DOMContentLoaded', () => DOOHPlayer.init());
+    </script>
+</body>
+
+</html>

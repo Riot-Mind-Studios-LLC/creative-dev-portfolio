@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NBA Recent Game Summary</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- HEADER: 1. NBA logo, 2. Team logo, 3. Team name, 4. 5 games label -->
+        <header>
+
+            <!-- BANNER -->
+            <div id="banner">
+                <!-- NBA logo -->
+                <img src="nba.png" alt="NBA Logo" />
+            </div>
+            <!-- END BANNER -->
+
+            <!-- TEAM GRID: one badge button per team, built by script.js -->
+            <div id="team-grid"></div>
+
+            <!-- MATCHUP: our badge VS their badge. Team name kept for screen readers only. -->
+            <div class="header-content">
+                <img id="logo" class="matchup-badge" alt="" />
+                <span class="matchup-vs" hidden>VS</span>
+                <img id="opp-logo" class="matchup-badge" alt="" hidden />
+                <h1 id="team-name" class="visually-hidden">Team Name</h1>
+            </div>
+
+        </header>
+        <!-- END HEADER -->
+
+        <!-- MAIN CONTENT: 1. Game cards -->
+        <main>
+            <!-- gamesEL main content game cards -->
+            <div id="nba-last-games"></div>
+        </main>
+        <!-- END MAIN CONTENT -->
+    </div>
+
+    <!-- scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="teams.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
