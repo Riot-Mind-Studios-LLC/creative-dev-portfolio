@@ -60,7 +60,7 @@ const projects = [
   {
     title: "NBA Recent Game Tracker",
     description:
-      "NBA Recent Game is a vanilla JavaScript app that pulls live data from TheSportsDB API. It began as a take-home assessment showing one team’s last five games. I rebuilt it as an interactive picker: click any of the 30 NBA team badges to load that team’s most recent home game. The free API tier returns only one game. The header becomes a badge-vs-badge matchup, and the game card shows the date, opponent, and a win/loss-colored score. GSAP animates each load, and timed fetches, data checks, and loading and error states keep it stable.",
+      "NBA Recent Game Tracker is a vanilla JavaScript app that pulls live data from TheSportsDB API. It as an interactive picker: click any of the 30 NBA team badges to load that team’s most recent home game. The API returns the most recent game for the team selected, their opponent and the final scores. The header becomes a badge-vs-badge matchup, and the game card shows the date, opponent, and a win/loss-colored score. GSAP animates each load, and timed fetches, data checks, and loading and error states keep it stable.",
     image: project7,
     tags: ["HTML5", "CSS3", "JavaScript", "GSAP", "REST API", "Dynamic Ad"],
     link: "/creative-dev-portfolio/apps/api-list-module/index.html",
