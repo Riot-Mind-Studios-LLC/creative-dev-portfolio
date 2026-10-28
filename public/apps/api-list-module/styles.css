@@ -1,0 +1,233 @@
+/* Global theme styles */
+:root {
+  --font-display: Georgia, serif;
+  --font-body: Arial, sans-serif;
+  --color-nba-blue: #006bb7;
+  --color-nba-red: #ed174c;
+  --color-team-name: #ff0012; /* team name red, from the PSD */
+  --color-win: #1f7505;
+  --color-loss: #d60000;
+  --color-text: #333333;
+  --color-panel: rgba(240, 240, 241, 0.75);
+  --color-card: #ffffff;
+  --color-border: #4f4f51;
+  --shadow-soft: 1px 1px 7px rgba(0, 0, 0, 0.2);
+}
+
+/* box-sizing for all elements */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* background stays put while scrolling */
+  color: var(--color-text);
+  font-family: var(--font-body);
+  margin: 0;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Page column: centered, with side padding on small screens */
+.container {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+header {
+  text-align: center;
+}
+
+/* NBA logo: centered, shrinks on small screens */
+#banner img {
+  display: block;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* Badge + team name on one row; wraps on narrow screens */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 40px 0;
+}
+
+/* Gray panel that holds the cards */
+#nba-last-games {
+  padding: 40px 20px 20px;
+  background-color: var(--color-panel);
+  border-radius: 6px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* One white card per game */
+.game-result {
+  margin-bottom: 10px;
+  padding: 16px;
+  background-color: var(--color-card);
+  border-radius: 6px;
+  box-shadow: var(--shadow-soft);
+}
+
+.game-result:last-child {
+  margin-bottom: 0;
+}
+
+.game-result h3 {
+  margin: 0 0 16px;
+  font-size: 22px;
+}
+
+/* Small label above the matchup: free API key returns home games only */
+.game-result .card-label {
+  margin: 0 0 8px;
+  color: var(--color-nba-blue);
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* Header matchup badges: scale with screen width */
+.matchup-badge {
+  height: clamp(56px, 8vw, 84px);
+  width: auto;
+}
+
+/* Hides text on screen but keeps it for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.matchup-vs {
+  color: var(--color-nba-blue);
+  font-family: var(--font-display);
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: bold;
+}
+
+.game-result p {
+  margin: 0 0 16px;
+  font-size: 18px;
+}
+
+.game-result p:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.game-opp,
+.team-score,
+.opp-score {
+  color: var(--color-nba-blue);
+}
+
+.game-opp {
+  font-weight: bold;
+}
+
+/* Declared after .team-score, so these override the blue */
+.winner {
+  color: var(--color-win);
+  font-weight: bold;
+}
+
+.loser {
+  color: var(--color-loss);
+  font-weight: bold;
+}
+
+/* Empty-state and error message */
+.message {
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Team picker: badge buttons in a grid that fills the row and wraps */
+#team-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* 10 teams per row = 3 even rows */
+  gap: 10px;
+  margin-top: 32px;
+}
+
+/* One square badge button */
+.team-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1; /* keeps it square */
+  padding: 8px;
+  background-color: var(--color-card);
+  border: 3px solid transparent;
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+}
+
+/* Badge fits inside the button without stretching */
+.team-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Hover and keyboard focus: grow slightly, blue outline */
+.team-btn:hover,
+.team-btn:focus-visible {
+  transform: scale(1.08);
+  border-color: var(--color-nba-blue);
+}
+
+/* Picked team: red outline */
+.team-btn.is-active {
+  border-color: var(--color-nba-red);
+}
+
+/* Mobile: tighter spacing and smaller card text */
+@media (max-width: 600px) {
+  .container {
+    padding: 24px 12px;
+  }
+
+  #nba-last-games {
+    padding: 20px 10px 10px;
+  }
+
+  .game-result h3 {
+    font-size: 18px;
+  }
+
+  .game-result p {
+    font-size: 16px;
+  }
+
+  #team-grid {
+    grid-template-columns: repeat(
+      5,
+      1fr
+    ); /* 5 per row on phones = 6 even rows */
+  }
+}

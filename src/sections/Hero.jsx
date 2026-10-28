@@ -105,7 +105,7 @@ const Hero = () => {
               {/* title badge */}
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                / Front-End / Creative Developer
+                / Front-End / Dynamic Ad / Creative Web Developer
               </span>
             </div>
 

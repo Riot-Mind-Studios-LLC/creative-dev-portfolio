@@ -2,18 +2,19 @@
 const experiences = [
   {
     period: "Today",
-    role: "UI Developer / Interactive Developer",
+    role: "Dynamic Ads / React Development",
     institution: "In progress...",
     description:
-      "Expanding a decade of hand-coded animation work into modern front-end development. Building real applications with React, Tailwind CSS, Shadcn, and RESTful APIs — moving from static production work to interactive, data-driven interfaces. Currently applying GSAP within React using the useGSAP hook, bridging deep animation expertise with component-based architecture. Building toward full ownership of interactive web applications, from interface to motion to deployment.",
+      "Expanding a decade of hand-coded animation work into modern front-end development. Building real applications with React, Tailwind CSS, and RESTful APIs, and programmatic DOOH and DCO ads that pull live data into dynamic creative. Applying GSAP within React via the useGSAP hook — bridging deep animation expertise with component-based, data-driven interfaces.",
     technologies: [
       ".jsx",
       ".vite",
-      ".config",
       ".tailwindcss",
       ".git",
       ".api",
       "claude ai",
+      "digital-out-of-home",
+      "dynamic ads",
     ],
     current: true,
   },

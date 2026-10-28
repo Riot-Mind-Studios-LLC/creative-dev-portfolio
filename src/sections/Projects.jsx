@@ -2,12 +2,14 @@
 import { ArrowUpRight } from "lucide-react";
 
 // import images
-import project1 from "@/assets/project1.png";
+// import project1 from "@/assets/project1.png";
 import project2 from "@/assets/project2.png";
 // import project3 from "@/assets/project3.png";
 import project4 from "@/assets/project4.png";
-import project5 from "@/assets/project5.png";
+// import project5 from "@/assets/project5.png";
 // import project6 from "@/assets/project6.png";
+import project7 from "@/assets/project7.png";
+import project8 from "@/assets/project8.png";
 
 // import mini apps
 import ListBuilder from "@/components/demos/ListBuilder.jsx";
@@ -17,14 +19,14 @@ import QuotesApp from "@/components/demos/QuotesApp.jsx";
 
 // projects array
 const projects = [
-  {
-    title: "Grocery List App",
-    description:
-      "Don't Forget The Bacon is a fully responsive React grocery list app built from scratch with Vite, Tailwind CSS v4, and GSAP. The app features preset item categories organized in a collapsible accordion, a custom item input, light/dark theme toggle, and list export via download, native share, or email. The standout feature is an animated 'Bacon Meter' built with GSAP's useGSAP() hook — a progress bar that fills as items are added, caps below 100% until bacon makes the list, and plays a celebratory spin animation once it does. State is lifted and shared across components using React's useState, with real-time UI updates driven by one-directional data flow. Built solo as a hands-on introduction to modern front-end tooling.",
-    image: project1,
-    tags: ["React", "JSX", "Vite", "Tailwind CSS", "GSAP", "Claude AI"],
-    link: "/creative-dev-portfolio/apps/dont-forget-the-bacon/index.html",
-  },
+  // {
+  //   title: "Grocery List App",
+  //   description:
+  //     "Don't Forget The Bacon is a fully responsive React grocery list app built from scratch with Vite, Tailwind CSS v4, and GSAP. The app features preset item categories organized in a collapsible accordion, a custom item input, light/dark theme toggle, and list export via download, native share, or email. The standout feature is an animated 'Bacon Meter' built with GSAP's useGSAP() hook — a progress bar that fills as items are added, caps below 100% until bacon makes the list, and plays a celebratory spin animation once it does. State is lifted and shared across components using React's useState, with real-time UI updates driven by one-directional data flow. Built solo as a hands-on introduction to modern front-end tooling.",
+  //   image: project1,
+  //   tags: ["React", "JSX", "Vite", "Tailwind CSS", "GSAP", "Claude AI"],
+  //   link: "/creative-dev-portfolio/apps/dont-forget-the-bacon/index.html",
+  // },
   {
     title: "Rich Media - Ad Banners",
     description:
@@ -56,21 +58,44 @@ const projects = [
     link: "/creative-dev-portfolio/apps/banner-staging/index.html",
   },
   {
-    title: "Vehicle Maintenance Tracker App",
+    title: "NBA Recent Game Tracker",
     description:
-      "Panther Tracker is a vehicle maintenance tracker built for the Ford Panther platform community — Crown Victoria, Grand Marquis, and Town Car owners across the 2003–2011 model years. Built solo with React 19, Vite, Tailwind CSS v4, shadcn/ui with Radix UI primitives, and GSAP for interactive animations, the app covers six sections: vehicle profile management with photo upload, a searchable maintenance log, mileage- and date-based reminders with automatic overdue detection, parts and cost tracking, document storage, and data management tools. The current build runs on browser local storage as a fully working demo, with a planned production version connecting to a real backend for cross-device persistence, serving as a free tool for the Panther enthusiast community.",
-    image: project5,
-    tags: [
-      "React",
-      "JSX",
-      "Vite",
-      "Tailwind CSS",
-      "GSAP",
-      "Claude AI",
-      "Shadcn",
-    ],
-    link: "/creative-dev-portfolio/apps/panther-tracker/index.html",
+      "NBA Recent Game is a vanilla JavaScript app that pulls live data from TheSportsDB API. It began as a take-home assessment showing one team’s last five games. I rebuilt it as an interactive picker: click any of the 30 NBA team badges to load that team’s most recent home game. The free API tier returns only one game. The header becomes a badge-vs-badge matchup, and the game card shows the date, opponent, and a win/loss-colored score. GSAP animates each load, and timed fetches, data checks, and loading and error states keep it stable.",
+    image: project7,
+    tags: ["HTML5", "CSS3", "JavaScript", "GSAP", "REST API", "Dynamic Ad"],
+    link: "/creative-dev-portfolio/apps/api-list-module/index.html",
   },
+  {
+    title: "Dynamic Weather Billboard (DOOH)",
+    description:
+      "This is a dynamic DOOH (Digital Out-of-Home) billboard creative built in HTML, CSS, and JavaScript. It plays a three-scene loop, and on load it calls the WeatherAPI.com endpoint to fill the second scene with the screen’s city, temperature, and conditions. The location comes from coordinates or a ZIP code passed in by the ad network, with an IP lookup as the fallback. A 2.5-second timeout and preloaded fallback copy keep the screen from going blank if the network drops. All type and layout are sized to the viewport, so one file scales to any screen size.",
+    image: project8,
+    tags: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Fetch API",
+      "WeatherAPI.com",
+      "DOOH",
+    ],
+    link: "/creative-dev-portfolio/apps/dooh-weather.html",
+  },
+  // {
+  //   title: "Vehicle Maintenance Tracker App",
+  //   description:
+  //     "Panther Tracker is a vehicle maintenance tracker built for the Ford Panther platform community — Crown Victoria, Grand Marquis, and Town Car owners across the 2003–2011 model years. Built solo with React 19, Vite, Tailwind CSS v4, shadcn/ui with Radix UI primitives, and GSAP for interactive animations, the app covers six sections: vehicle profile management with photo upload, a searchable maintenance log, mileage- and date-based reminders with automatic overdue detection, parts and cost tracking, document storage, and data management tools. The current build runs on browser local storage as a fully working demo, with a planned production version connecting to a real backend for cross-device persistence, serving as a free tool for the Panther enthusiast community.",
+  //   image: project5,
+  //   tags: [
+  //     "React",
+  //     "JSX",
+  //     "Vite",
+  //     "Tailwind CSS",
+  //     "GSAP",
+  //     "Claude AI",
+  //     "Shadcn",
+  //   ],
+  //   link: "/creative-dev-portfolio/apps/panther-tracker/index.html",
+  // },
   // {
   //   title: "Product Inventory Tracker",
   //   description:
@@ -215,39 +240,6 @@ const Projects = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center max-w-3xl mx-auto mb-16 mt-16">
-          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Agentic Coding...
-          </span>
-          <h2 className="text-1xl md:text-2xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            A note on these
-            <span className="font-serif italic font-normal text-white">
-              {" "}
-              React projects.
-            </span>
-          </h2>
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            I'm actively building my React skills through hands-on projects like
-            the ones featured here. Along the way, I've used AI tools (including
-            Claude) as a learning aid — to help explain concepts, work through
-            problems, and understand best practices as I build. Every project
-            reflects my own decisions and iteration; AI has been a resource in
-            my learning process, not a replacement for it. This is part of an
-            ongoing effort to grow my front-end toolkit beyond my 10+ years of
-            hand-coded HTML5/GSAP work.
-            {/* <br />
-            <a
-              href="https://riot-mind-studios-llc.github.io/react-sandbox/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary-foreground underline"
-            >
-              {" "}
-              See more mini-apps
-            </a> */}
-          </p>
         </div>
       </div>
     </section>
