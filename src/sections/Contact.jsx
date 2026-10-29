@@ -124,7 +124,7 @@ const Contact = () => {
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
             Let's build{" "}
             <span className="font-serif italic font-normal text-white">
-              something dope.
+              something together.
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">

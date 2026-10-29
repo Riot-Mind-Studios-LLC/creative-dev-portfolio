@@ -10,10 +10,8 @@ const skills = [
   { name: "CSS 3", level: 95, category: "build tools & frameworks" },
   { name: "JavaScript ES6", level: 85, category: "build tools & frameworks" },
   { name: "Vite", level: 40, category: "build tools & frameworks" },
-  { name: "TypeScript", level: 30, category: "build tools & frameworks" },
   { name: "React", level: 40, category: "build tools & frameworks" },
   { name: "Tailwind CSS", level: 55, category: "build tools & frameworks" },
-  { name: "PHP", level: 45, category: "build tools & frameworks" },
   { name: "JSON", level: 75, category: "build tools & frameworks" },
 
   // Software
@@ -21,20 +19,12 @@ const skills = [
   { name: "Chrome Dev Tools", level: 95, category: "software" },
   { name: "Terminal CLI", level: 75, category: "software" },
   { name: "Git / GitHub", level: 80, category: "software" },
-  { name: "Google Web Designer", level: 35, category: "software" },
-  { name: "Agentic Coding", level: 85, category: "software" },
-  { name: "Flashtalking", level: 45, category: "software" },
   { name: "Google Doubleclick", level: 65, category: "software" },
   { name: "Adobe Creative Suite", level: 95, category: "software" },
   { name: "Affinity", level: 85, category: "software" },
-  { name: "Google Analytics", level: 50, category: "software" },
-  { name: "Meta Business Suite", level: 60, category: "software" },
-  { name: "Claude AI", level: 90, category: "software" },
 
   // Libraries & Platforms
   { name: "Animated Banners", level: 100, category: "libraries & platforms" },
-  { name: "npm / Node.js", level: 35, category: "libraries & platforms" },
-  { name: "Gulp.js", level: 10, category: "libraries & platforms" },
   { name: "GSAP", level: 95, category: "libraries & platforms" },
   {
     name: "Dynamic Creative Optimization",
@@ -42,20 +32,13 @@ const skills = [
     category: "libraries & platforms",
   },
   { name: "Shadcn", level: 45, category: "libraries & platforms" },
-  { name: "jQuery", level: 35, category: "libraries & platforms" },
   {
     name: "Digital Out-of-Home",
     level: 85,
     category: "libraries & platforms",
   },
-  { name: "lucide-react", level: 40, category: "libraries & platforms" },
   { name: "ESLint", level: 85, category: "libraries & platforms" },
-  { name: "Ajax", level: 45, category: "libraries & platforms" },
   { name: "RESTful APIs", level: 75, category: "libraries & platforms" },
-  { name: "Shopify", level: 95, category: "libraries & platforms" },
-  { name: "Notion", level: 95, category: "libraries & platforms" },
-  { name: "SEO", level: 85, category: "libraries & platforms" },
-  { name: "Asana", level: 80, category: "libraries & platforms" },
 ];
 
 const categories = [

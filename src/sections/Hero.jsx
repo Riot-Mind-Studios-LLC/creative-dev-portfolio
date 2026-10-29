@@ -129,8 +129,8 @@ const Hero = () => {
                 specializes in front-end development with focus on
                 <span className="font-semibold">
                   {" "}
-                  Animated Ad Banners and Single Page Apps & Data Driven
-                  Dashboards.{" "}
+                  Animated Ad Banners, Digital Ad Creative and Single Page
+                  Applications.{" "}
                 </span>
                 I bridge design, code, and business — building products &
                 experiences end-to-end, not just interfaces.

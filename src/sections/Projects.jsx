@@ -17,6 +17,38 @@ import ExpenseTrackerApp from "@/components/demos/ExpenseTrackerApp.jsx";
 import WeatherApp from "@/components/demos/WeatherApp.jsx";
 import QuotesApp from "@/components/demos/QuotesApp.jsx";
 
+// react projects
+const reactProjects = [
+  {
+    title: "A List Builder Mini-App",
+    description:
+      "An artist needs an easy way to create a quick list based off their ideas. A simple list builder where a user types an item into an input field and clicks a button to add it to a running list below. Each entry is stored in an array in state and rendered as its own list item, with the input clearing itself after each add and empty submissions blocked by a validation guard.",
+    demo: ListBuilder,
+    tags: ["React", "JSX", "Vite", "Mini-App", "Claude AI"],
+  },
+  {
+    title: "An Expense Tracker Mini-App",
+    description:
+      "A service worker wants a way to track daily tip income and expenses. A daily income and expense tracker built for a tips-based service worker, where a user selects an entry type, enters a description and dollar amount, and adds it to one of two automatically sorted lists. Each entry can be edited or deleted in place, and a running balance at the bottom recalculates itself from the current entries rather than being stored separately. It's a full CRUD app — create, read, update, and delete — built on a single array of entries with unique IDs.",
+    demo: ExpenseTrackerApp,
+    tags: ["React", "JSX", "Vite", "Mini-App", "Claude AI"],
+  },
+  {
+    title: "A Weather Tracker API Mini-App",
+    description:
+      "An amateur storm-tracker wants current weather data from all 50 states. A current-conditions weather lookup where a user selects any US state or territory from a dropdown and sees live data pulled from the Open-Meteo API for that location's capital. Each selection triggers a fetch using that state's stored coordinates, returning temperature, humidity, wind speed, snowfall, day/night status, and the reading's timestamp — with timezone resolved automatically per location so the data reflects local conditions rather than the viewer's own clock.",
+    demo: WeatherApp,
+    tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
+  },
+  {
+    title: "A Random Quote Generator API Mini-App",
+    description:
+      "A student wants inspirational quotes on-demand. A random quote generator where clicking a button fetches a fresh inspirational quote and its author from the DummyJSON API and displays them on the page. Unlike a fetch that runs automatically on load, this one is triggered entirely by the user's click, with the display held empty until the first quote actually arrives.",
+    demo: QuotesApp,
+    tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
+  },
+];
+
 // projects array
 const projects = [
   // {
@@ -62,7 +94,14 @@ const projects = [
     description:
       "NBA Recent Game Tracker is a vanilla JavaScript app that pulls live data from TheSportsDB API. It as an interactive picker: click any of the 30 NBA team badges to load that team’s most recent home game. The API returns the most recent game for the team selected, their opponent and the final scores. The header becomes a badge-vs-badge matchup, and the game card shows the date, opponent, and a win/loss-colored score. GSAP animates each load, and timed fetches, data checks, and loading and error states keep it stable.",
     image: project7,
-    tags: ["HTML5", "CSS3", "JavaScript", "GSAP", "REST API", "Dynamic Ad"],
+    tags: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "GSAP",
+      "TheSportsDB.com",
+      "REST API",
+    ],
     link: "/creative-dev-portfolio/apps/api-list-module/index.html",
   },
   {
@@ -112,34 +151,6 @@ const projects = [
   //   ],
   //   link: "/creative-dev-portfolio/apps/data-label-inventory-tracker/index.html",
   // },
-  {
-    title: "A List Builder Mini-App",
-    description:
-      "An artist needs an easy way to create a quick list based off their ideas. A simple list builder where a user types an item into an input field and clicks a button to add it to a running list below. Each entry is stored in an array in state and rendered as its own list item, with the input clearing itself after each add and empty submissions blocked by a validation guard.",
-    demo: ListBuilder,
-    tags: ["React", "JSX", "Vite", "Mini-App", "Claude AI"],
-  },
-  {
-    title: "An Expense Tracker Mini-App",
-    description:
-      "A service worker wants a way to track daily tip income and expenses. A daily income and expense tracker built for a tips-based service worker, where a user selects an entry type, enters a description and dollar amount, and adds it to one of two automatically sorted lists. Each entry can be edited or deleted in place, and a running balance at the bottom recalculates itself from the current entries rather than being stored separately. It's a full CRUD app — create, read, update, and delete — built on a single array of entries with unique IDs.",
-    demo: ExpenseTrackerApp,
-    tags: ["React", "JSX", "Vite", "Mini-App", "Claude AI"],
-  },
-  {
-    title: "A Weather Tracker API Mini-App",
-    description:
-      "An amateur storm-tracker wants current weather data from all 50 states. A current-conditions weather lookup where a user selects any US state or territory from a dropdown and sees live data pulled from the Open-Meteo API for that location's capital. Each selection triggers a fetch using that state's stored coordinates, returning temperature, humidity, wind speed, snowfall, day/night status, and the reading's timestamp — with timezone resolved automatically per location so the data reflects local conditions rather than the viewer's own clock.",
-    demo: WeatherApp,
-    tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
-  },
-  {
-    title: "A Random Quote Generator API Mini-App",
-    description:
-      "A student wants inspirational quotes on-demand. A random quote generator where clicking a button fetches a fresh inspirational quote and its author from the DummyJSON API and displays them on the page. Unlike a fetch that runs automatically on load, this one is triggered entirely by the user's click, with the display held empty until the first quote actually arrives.",
-    demo: QuotesApp,
-    tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
-  },
 ];
 
 const Projects = () => {
@@ -153,25 +164,117 @@ const Projects = () => {
         {/* section header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Featured Work
+            Dynamic Ad Creative
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            What I've built{" "}
+            Ad Banners{" "}
             <span className="font-serif italic font-normal text-white">
               {" "}
-              & what I'm building.
+              & dynamic digital display.
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            A selection of work spanning animated ad campaigns, e-commerce
-            operations, and the React applications I'm building now — each one
-            shows a different side of how I approach a problem.
+            A selection of work spanning animated ad campaigns, a custom client
+            facing staging site, single page dynamic module and api digital
+            out-of-home display.
           </p>
         </div>
 
         {/* projects grid section */}
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, idx) => (
+            <div
+              key={idx}
+              className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
+              style={{ animationDelay: `${(idx + 1) * 100}ms` }}
+            >
+              {/* project images */}
+              {project.image && (
+                <div className="relative overflow-hidden aspect-video">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-900 group-hover:scale-110"
+                  />
+                  {/* over image gradient */}
+                  <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-60" />
+                  {/* overlay project links */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3
+                      rounded-full glass hover:bg-primary
+                      hover:text-primary-foreground transition-all"
+                    >
+                      <ArrowUpRight className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              {/* project info */}
+              <div className="p-6 space-y-4">
+                {/* project title */}
+                <div className="flex items-start justify-between">
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  {project.link && (
+                    <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  )}
+                </div>
+                {/* project description */}
+                <p className="text-muted-foreground text-sm">
+                  {project.description}
+                </p>
+
+                {/* live demo apps */}
+                {project.demo && (
+                  <div className="max-h-80 overflow-y-auto">
+                    <project.demo />
+                  </div>
+                )}
+
+                {/* project tags */}
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, tagIdx) => (
+                    <span
+                      key={tagIdx}
+                      className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* section header */}
+        <div className="text-center mx-auto max-w-3xl mb-16 mt-16">
+          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
+            React Work
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
+            Single page,{" "}
+            <span className="font-serif italic font-normal text-white">
+              {" "}
+              mini applications.
+            </span>
+          </h2>
+          <p className="text-muted-foreground animate-fade-in animation-delay-200">
+            Four small React apps built with JSX and Vite, covering state
+            management, input validation, full CRUD, and live data from public
+            APIs. Each one is a focused exercise in a core React pattern.
+          </p>
+        </div>
+
+        {/* projects grid section */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {reactProjects.map((project, idx) => (
             <div
               key={idx}
               className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
