@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orrin Strata | DCO Banner Set</title>
+  <meta name="description"
+    content="One 300x250 banner template driven by an eight-row feed: eight ads from one build. Portfolio demo by Adrian Velazquez.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ===== Design tokens (shared with the Orrin Strata launch page) ===== */
+    :root {
+      --bg: #0b0d10;
+      --bg-2: #12161b;
+      --ink: #eef2f5;
+      --muted: #8b97a3;
+      --line: #2a323b;
+      --accent: #5fd4c4;
+      --max: 1440px;
+      --gutter: 16px
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 15px/1.6 Inter, system-ui, sans-serif
+    }
+
+    h1,
+    h2 {
+      font-family: Archivo, system-ui, sans-serif;
+      line-height: 1.05;
+      margin: 0
+    }
+
+    p {
+      margin: 0
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter)
+    }
+
+    .eyebrow {
+      font: 600 12px/1 Archivo, sans-serif;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent)
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px
+    }
+
+    /* ===== Header ===== */
+    .head {
+      padding-block: 64px 32px;
+      display: grid;
+      gap: 16px
+    }
+
+    .head h1 {
+      font-size: clamp(36px, 7vw, 72px);
+      font-weight: 800;
+      letter-spacing: -.02em
+    }
+
+    .head p {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 17px
+    }
+
+    /* ===== How it works ===== */
+    .steps {
+      display: grid;
+      gap: 12px;
+      margin: 8px 0 32px;
+      padding: 0;
+      list-style: none
+    }
+
+    .steps li {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+      background: var(--bg-2)
+    }
+
+    .steps b {
+      display: block;
+      font: 800 14px/1.3 Archivo, sans-serif;
+      margin-bottom: 4px
+    }
+
+    .steps span {
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    .steps code {
+      color: var(--accent);
+      font-size: 13px
+    }
+
+    /* ===== Controls ===== */
+    .bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px
+    }
+
+    .bar p {
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    .btn {
+      font: 800 12px/1 Archivo, sans-serif;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #06201d;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      cursor: pointer
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line)
+    }
+
+    /* ===== Variant grid ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      justify-items: center
+    }
+
+    .card {
+      width: 100%;
+      max-width: 332px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      background: var(--bg-2)
+    }
+
+    .card iframe {
+      display: block;
+      width: 300px;
+      height: 250px;
+      border: 0;
+      margin: 0 auto
+    }
+
+    .meta {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px
+    }
+
+    .meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px
+    }
+
+    .chip {
+      font: 600 11px/1 Archivo, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid #5fd4c455;
+      border-radius: 999px;
+      padding: 6px 10px
+    }
+
+    .rid {
+      font: 500 12px/1 ui-monospace, Menlo, monospace;
+      color: var(--muted)
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 12px;
+      margin: 0;
+      font-size: 13px
+    }
+
+    .fields dt {
+      color: var(--muted)
+    }
+
+    .fields dd {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+      overflow-wrap: anywhere
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex: none;
+      border: 1px solid #ffffff44
+    }
+
+    .card .btn-ghost {
+      width: 100%;
+      margin-top: 12px;
+      padding: 10px
+    }
+
+    /* ===== Feed table ===== */
+    .feed {
+      padding: 64px 0
+    }
+
+    .feed h2 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      margin: 12px 0 8px
+    }
+
+    .feed>.wrap>p {
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 24px
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 14px
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 900px;
+      font-size: 13px
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top
+    }
+
+    th {
+      font: 600 11px/1.2 Archivo, sans-serif;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--bg-2)
+    }
+
+    tr:last-child td {
+      border-bottom: 0
+    }
+
+    td code {
+      color: var(--accent)
+    }
+
+    td .dot {
+      display: inline-block;
+      vertical-align: -1px
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    @media (min-width:768px) {
+      :root {
+        --gutter: 32px
+      }
+
+      .steps {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+    <header class="wrap head">
+      <p class="eyebrow">Dynamic Creative Optimization</p>
+      <h1>One template. Eight ads.</h1>
+      <p>Every banner below is the same 300x250 build. The headline, offer, paint color, call to action, and
+        click-through URL all come from one row of a data feed, the way an ad server assembles a DCO ad at serve time.
+      </p>
+    </header>
+
+    <section class="wrap" aria-label="How it works">
+      <ol class="steps">
+        <li><b>1. Feed</b><span>Eight rows in <code>feed.js</code>, one per audience: six cities, a retargeting segment,
+            and a conquest segment.</span></li>
+        <li><b>2. Template</b><span>One build on the machine.js framework and its builderTimeLine class. No row-specific
+            code.</span></li>
+        <li><b>3. Ad</b><span>The template reads its row, fits the copy, paints the car, and tags the click URL for
+            reporting.</span></li>
+      </ol>
+    </section>
+
+    <section class="wrap" aria-labelledby="variants-title">
+      <div class="bar">
+        <h2 id="variants-title" class="eyebrow">Variants</h2>
+        <button class="btn" type="button" id="replay-all">Replay all</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section class="feed" aria-labelledby="feed-title">
+      <div class="wrap">
+        <p class="eyebrow">The data</p>
+        <h2 id="feed-title">The feed behind the ads.</h2>
+        <p>The template never changes. Edit a row and its ad changes. Copy is auto-fit, so the longest headline in the
+          feed still fits two lines without a hand adjustment.</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Audience</th>
+                <th>Headline</th>
+                <th>Offer</th>
+                <th>Detail</th>
+                <th>Paint</th>
+                <th>Call to action</th>
+                <th>Exit tag</th>
+              </tr>
+            </thead>
+            <tbody id="feed-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Orrin Strata is a fictional brand. Offers and figures are invented for this demo. Design and
+      development by Adrian Velazquez.</div>
+  </footer>
+
+  <script src="banner/feed.js"></script>
+  <script>
+    // ===== Build the variant grid and feed table from the same feed the banner reads =====
+    const grid = document.getElementById('grid');
+    const rows = document.getElementById('feed-rows');
+
+    // Text-only helper: feed values go in as text, never as HTML
+    const el = (tag, cls, text) => {
+      const node = document.createElement(tag);
+      if (cls) node.className = cls;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    };
+    const dot = (hex) => {
+      const d = el('span', 'dot');
+      d.style.background = hex;
+      return d;
+    };
+    const exitTag = (url) => new URL(url).searchParams.get('utm_content');
+
+    window.ORRIN_FEED.forEach((row) => {
+      // --- Card ---
+      const card = el('article', 'card');
+      const frame = document.createElement('iframe');
+      frame.src = `banner/index.html?id=${encodeURIComponent(row.id)}`;
+      frame.title = `${row.audience} banner`;
+      frame.loading = 'lazy';
+      frame.setAttribute('scrolling', 'no');
+
+      const meta = el('div', 'meta');
+      const top = el('div', 'meta-top');
+      top.append(el('span', 'chip', row.audience), el('span', 'rid', `?id=${row.id}`));
+
+      const fields = el('dl', 'fields');
+      const paint = el('dd');
+      paint.append(dot(row.paint_hex), document.createTextNode(row.paint_name));
+      [['Offer', el('dd', '', row.offer)], ['Paint', paint], ['CTA', el('dd', '', row.cta)]]
+        .forEach(([label, dd]) => fields.append(el('dt', '', label), dd));
+
+      const replay = el('button', 'btn btn-ghost', 'Replay');
+      replay.type = 'button';
+      replay.addEventListener('click', () => {frame.src = frame.src;});
+
+      meta.append(top, fields);
+      card.append(frame, meta, replay);
+      grid.append(card);
+
+      // --- Table row ---
+      const tr = document.createElement('tr');
+      const paintCell = el('td');
+      paintCell.append(dot(row.paint_hex), document.createTextNode(` ${row.paint_name} `), el('code', '', row.paint_hex));
+      const exitCell = el('td');
+      exitCell.append(el('code', '', exitTag(row.exit_url)));
+      tr.append(el('td', '', row.id), el('td', '', row.audience), el('td', '', row.headline), el('td', '', row.offer), el('td', '', row.detail), paintCell, el('td', '', row.cta), exitCell);
+      rows.append(tr);
+    });
+
+    // Replay every variant at once
+    document.getElementById('replay-all').addEventListener('click', () => {
+      grid.querySelectorAll('iframe').forEach((f) => {f.src = f.src;});
+    });
+  </script>
+</body>
+
+</html>

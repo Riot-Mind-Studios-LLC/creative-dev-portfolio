@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orrin Strata | Electric Launch</title>
+<meta name="description" content="Scroll-driven GSAP launch page for the Orrin Strata, a fictional electric car. Portfolio demo by Adrian Velazquez.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== Design tokens ===== */
+:root{--bg:#0b0d10;--bg-2:#12161b;--ink:#eef2f5;--muted:#8b97a3;--line:#2a323b;--accent:#5fd4c4;--car:#c9ced3;--max:1200px;--gutter:16px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:Archivo,system-ui,sans-serif;line-height:1.05;margin:0}
+p{margin:0}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.eyebrow{font:600 12px/1 Archivo,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ===== Nav + scroll progress ===== */
+.nav{position:fixed;inset:0 0 auto;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px var(--gutter);background:linear-gradient(var(--bg),transparent)}
+.logo{font:800 18px/1 Archivo,sans-serif;letter-spacing:.08em;text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-cta{font:600 13px/1 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:10px 16px;border:1px solid var(--line);border-radius:999px}
+.progress{position:fixed;inset:0 0 auto;height:3px;z-index:30;background:var(--accent);transform-origin:0 50%;transform:scaleX(0)}
+
+/* ===== 1. Hero ===== */
+.hero{min-height:100svh;display:grid;align-content:center;gap:32px;padding-block:96px 48px}
+.hero h1{font-size:clamp(44px,10vw,120px);font-weight:800;letter-spacing:-.02em}
+.hero p{max-width:520px;color:var(--muted);font-size:18px}
+.hero .car{width:100%;max-width:720px}
+
+/* ===== Car SVG (shared by every section) ===== */
+.car-body{fill:var(--car)}
+.car-detail{fill:#1c2630}
+/* Outline is only used for the hero draw-in, so it starts hidden everywhere */
+.car-outline{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;visibility:hidden}
+
+/* ===== 2. Pinned product reveal ===== */
+.reveal{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(60% 50% at 50% 55%,#18212a,var(--bg))}
+.reveal-stage{position:relative;width:100%;max-width:var(--max);padding:96px var(--gutter)}
+.reveal .car{width:100%;max-width:820px;margin:0 auto}
+.callouts{display:grid;gap:16px;margin-top:32px}
+.callout{border-left:2px solid var(--accent);padding:4px 0 4px 14px}
+.callout h3{font-size:20px}
+.callout p{color:var(--muted);font-size:15px}
+
+/* ===== 3. Horizontal features ===== */
+.features{padding:96px 0;background:var(--bg-2)}
+.features-head{margin-bottom:32px}
+.features-head h2,.stats h2,.picker h2,.cta h2{font-size:clamp(32px,6vw,64px);font-weight:800;margin-top:12px}
+.track{display:grid;gap:16px;padding:0 var(--gutter)}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:32px 24px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start}
+.card-num{font:800 56px/1 Archivo,sans-serif;color:var(--line)}
+.card-icon{width:56px;height:56px;fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:28px;margin-bottom:8px}
+.card p{color:var(--muted)}
+
+/* ===== 4. Stats ===== */
+.stats{padding-block:96px}
+.stat-grid{display:grid;gap:32px;margin-top:40px}
+.stat{border-top:1px solid var(--line);padding-top:20px}
+.stat-value{font:800 clamp(56px,12vw,104px)/1 Archivo,sans-serif;font-variant-numeric:tabular-nums}
+.stat-unit{font-size:.4em;color:var(--accent);margin-left:4px}
+.stat-label{color:var(--muted);margin-top:8px}
+
+/* ===== 5. Color picker ===== */
+.picker{padding:96px 0;background:var(--bg-2)}
+.picker .car{width:100%;max-width:760px;margin:40px auto 24px}
+.swatches{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.swatch{display:flex;align-items:center;gap:10px;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 8px;font:500 14px/1 Inter,sans-serif;cursor:pointer}
+.swatch i{width:28px;height:28px;border-radius:50%;background:var(--c);border:1px solid #ffffff33}
+.swatch[aria-pressed="true"]{border-color:var(--accent)}
+.picker-name{text-align:center;color:var(--muted);margin-top:16px;min-height:1.6em}
+
+/* ===== 6. CTA with parallax ===== */
+.cta{position:relative;display:grid;place-items:center;text-align:center;overflow:hidden}
+.layer{position:absolute;left:0;right:0;pointer-events:none}
+.layer-mid{top:0;height:150%;background:repeating-linear-gradient(90deg,transparent 0 78px,#ffffff0d 78px 80px)}
+.layer-front{bottom:0;height:30%;background:linear-gradient(transparent,var(--bg))}
+.cta-inner{position:relative;z-index:1;display:grid;gap:24px;justify-items:center;padding:96px var(--gutter) 120px}
+.cta p{color:var(--muted);max-width:440px}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#06201d;font:800 15px/1 Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:18px 28px;border-radius:999px}
+.btn-arrow{display:inline-block}
+.footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:13px}
+
+/* ===== Tablet / desktop ===== */
+@media (min-width:768px){
+  :root{--gutter:32px}
+  .callouts{grid-template-columns:repeat(3,1fr)}
+  /* Default: 2x2 grid. JS adds .is-horizontal only when the pinned sideways scroll runs. */
+  .track{grid-template-columns:repeat(2,1fr);gap:24px;max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+  .features{overflow:hidden}
+  .track.is-horizontal{display:flex;width:max-content;max-width:none;margin:0}
+  .card{min-height:380px;padding:40px 32px}
+  .is-horizontal .card{width:min(420px,70vw)}
+  .stat-grid{grid-template-columns:repeat(3,1fr)}
+}
+/* Wide screens: all four cards fit, so they sit in one row with no sideways scroll */
+@media (min-width:1600px){
+  .track{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="logo" href="#top">ORRIN<span>/</span>STRATA</a>
+  <a class="nav-cta" href="#reserve">Reserve</a>
+</header>
+
+<main id="top">
+
+  <!-- 1. Hero: SplitText headline + DrawSVG car outline -->
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <p class="eyebrow">Introducing the 2027 Strata</p>
+    <h1 id="hero-title" class="hero-title">Quiet. Electric. Relentless.</h1>
+    <p class="hero-copy">A grand tourer built around one idea: the drive should feel effortless from the first mile to the four-hundredth.</p>
+    <div class="car" data-car="hero"></div>
+  </section>
+
+  <!-- 2. Pinned product reveal -->
+  <section class="reveal" aria-labelledby="reveal-title">
+    <div class="reveal-stage">
+      <h2 id="reveal-title" class="sr-only">Design highlights</h2>
+      <div class="car" data-car="reveal"></div>
+      <div class="callouts">
+        <div class="callout"><h3>Flush glass</h3><p>Seamless glazing cuts wind noise to a whisper.</p></div>
+        <div class="callout"><h3>Low stance</h3><p>Battery mounted in the floor for a center of gravity that hugs the road.</p></div>
+        <div class="callout"><h3>Light signature</h3><p>A single LED blade front and rear, visible from a block away.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Horizontal feature cards -->
+  <section class="features" aria-labelledby="features-title">
+    <div class="wrap features-head">
+      <p class="eyebrow">Built for the long way home</p>
+      <h2 id="features-title">Four reasons to drive further.</h2>
+    </div>
+    <div class="track">
+      <article class="card"><div class="card-top"><span class="card-num">01</span><svg class="card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34a16 16 0 1 1 32 0"/><path d="M24 34l8-11"/><circle cx="24" cy="34" r="3"/><path d="M8 40h32"/></svg></div><div><h3>Range</h3><p>Up to 412 miles on a single charge, with live range that adjusts to terrain and weather.</p></div></article>
+      <article class="card"><div class="card-top"><span class="card-num">02</span><svg class="card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M27 4L12 27h11l-2 17 15-24H25z"/></svg></div><div><h3>Charging</h3><p>800-volt architecture adds 200 miles in about 18 minutes at a fast charger.</p></div></article>
+      <article class="card"><div class="card-top"><span class="card-num">03</span><svg class="card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8a3 3 0 0 1 6 0v18h13a3 3 0 0 1 3 3v5H17a3 3 0 0 1-3-3z"/><path d="M19 34v8M32 34v8"/></svg></div><div><h3>Interior</h3><p>Recycled wool, open-pore walnut, and a cabin quiet enough to hear the rain.</p></div></article>
+      <article class="card"><div class="card-top"><span class="card-num">04</span><svg class="card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l16 6v12c0 11-7 18-16 22C15 40 8 33 8 22V10z"/><path d="M17 24l5 5 10-10"/></svg></div><div><h3>Safety</h3><p>Twelve cameras and radar working together so you see what's coming first.</p></div></article>
+    </div>
+  </section>
+
+  <!-- 4. Count-up stats -->
+  <section class="stats wrap" aria-labelledby="stats-title">
+    <p class="eyebrow">By the numbers</p>
+    <h2 id="stats-title">Performance you can feel.</h2>
+    <div class="stat-grid">
+      <div class="stat"><p class="stat-value"><span class="count" data-target="412" data-decimals="0">412</span><span class="stat-unit">mi</span></p><p class="stat-label">Estimated range</p></div>
+      <div class="stat"><p class="stat-value"><span class="count" data-target="3.4" data-decimals="1">3.4</span><span class="stat-unit">s</span></p><p class="stat-label">0–60 mph</p></div>
+      <div class="stat"><p class="stat-value"><span class="count" data-target="18" data-decimals="0">18</span><span class="stat-unit">min</span></p><p class="stat-label">10–80% fast charge</p></div>
+    </div>
+  </section>
+
+  <!-- 5. Color picker -->
+  <section class="picker" aria-labelledby="picker-title">
+    <div class="wrap">
+      <p class="eyebrow">Make it yours</p>
+      <h2 id="picker-title">Choose your finish.</h2>
+      <div class="car" data-car="picker"></div>
+      <div class="swatches" role="group" aria-label="Paint color">
+        <button class="swatch" type="button" style="--c:#c9ced3" data-color="#c9ced3" data-name="Glacier Silver" aria-pressed="true"><i></i>Silver</button>
+        <button class="swatch" type="button" style="--c:#1f3b57" data-color="#1f3b57" data-name="Harbor Blue" aria-pressed="false"><i></i>Blue</button>
+        <button class="swatch" type="button" style="--c:#9b2c2c" data-color="#9b2c2c" data-name="Ember Red" aria-pressed="false"><i></i>Red</button>
+        <button class="swatch" type="button" style="--c:#3d4a3a" data-color="#3d4a3a" data-name="Forest Slate" aria-pressed="false"><i></i>Green</button>
+        <button class="swatch" type="button" style="--c:#f2efe9" data-color="#f2efe9" data-name="Chalk White" aria-pressed="false"><i></i>White</button>
+      </div>
+      <p class="picker-name" aria-live="polite">Glacier Silver</p>
+    </div>
+  </section>
+
+  <!-- 6. CTA with layered parallax -->
+  <section class="cta" id="reserve" aria-labelledby="cta-title">
+    <div class="layer layer-mid" aria-hidden="true"></div>
+    <div class="layer layer-front" aria-hidden="true"></div>
+    <div class="cta-inner">
+      <p class="eyebrow">Deliveries begin spring 2027</p>
+      <h2 id="cta-title">Your Strata is waiting.</h2>
+      <p>Reserve today with a fully refundable deposit and be first in line when production starts.</p>
+      <a class="btn" href="#reserve">Reserve now <span class="btn-arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">Orrin Strata is a fictional brand created for a portfolio demo. Design and development by Adrian Velazquez.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/DrawSVGPlugin.min.js"></script>
+<script>
+// ===== Car SVG =====
+// One markup source, injected into every [data-car] slot, so the drawing is edited in one place.
+// Body shapes carry the paint color. Detail shapes (glass, panels, wheels) sit on top in a dark tone.
+// The main body path is drawn a second time as a stroke so DrawSVG can trace the outline.
+const bodyPaths = ['M1048.2,432.57c-25.09,21.41-75.09,31.96-109.34,37.67-89.53,14.93-179.79,20.43-270.74,17.4-58.05-1.93-115.37-6.75-172.73-14.67-41.92-5.78-82.29-13.93-122.86-25.08-15.88-4.36-30.5-9.79-44.92-17.08-6.45-3.27-9.59-9.48-9.77-16.56-.37-1.78-3.65-4.36-5.93-5.16-74.36-26.31-148.59-51.27-224.16-74.29l-57.06-15.17c-15.58-4.14-39.1-15.67-27.69-26.6,4.52-4.33,10.09-7.05,16.5-10.14-6.67-18.04-9.38-36.53-10.07-55.76-.47-13.12-.17-25.79-1.77-38.79-2.61-21.22-.93-41.34,4.58-61.95,2.6-9.73,5.7-18.75,13.02-26.05,8.29-8.27,15.38-17.61,20.84-27.93s14.14-14.93,25.13-16.07l83.2-8.65c5.29-.55,9.67-2.42,14.25-4.94,38.6-21.19,82.76-31.55,126.64-36.2,78.71-8.33,165.97-9.49,244.23,1.14,48.73,6.62,71.51,21.6,111.54,44.46,13.72,7.84,26.32,16.46,40.63,23.15,7.8,3.65,17.66,2.99,25.85,5.2l18.22,4.91c5.03,1.36,9.48,6.22,9.37,11.82-.1,5.13-2.43,9.55-5.22,14.53l12.3,4.32c29.93,1.35,58.77,2.87,88.38,7.49,65.34,10.2,128.6,34.73,169.71,88.33l32.52,42.41c9.36,12.2,10.23,27.39,6.23,41.83l-11.76,42.46c-1.24,4.47-.86,8.89,1.51,12.87,7.15,12.02,15.61,28.04,6.16,38.77l-10.97,12.46c5.42,3.38,10.51,6.67,14.71,10.73,5.73,5.55,5.68,13.83-.55,19.14ZM315.48,222.42l18.68-84.3-23.57-2.55,6.21,7.3-16.47,12.74c-2.33,1.8-7.24.7-9.02-1.41l-6.94-8.29c-3.58-4.27-8.25-6.87-13.89-7.09-13.39-.53-26.3-2.01-39.46-4.27s-8.46-19.43-13.57-20.57l-31.77-7.07,6.01-2.53-15.89-10.89c-8.89-6.09-14.88-15.12-18.64-24.74,36.42-22.71,79.89-38.27,122.4-36.02,16.79.89,30.61,9.82,39.26,23.76,2.54,4.1,5.78,7.91,7.7,12.36l25.93,59.96c1.7,3.93,4.66,6.68,8.13,9.04,5.49.35,10.37.04,15.3-1.58l-44.83-97.45c48.93-6.89,96.56-10.14,145.21-10.16l104.3-.03c-20.98-7.29-41.09-10.69-62.61-13.15-69.68-7.97-147.77-5.43-217.93.53-25.87,2.2-50.26,6.93-75.06,14.11-30.28,8.76-57.92,21.78-84.48,38.43l-23.03,13.22c13.52,5.57,25.72,9.34,37.98,15.4l-64.24-19.01c-9.88-2.92-21.15-2.42-29.76,3.44-10.47,7.13-19.87,15.27-28.48,24.49-9.87,10.58-14.28,24.44-15.31,38.95,3.72-5.52,6.15-10.81,10.05-14.98,6.91-7.38,17.02-8.06,24.93-2.41,8.34,5.95,13.77,14,17.79,23.39,4.34,10.15,9.03,19.84,12.41,30.4,4,12.49,6.57,24.57,9.81,37.5l26.96-9.71-12.73-34.9c-2.69-10.97-4.87-21.69-3.67-32.82,2.15-19.98,29.69-7.15,49.65-4.09,6.97-11.51,15.74-26.95,28.54-29.11-11.55,7.92-21.51,17.26-25.81,31.11l47.55,16.21-.62.89-48.69-13.25-3.34,18.07c-.53,2.87,1.37,6.3,4.4,7.31l160.62,53.79ZM703.31,113.9c8.34,6.66,18.33,9.52,29.57,6.02-39.27-31.48-80.89-58.41-125.35-81.04l-54.7-4.38c.64,1.69,1.28,2.67,1.87,2.85l36.82,11.45c39.68,12.34,79.29,39.14,111.79,65.1ZM194.86,100.06l30.11-57.51-2.74-1.26-29.39,53.87c-.87,1.59.3,4.9,2.01,4.9ZM104.38,75.91c3.06.86,6.95.09,9.87-1.41l29.77-15.29-.25-2.73-72.8,8.47c-8.18.95-14.48,6.44-17.58,13.41,18.17-9.89,32.73-7.56,50.99-2.44ZM731.41,105.51c2.65-3.43,3.94-6.27,3.42-8.4-.39-1.62-3.2-4.05-4.91-4.62l-18.29-6.03c-.55-.18-2.41-.51-2.62.02l-.67,1.65,23.08,17.39ZM277.43,125l12.84-.38c2.62-.08,7.19-1.45,7.64-4.46,1.14-7.71-2.85-14.56-8.4-19.39-19.55-6.04-40.1-4.48-57.68,6.33-2.06,1.26-3.75,5.48-4.86,7.9,3.77,3.11,7.51,4.58,12.15,5.17l38.32,4.83ZM305.45,148.74l8.82-5.79-14.36-16.7-7.11,6.38,12.64,16.11ZM983.68,231.45c6.63-4.68,8.13-12.36,4-19.05-7.1-11.48-16.32-21.2-26.98-29.87-54.65-44.48-126.41-53.31-196.26-56.1l83.94,31.48c29.13,10.92,55.73,27.42,78.09,49.42-24.33-15.52-47.32-29.87-73.41-41.06-21.25-9.57-42.25-17.34-64.35-24.65l-41.19-13.87c-4.41-1.48-8.6-1.92-13.71-1.91-77.29,9.62-154.43,14.19-232.98,15.59,78.39,17.88,153.72,45.11,223.49,85.7l-103.12-42.88c-28.39-10.87-56.01-20.3-85.12-29.15-37.37-10.36-75.19-15.99-114.42-12.89l49.52,11.87c66.64,15.98,111.67,41.26,166.28,80.52,17.22,12.38,35.46,17.34,56.03,19.52,33.44,3.54,65.7,7.24,99.67,7.29,51.92.08,102.86-4.22,153.57-14.45,13.56-2.74,25.7-7.57,36.96-15.51ZM685.65,422.55l51.33,5.98,12.19,1.37c-51.21,1.52-101.14,2.21-151.74-10.9-15.36-3.98-29.17-9.62-43.05-17.07-.49-.26-1.7-.84-1.54-1.22l.98-2.3,36.18,1.6c8.21.36,14.7-3.3,18.93-9.94l14.41-22.57c14.78-23.16,39.96-35.32,67.84-34.71l91.95,2.03c54.16-.42,107.21-4.08,160.55-12.9,21.73-3.59,42.13-8.6,62.36-16.68,10.44-4.17,19.78-9.9,29.17-15.78,4.72-2.95,6.61-9.37,5-14.32-4.05-12.45-10.68-22.77-20.2-32.25-2.45,9.86-9.4,15.06-18,18.56-6.38,2.59-11.63,1.77-17.21-3.27-7.22-7.63-17.18-11.79-28.1-9.17-28.09,6.75-55.62,11.55-84.7,14.12-36.71,3.23-72.65,4-109.28,3.61-.79,12.76-3.69,22.62-16.06,25.07-11.35,2.25-22.14,1.33-33.78.88-35.92-1.4-70.92-4.36-105.96-12.2-34.23-7.66-52.55-23.76-77.92-46.17-4.57-4.04-9.8-5.76-16.41-7.57,36.33-8.09,73.22-17.3,105.74,6.11,5.86,4.22,10.97,8.77,17.72,11.14-47.7-39.96-102.96-69.3-163.13-85.46-22.03-5.92-43.46-9.47-66-12.08l-61.84-7.15c-4.13-.48-7.91,2.21-8.78,6.35l-15.39,73.58c-.42,2.01,1.05,5.53,2.8,6.2l27.36,10.43-6.63,67.64,15.88-55.92c4.14-14.58,11.71-27.24,23.1-36.89,26.34-22.31,59.1-9.27,79.81,16.41,2.58,3.2,5.58,6.58,8.79,8.94l23.22-4.69-23.43,6.99c18.4,27.64,30.2,58,33.18,91.01l8.01,88.76c.41,4.56,3.02,8,7.47,8.67l65.05,9.86c63.95,9.69,138.34,15.16,202.1,6.98l28.22-9.53,85.47-10.65c26.33-4.31,51.29-9.93,76.88-17.17l24.45-3.53c10.33-1.49,20.22-4.05,28.08-10.79,4.19-3.59,7.33-8.48,7.54-13.29.24-5.6-2.24-10.59-6.33-15.18l-7.91,17.02,6.06-25.99-23.09,14.64c-1.96,1.24-7.3.35-8.53-1.53-4.68-7.14-12.73-11.23-22.16-9.94l-161.47,22.18c-14.16,1.94-27.11,7.54-37.46,16.53s-20.82,14.86-34.37,15.02l-29.72.35-80.68-4.32c16.89,7.62,34.47,12.94,53.06,15.1ZM151.85,218.01c-18.19-12.18-20.45-29.05-23.27-49.93-.35-2.56,2.96-4.93,5.22-4.6l13.96,2.02,3.39-21.25c-7.25-1.5-14.33-2.65-21.16.03s-10.28,10.35-9.93,18.07c.97,21.64,6.58,42.59,15.42,62.45,10.39,23.34,29.48,41.07,53.53,49.55-10.97-10.92-17.78-23.51-23.71-37.44-3.03-7.12-6.62-14.34-13.45-18.91ZM43.52,290.25c-5.85-4.77-8.64-10.71-11.25-17.4-12.5-32.06-12.1-67.3,2.98-98.32,2.43-4.99,7.36-9.17,12.7-9.21,7.11-.05,10.55,5.31,15.79,10.36-1.4-5.2-4.19-10.22-8.01-14.07-5.99-6.03-15.14-5.97-21.17.24-3.58,3.7-6.23,8.66-8.14,13.81-14.04,37.79-11.66,87.36,11.88,120.18,4.76,6.63,13.45,7.23,19.31,1.79,4.47-4.15,7.99-9.4,9.64-16.01l-9.08,9.58c-3.77,3.97-10.37,2.54-14.65-.95ZM315.03,323.82c1.55-2.26,2.95-8.16-.58-10.14l-125.9-70.8-22.71-14.61c8.9,24.7,18.61,42.44,43.21,53.17,35.05,15.29,69.91,29.27,105.98,42.38ZM410.8,415.79c-31.5-21-42.32-65.87-38.34-102.32,2.21-20.28,10.34-38.98,23.84-53.9,17.91-19.8,43.49-20.01,66.72-7.41-4.88-8.15-12.23-13.9-21.38-16.46-33.13-9.24-58.85,13.32-70.61,44.64-12.9,34.35-11.76,72.93,3.34,106.4,6.04,13.39,14.12,24.77,25.18,33.84,17.95,14.71,42.58,15.9,61.34,2.46,4.03-2.89,8.12-6.61,8.9-11.35-18.01,14.61-40.03,16.74-59,4.1ZM312.01,346.66l-130.67-49.61c-10.3-3.91-20.05-5.74-30.87-6.43l-30.63-.13,230.24,80.34c1.56-4.41-1.39-8.12-4.97-9.68l-33.1-14.49Z', 'M807.55,422.37c-9.96.2-18.48-2.85-27.9-4.99,7.21-14.62,16.99-24.92,32.79-26.9l31.13-3.9,129.29-19.67c7.93-1.21,16.16,1.77,20.73,7.64l10.17,13.04c-60.25,18.29-132.82,33.49-196.22,34.78Z'];
+const detailShapes = `<path class="car-detail" d="M685.65,422.55c-18.59-2.17-36.18-7.49-53.06-15.1l80.68,4.32,29.72-.35c13.55-.16,24.46-6.41,34.37-15.02s23.31-14.58,37.46-16.53l161.47-22.18c9.43-1.3,17.48,2.79,22.16,9.94,1.23,1.88,6.57,2.77,8.53,1.53l23.09-14.64-6.06,25.99,7.91-17.02c4.09,4.59,6.57,9.58,6.33,15.18-.21,4.81-3.35,9.7-7.54,13.29-7.87,6.74-17.75,9.3-28.08,10.79l-24.45,3.53c-25.59,7.23-50.55,12.86-76.88,17.17l-85.47,10.65-28.22,9.53c-63.76,8.18-138.14,2.71-202.1-6.98l-65.05-9.86c-4.45-.67-7.06-4.12-7.47-8.67l-8.01-88.76c-2.98-33.01-14.78-63.37-33.18-91.01l23.43-6.99-23.22,4.69c-3.21-2.36-6.21-5.74-8.79-8.94-20.7-25.68-53.47-38.72-79.81-16.41-11.39,9.65-18.96,22.31-23.1,36.89l-15.88,55.92,6.63-67.64-27.36-10.43c-1.75-.67-3.22-4.19-2.8-6.2l15.39-73.58c.87-4.14,4.65-6.83,8.78-6.35l61.84,7.15c22.54,2.61,43.97,6.16,66,12.08,60.17,16.16,115.43,45.49,163.13,85.46-6.75-2.37-11.86-6.92-17.72-11.14-32.51-23.41-69.41-14.21-105.74-6.11,6.61,1.81,11.84,3.53,16.41,7.57,25.36,22.41,43.68,38.51,77.92,46.17,35.05,7.84,70.05,10.8,105.96,12.2,11.64.45,22.43,1.37,33.78-.88,12.37-2.45,15.27-12.31,16.06-25.07,36.63.39,72.57-.38,109.28-3.61,29.08-2.56,56.61-7.36,84.7-14.12,10.92-2.63,20.88,1.54,28.1,9.17,5.58,5.04,10.83,5.87,17.21,3.27,8.6-3.5,15.55-8.7,18-18.56,9.52,9.48,16.15,19.8,20.2,32.25,1.61,4.95-.28,11.37-5,14.32-9.39,5.88-18.73,11.61-29.17,15.78-20.23,8.09-40.63,13.09-62.36,16.68-53.35,8.82-106.39,12.48-160.55,12.9l-91.95-2.03c-27.89-.62-53.06,11.54-67.84,34.71l-14.41,22.57c-4.24,6.64-10.72,10.31-18.93,9.94l-36.18-1.6-.98,2.3c-.16.38,1.05.96,1.54,1.22,13.88,7.45,27.69,13.09,43.05,17.07,50.59,13.11,100.52,12.42,151.74,10.9l-12.19-1.37-51.33-5.98ZM807.55,422.37c63.41-1.29,135.97-16.49,196.22-34.78l-10.17-13.04c-4.57-5.86-12.8-8.84-20.73-7.64l-129.29,19.67-31.13,3.9c-15.8,1.98-25.59,12.27-32.79,26.9,9.42,2.14,17.94,5.2,27.9,4.99Z"/><path class="car-detail" d="M983.68,231.45c-11.27,7.94-23.4,12.77-36.96,15.51-50.71,10.23-101.65,14.54-153.57,14.45-33.97-.06-66.23-3.75-99.67-7.29-20.57-2.18-38.81-7.14-56.03-19.52-54.6-39.26-99.63-64.54-166.28-80.52l-49.52-11.87c39.24-3.1,77.05,2.53,114.42,12.89,29.11,8.84,56.72,18.28,85.12,29.15l103.12,42.88c-69.77-40.58-145.1-67.82-223.49-85.7,78.55-1.4,155.69-5.97,232.98-15.59,5.11-.01,9.31.43,13.71,1.91l41.19,13.87c22.11,7.31,43.1,15.08,64.35,24.65,26.09,11.19,49.08,25.54,73.41,41.06-22.37-22-48.96-38.49-78.09-49.42l-83.94-31.48c69.85,2.78,141.61,11.62,196.26,56.1,10.66,8.67,19.88,18.39,26.98,29.87,4.13,6.68,2.64,14.37-4,19.05Z"/><path class="car-detail" d="M315.48,222.42l-160.62-53.79c-3.03-1.01-4.93-4.44-4.4-7.31l3.34-18.07,48.69,13.25.62-.89-47.55-16.21c4.3-13.85,14.26-23.19,25.81-31.11-12.8,2.16-21.58,17.61-28.54,29.11-19.96-3.06-47.5-15.89-49.65,4.09-1.2,11.13.97,21.85,3.67,32.82l12.73,34.9-26.96,9.71c-3.25-12.92-5.82-25.01-9.81-37.5-3.38-10.56-8.07-20.25-12.41-30.4-4.01-9.39-9.45-17.44-17.79-23.39s-18.02-4.97-24.93,2.41c-3.9,4.17-6.33,9.45-10.05,14.98,1.03-14.5,5.43-28.36,15.31-38.95,8.61-9.22,18.01-17.36,28.48-24.49,8.6-5.86,19.87-6.36,29.76-3.44l64.24,19.01c-12.25-6.06-24.46-9.83-37.98-15.4l23.03-13.22c26.55-16.65,54.2-29.67,84.48-38.43,24.8-7.18,49.19-11.91,75.06-14.11,70.16-5.95,148.25-8.49,217.93-.53,21.52,2.46,41.63,5.86,62.61,13.15l-104.3.03c-48.65.01-96.28,3.27-145.21,10.16l44.83,97.45c-4.93,1.62-9.81,1.93-15.3,1.58-3.47-2.36-6.43-5.12-8.13-9.04l-25.93-59.96c-1.92-4.45-5.16-8.27-7.7-12.36-8.65-13.94-22.47-22.87-39.26-23.76-42.51-2.25-85.98,13.31-122.4,36.02,3.75,9.62,9.75,18.65,18.64,24.74l15.89,10.89-6.01,2.53,31.77,7.07c5.11,1.14-.06,18.24,13.57,20.57s26.07,3.74,39.46,4.27c5.65.22,10.32,2.82,13.89,7.09l6.94,8.29c1.77,2.12,6.69,3.22,9.02,1.41l16.47-12.74-6.21-7.3,23.57,2.55-18.68,84.3Z"/><path class="car-detail" d="M410.8,415.79c18.96,12.64,40.99,10.51,59-4.1-.79,4.74-4.87,8.46-8.9,11.35-18.76,13.45-43.39,12.25-61.34-2.46-11.07-9.07-19.14-20.45-25.18-33.84-15.1-33.47-16.24-72.05-3.34-106.4,11.76-31.32,37.48-53.88,70.61-44.64,9.15,2.55,16.5,8.3,21.38,16.46-23.23-12.6-48.81-12.39-66.72,7.41-13.49,14.92-21.62,33.62-23.84,53.9-3.98,36.45,6.85,81.32,38.34,102.32Z"/><path class="car-detail" d="M315.03,323.82c-36.07-13.11-70.92-27.09-105.98-42.38-24.6-10.73-34.31-28.47-43.21-53.17l22.71,14.61,125.9,70.8c3.53,1.98,2.12,7.88.58,10.14Z"/><path class="car-detail" d="M312.01,346.66l33.1,14.49c3.58,1.57,6.54,5.28,4.97,9.68l-230.24-80.34,30.63.13c10.83.69,20.57,2.52,30.87,6.43l130.67,49.61Z"/><path class="car-detail" d="M703.31,113.9c-32.51-25.95-72.11-52.76-111.79-65.1l-36.82-11.45c-.58-.18-1.22-1.16-1.87-2.85l54.7,4.38c44.46,22.63,86.08,49.56,125.35,81.04-11.24,3.5-21.23.64-29.57-6.02Z"/><path class="car-detail" d="M151.85,218.01c6.83,4.57,10.41,11.79,13.45,18.91,5.93,13.93,12.74,26.52,23.71,37.44-24.05-8.49-43.14-26.21-53.53-49.55-8.84-19.86-14.44-40.81-15.42-62.45-.35-7.72,3.12-15.4,9.93-18.07s13.91-1.53,21.16-.03l-3.39,21.25-13.96-2.02c-2.26-.33-5.57,2.04-5.22,4.6,2.82,20.88,5.08,37.75,23.27,49.93Z"/><path class="car-detail" d="M43.52,290.25c4.28,3.49,10.88,4.93,14.65.95l9.08-9.58c-1.66,6.61-5.18,11.86-9.64,16.01-5.86,5.44-14.55,4.85-19.31-1.79-23.54-32.81-25.92-82.39-11.88-120.18,1.92-5.16,4.56-10.12,8.14-13.81,6.03-6.22,15.18-6.27,21.17-.24,3.82,3.85,6.61,8.87,8.01,14.07-5.24-5.06-8.68-10.42-15.79-10.36-5.34.04-10.27,4.22-12.7,9.21-15.08,31.02-15.48,66.26-2.98,98.32,2.61,6.69,5.4,12.63,11.25,17.4Z"/><path class="car-detail" d="M104.38,75.91c-18.26-5.12-32.81-7.45-50.99,2.44,3.1-6.96,9.4-12.45,17.58-13.41l72.8-8.47.25,2.73-29.77,15.29c-2.92,1.5-6.81,2.27-9.87,1.41Z"/><path class="car-detail" d="M731.41,105.51l-23.08-17.39.67-1.65c.22-.53,2.07-.2,2.62-.02l18.29,6.03c1.72.57,4.52,3,4.91,4.62.52,2.13-.78,4.97-3.42,8.4Z"/><path class="car-detail" d="M277.43,125l-38.32-4.83c-4.64-.59-8.38-2.06-12.15-5.17,1.11-2.42,2.8-6.64,4.86-7.9,17.58-10.81,38.13-12.37,57.68-6.33,5.56,4.83,9.55,11.68,8.4,19.39-.45,3.01-5.02,4.38-7.64,4.46l-12.84.38Z"/><path class="car-detail" d="M194.86,100.06c-1.71,0-2.88-3.31-2.01-4.9l29.39-53.87,2.74,1.26-30.11,57.51Z"/><polygon class="car-detail" points="305.45 148.74 292.81 132.63 299.91 126.25 314.27 142.95 305.45 148.74"/>`;
+const carSVG = (id) => `
+<svg viewBox="0 0 1052.97 488.44" role="img" aria-labelledby="car-${id}">
+  <title id="car-${id}">The Orrin Strata sports car</title>
+  ${bodyPaths.map((d) => `<path class="car-body" d="${d}"/>`).join('')}
+  ${detailShapes}
+  <path class="car-outline" d="${bodyPaths[0]}"/>
+</svg>`;
+document.querySelectorAll('[data-car]').forEach((slot) => { slot.innerHTML = carSVG(slot.dataset.car); });
+
+// ===== Color picker (works with or without motion) =====
+const swatches = document.querySelectorAll('.swatch');
+const pickerBody = document.querySelectorAll('[data-car="picker"] .car-body');
+const pickerName = document.querySelector('.picker-name');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+swatches.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    swatches.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    pickerName.textContent = btn.dataset.name;
+    // Reduced motion: swap instantly. Otherwise tween the fill.
+    gsap.to(pickerBody, {fill:btn.dataset.color, duration:reduceMotion.matches ? 0 : 0.6, ease:'power2.out'});
+  });
+});
+
+// ===== Motion =====
+gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
+
+// Wait for web fonts so SplitText measures lines with the final font, not the fallback.
+// Card icon draw-in: strokes trace on, then the icon settles with a small pop.
+// Reduced motion never calls this, so icons simply show fully drawn.
+const drawIcon = (card, scrollTrigger, delay = 0) => {
+  const icon = card.querySelector('.card-icon');
+  gsap.timeline({scrollTrigger, delay})
+    .from(icon.children, {drawSVG:0, duration:0.9, stagger:0.15, ease:'power2.inOut'})
+    .from(icon, {scale:0.7, rotation:-8, transformOrigin:'50% 50%', duration:0.5, ease:'back.out(2)'}, 0);
+};
+
+document.fonts.ready.then(() => {
+  const mm = gsap.matchMedia();
+
+  // ----- Shared by every screen size (motion allowed) -----
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
+
+    // Scroll progress bar across the top
+    gsap.to('.progress', {scaleX:1, ease:'none', scrollTrigger:{trigger:document.body, start:'top top', end:'bottom bottom', scrub:0.3}});
+
+    // 1. Hero: headline lines rise in, car outline draws, then paint fills in
+    const split = SplitText.create('.hero-title', {type:'lines', mask:'lines'});
+    const heroCar = '[data-car="hero"]';
+    gsap.timeline({defaults:{ease:'power3.out'}})
+      .from(split.lines, {yPercent:110, duration:0.9, stagger:0.12})
+      .from('.hero .eyebrow, .hero-copy', {autoAlpha:0, y:16, duration:0.6, stagger:0.1}, '-=0.5')
+      .set(`${heroCar} .car-body, ${heroCar} .car-detail`, {autoAlpha:0}, 0)
+      .set(`${heroCar} .car-outline`, {autoAlpha:1}, 0)
+      .from(`${heroCar} .car-outline`, {drawSVG:0, duration:1.8, ease:'power2.inOut'}, '-=0.4')
+      .to(`${heroCar} .car-body, ${heroCar} .car-detail`, {autoAlpha:1, duration:0.8}, '-=0.4')
+      .to(`${heroCar} .car-outline`, {autoAlpha:0, duration:0.6}, '<');
+
+    // 4. Stats: count up once when the grid scrolls into view
+    gsap.utils.toArray('.count').forEach((el) => {
+      const target = parseFloat(el.dataset.target);
+      const decimals = Number(el.dataset.decimals);
+      const counter = {val:0};
+      el.textContent = (0).toFixed(decimals);
+      gsap.to(counter, {val:target, duration:1.6, ease:'power2.out',
+        scrollTrigger:{trigger:el, start:'top 85%', once:true},
+        onUpdate:() => { el.textContent = counter.val.toFixed(decimals); }});
+    });
+
+    // 5. Picker car slides in
+    gsap.from('[data-car="picker"]', {x:-80, autoAlpha:0, duration:1, ease:'power3.out', scrollTrigger:{trigger:'.picker', start:'top 70%'}});
+
+    // 6. CTA: line layer drifts slower than the page for depth
+    const ctaST = {trigger:'.cta', start:'top bottom', end:'bottom top', scrub:true};
+    gsap.to('.layer-mid', {yPercent:-45, ease:'none', scrollTrigger:ctaST});
+    gsap.from('.cta-inner > *', {autoAlpha:0, y:30, stagger:0.1, duration:0.8, ease:'power3.out', scrollTrigger:{trigger:'.cta', start:'top 60%'}});
+
+    // CTA button hover: slight lift plus arrow nudge
+    const btn = document.querySelector('.btn');
+    const hover = gsap.timeline({paused:true})
+      .to(btn, {scale:1.04, duration:0.25, ease:'power2.out'})
+      .to('.btn-arrow', {x:6, duration:0.25, ease:'power2.out'}, 0);
+    const play = () => hover.play();
+    const reverse = () => hover.reverse();
+    btn.addEventListener('mouseenter', play);
+    btn.addEventListener('mouseleave', reverse);
+    btn.addEventListener('focus', play);
+    btn.addEventListener('blur', reverse);
+
+    // Cleanup runs when this media query stops matching
+    return () => {
+      split.revert();
+      ['mouseenter', 'focus'].forEach((e) => btn.removeEventListener(e, play));
+      ['mouseleave', 'blur'].forEach((e) => btn.removeEventListener(e, reverse));
+    };
+  });
+
+  // ----- Tablet and up: pinned product reveal -----
+  mm.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
+
+    // 2. Reveal: pin the section, scale the car, bring callouts in one at a time
+    gsap.timeline({scrollTrigger:{trigger:'.reveal', start:'top top', end:'+=200%', scrub:1, pin:true}})
+      .from('[data-car="reveal"]', {scale:0.6, xPercent:-30, autoAlpha:0.2, duration:1})
+      .from('.callout', {autoAlpha:0, y:30, stagger:0.5, duration:0.5});
+  });
+
+  // ----- Tablet / laptop: cards overflow the screen, so slide them sideways -----
+  // Capped at 1599px: wider than that, all four cards fit and there is nothing to slide.
+  mm.add('(min-width: 768px) and (max-width: 1599px) and (prefers-reduced-motion: no-preference)', () => {
+
+    // 3. Features: pin and slide the card track sideways
+    const track = document.querySelector('.track');
+    track.classList.add('is-horizontal');
+    // Math.max guards against a negative distance, which would slide the cards the wrong way
+    const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
+    const slide = gsap.to(track, {x:() => -distance(), ease:'none',
+      scrollTrigger:{trigger:'.features', start:'top top', end:() => `+=${distance()}`, scrub:1, pin:true, invalidateOnRefresh:true}});
+
+    // Card icons: containerAnimation ties each trigger to the sideways slide,
+    // so an icon draws when its card enters from the right, not on vertical scroll.
+    gsap.utils.toArray('.card').forEach((card) => {
+      drawIcon(card, {trigger:card, containerAnimation:slide, start:'left 85%'});
+    });
+
+    // Cleanup: back to the grid layout if the screen size changes or motion gets turned off
+    return () => track.classList.remove('is-horizontal');
+  });
+
+  // ----- Wide screens: four cards in one row, rise in together, icons draw on normal scroll -----
+  mm.add('(min-width: 1600px) and (prefers-reduced-motion: no-preference)', () => {
+    gsap.from('.card', {autoAlpha:0, y:40, stagger:0.12, duration:0.7, ease:'power3.out', scrollTrigger:{trigger:'.track', start:'top 80%'}});
+    gsap.utils.toArray('.card').forEach((card, i) => drawIcon(card, {trigger:'.track', start:'top 80%'}, 0.3 + i * 0.12));
+  });
+
+  // ----- Phones: lighter motion, no pinning -----
+  mm.add('(max-width: 767px) and (prefers-reduced-motion: no-preference)', () => {
+    gsap.from('[data-car="reveal"]', {xPercent:-40, autoAlpha:0, duration:1, ease:'power3.out', scrollTrigger:{trigger:'.reveal', start:'top 70%'}});
+    gsap.utils.toArray('.callout, .card').forEach((el) => {
+      gsap.from(el, {autoAlpha:0, y:30, duration:0.6, ease:'power3.out', scrollTrigger:{trigger:el, start:'top 85%'}});
+    });
+    gsap.utils.toArray('.card').forEach((card) => drawIcon(card, {trigger:card, start:'top 80%'}));
+  });
+});
+</script>
+</body>
+</html>
