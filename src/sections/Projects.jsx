@@ -2,14 +2,16 @@
 import { ArrowUpRight } from "lucide-react";
 
 // import images
-// import project1 from "@/assets/project1.png";
+import project1 from "@/assets/project1.png";
 import project2 from "@/assets/project2.png";
-// import project3 from "@/assets/project3.png";
+import project3 from "@/assets/project3.png";
 import project4 from "@/assets/project4.png";
 // import project5 from "@/assets/project5.png";
 // import project6 from "@/assets/project6.png";
 import project7 from "@/assets/project7.png";
 import project8 from "@/assets/project8.png";
+import project9 from "@/assets/project9.png";
+import project10 from "@/assets/project10.png";
 
 // import mini apps
 import ListBuilder from "@/components/demos/ListBuilder.jsx";
@@ -17,48 +19,8 @@ import ExpenseTrackerApp from "@/components/demos/ExpenseTrackerApp.jsx";
 import WeatherApp from "@/components/demos/WeatherApp.jsx";
 import QuotesApp from "@/components/demos/QuotesApp.jsx";
 
-// react projects
-const reactProjects = [
-  {
-    title: "A List Builder Mini-App",
-    description:
-      "An artist needs an easy way to create a quick list based off their ideas. A simple list builder where a user types an item into an input field and clicks a button to add it to a running list below. Each entry is stored in an array in state and rendered as its own list item, with the input clearing itself after each add and empty submissions blocked by a validation guard.",
-    demo: ListBuilder,
-    tags: ["React", "JSX", "Vite", "Mini-App", "Claude AI"],
-  },
-  {
-    title: "An Expense Tracker Mini-App",
-    description:
-      "A service worker wants a way to track daily tip income and expenses. A daily income and expense tracker built for a tips-based service worker, where a user selects an entry type, enters a description and dollar amount, and adds it to one of two automatically sorted lists. Each entry can be edited or deleted in place, and a running balance at the bottom recalculates itself from the current entries rather than being stored separately. It's a full CRUD app — create, read, update, and delete — built on a single array of entries with unique IDs.",
-    demo: ExpenseTrackerApp,
-    tags: ["React", "JSX", "Vite", "Mini-App", "Claude AI"],
-  },
-  {
-    title: "A Weather Tracker API Mini-App",
-    description:
-      "An amateur storm-tracker wants current weather data from all 50 states. A current-conditions weather lookup where a user selects any US state or territory from a dropdown and sees live data pulled from the Open-Meteo API for that location's capital. Each selection triggers a fetch using that state's stored coordinates, returning temperature, humidity, wind speed, snowfall, day/night status, and the reading's timestamp — with timezone resolved automatically per location so the data reflects local conditions rather than the viewer's own clock.",
-    demo: WeatherApp,
-    tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
-  },
-  {
-    title: "A Random Quote Generator API Mini-App",
-    description:
-      "A student wants inspirational quotes on-demand. A random quote generator where clicking a button fetches a fresh inspirational quote and its author from the DummyJSON API and displays them on the page. Unlike a fetch that runs automatically on load, this one is triggered entirely by the user's click, with the display held empty until the first quote actually arrives.",
-    demo: QuotesApp,
-    tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
-  },
-];
-
 // projects array
 const projects = [
-  // {
-  //   title: "Grocery List App",
-  //   description:
-  //     "Don't Forget The Bacon is a fully responsive React grocery list app built from scratch with Vite, Tailwind CSS v4, and GSAP. The app features preset item categories organized in a collapsible accordion, a custom item input, light/dark theme toggle, and list export via download, native share, or email. The standout feature is an animated 'Bacon Meter' built with GSAP's useGSAP() hook — a progress bar that fills as items are added, caps below 100% until bacon makes the list, and plays a celebratory spin animation once it does. State is lifted and shared across components using React's useState, with real-time UI updates driven by one-directional data flow. Built solo as a hands-on introduction to modern front-end tooling.",
-  //   image: project1,
-  //   tags: ["React", "JSX", "Vite", "Tailwind CSS", "GSAP", "Claude AI"],
-  //   link: "/creative-dev-portfolio/apps/dont-forget-the-bacon/index.html",
-  // },
   {
     title: "Rich Media - Ad Banners",
     description:
@@ -67,20 +29,21 @@ const projects = [
     tags: ["HTML", "CSS", "JS", "GSAP", "Rich Media", "Ad Banners"],
     link: "/creative-dev-portfolio/apps/banner-projects/index.html",
   },
-  // {
-  //   title: "Shopify E-Commerce Production & Management",
-  //   description:
-  //     "I'm the sole owner and operator of Riot Mind Studios, LLC, a home-based ecommerce company built around four product studios. Label Co. handles in-house design, production, and shipping, while Print Works, Wovn Depot, and Gravity Labs use print-on-demand fulfillment for posters, apparel, and custom accessories. I manage the entire operation independently — from product design and Shopify storefront management to fulfillment logistics, customer service, marketing, and financial systems — using structured processes and disciplined cash management to keep the business lean, organized, and built for sustainable growth.",
-  //   image: project3,
-  //   tags: [
-  //     "Ecommerce Operations",
-  //     "Product Design & Development",
-  //     "Systems & Process Management",
-  //     "Shopify",
-  //     "Claude AI",
-  //   ],
-  //   link: "https://riotmindstudios.com/",
-  // },
+  {
+    title: "Orrin Strata – Scroll-Driven Launch Page",
+    description:
+      "Product launch page for a fictional electric sports car, built in vanilla HTML, CSS, and JavaScript with GSAP. Features a pinned product reveal, horizontal card scroll with draw-in icons, count-up stats, a live color picker, and parallax, with lighter motion on phones and a reduced-motion fallback. Built as a single self-contained file with no framework, using gsap.matchMedia() to switch between a pinned sideways card scroll on laptops, a four-across row on wide screens, and stacked cards on phones. Card icons draw in with DrawSVG tied to the sideways scroll through ScrollTrigger's containerAnimation, and the car's paint color tweens live from the color picker.",
+    image: project9,
+    tags: [
+      "HTML5",
+      "CSS3",
+      "JavaScript ES6",
+      "GSAP",
+      "ScrollTrigger",
+      "SVG Animation",
+    ],
+    link: "/creative-dev-portfolio/apps/orrin-strata.html",
+  },
   {
     title: "Ad Banner Staging Site",
     description:
@@ -105,6 +68,21 @@ const projects = [
     link: "/creative-dev-portfolio/apps/api-list-module/index.html",
   },
   {
+    title: "Orrin Strata – DCO Banner Set",
+    description:
+      "One 300x250 HTML5 banner template driven by an eight-row data feed, producing eight targeted ads from a single build: six city audiences, a retargeting ad, and a conquest ad. Each row sets the headline, offer, paint color, call to action, and a tagged click URL. Built on my machine.js GSAP framework with auto-fit copy, the banner weighs about 79 KB with no image files. A preview page shows every variant side by side with the feed that produced it. Adding a new ad means adding a row to the feed, with no changes to the template code, and the same feed fields map directly onto an ad server's dynamic content in Campaign Manager 360 or Flashtalking. The animation runs as a three-frame builderTimeLine sequence, from the car driving in with the headline, to the offer, to an end frame with the paint swatch and a call-to-action button that pulses on hover.",
+    image: project10,
+    tags: [
+      "Dynamic Ad Creative",
+      "DCO",
+      "Dynamic Creative",
+      "Programmatic",
+      "GSAP",
+      "Data Feed",
+    ],
+    link: "/creative-dev-portfolio/apps/orrin-dco/index.html",
+  },
+  {
     title: "Dynamic Weather Billboard (DOOH)",
     description:
       "This is a dynamic DOOH (Digital Out-of-Home) billboard creative built in HTML, CSS, and JavaScript. It plays a three-scene loop, and on load it calls the WeatherAPI.com endpoint to fill the second scene with the screen’s city, temperature, and conditions. The location comes from coordinates or a ZIP code passed in by the ad network, with an IP lookup as the fallback. A 2.5-second timeout and preloaded fallback copy keep the screen from going blank if the network drops. All type and layout are sized to the viewport, so one file scales to any screen size.",
@@ -118,6 +96,28 @@ const projects = [
       "DOOH",
     ],
     link: "/creative-dev-portfolio/apps/dooh-weather.html",
+  },
+  {
+    title: "Shopify E-Commerce Production & Management",
+    description:
+      "Riot Mind Studios, LLC, a home-based ecommerce company built around four product studios. Label Co. handles in-house design, production, and shipping, while Print Works, Wovn Depot, and Gravity Labs use print-on-demand fulfillment for posters, apparel, and custom accessories. I manage the entire operation independently — from product design and Shopify storefront management to fulfillment logistics, customer service, marketing, and financial systems — using structured processes and disciplined cash management to keep the business lean, organized, and built for sustainable growth.",
+    image: project3,
+    tags: [
+      "Ecommerce Operations",
+      "Product Design & Development",
+      "Systems & Process Management",
+      "Shopify",
+      "Claude AI",
+    ],
+    link: "https://riotmindstudios.com/",
+  },
+  {
+    title: "Grocery List App",
+    description:
+      "Don't Forget The Bacon is a fully responsive React grocery list app built from scratch with Vite, Tailwind CSS v4, and GSAP. The app features preset item categories organized in a collapsible accordion, a custom item input, light/dark theme toggle, and list export via download, native share, or email. The standout feature is an animated 'Bacon Meter' built with GSAP's useGSAP() hook — a progress bar that fills as items are added, caps below 100% until bacon makes the list, and plays a celebratory spin animation once it does. State is lifted and shared across components using React's useState, with real-time UI updates driven by one-directional data flow. Built solo as a hands-on introduction to modern front-end tooling.",
+    image: project1,
+    tags: ["React", "JSX", "Vite", "Tailwind CSS", "GSAP", "Claude AI"],
+    link: "/creative-dev-portfolio/apps/dont-forget-the-bacon/index.html",
   },
   // {
   //   title: "Vehicle Maintenance Tracker App",
@@ -153,6 +153,38 @@ const projects = [
   // },
 ];
 
+// react projects
+const reactProjects = [
+  {
+    title: "A List Builder Mini-App",
+    description:
+      "An artist needs an easy way to create a quick list based off their ideas. A simple list builder where a user types an item into an input field and clicks a button to add it to a running list below. Each entry is stored in an array in state and rendered as its own list item, with the input clearing itself after each add and empty submissions blocked by a validation guard.",
+    demo: ListBuilder,
+    tags: ["React", "JSX", "Vite", "Mini-App", "Claude AI"],
+  },
+  {
+    title: "An Expense Tracker Mini-App",
+    description:
+      "A service worker wants a way to track daily tip income and expenses. A daily income and expense tracker built for a tips-based service worker, where a user selects an entry type, enters a description and dollar amount, and adds it to one of two automatically sorted lists. Each entry can be edited or deleted in place, and a running balance at the bottom recalculates itself from the current entries rather than being stored separately. It's a full CRUD app — create, read, update, and delete — built on a single array of entries with unique IDs.",
+    demo: ExpenseTrackerApp,
+    tags: ["React", "JSX", "Vite", "Mini-App", "Claude AI"],
+  },
+  {
+    title: "A Weather Tracker API Mini-App",
+    description:
+      "An amateur storm-tracker wants current weather data from all 50 states. A current-conditions weather lookup where a user selects any US state or territory from a dropdown and sees live data pulled from the Open-Meteo API for that location's capital. Each selection triggers a fetch using that state's stored coordinates, returning temperature, humidity, wind speed, snowfall, day/night status, and the reading's timestamp — with timezone resolved automatically per location so the data reflects local conditions rather than the viewer's own clock.",
+    demo: WeatherApp,
+    tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
+  },
+  {
+    title: "A Random Quote Generator API Mini-App",
+    description:
+      "A student wants inspirational quotes on-demand. A random quote generator where clicking a button fetches a fresh inspirational quote and its author from the DummyJSON API and displays them on the page. Unlike a fetch that runs automatically on load, this one is triggered entirely by the user's click, with the display held empty until the first quote actually arrives.",
+    demo: QuotesApp,
+    tags: ["React", "JSX", "API", "Vite", "Mini-App", "Claude AI"],
+  },
+];
+
 const Projects = () => {
   return (
     <section id="projects" className="pt-32 relative overflow-hidden">
@@ -164,19 +196,21 @@ const Projects = () => {
         {/* section header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Dynamic Ad Creative
+            Dynamic Animated Creative
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            Ad Banners{" "}
+            Animation{" "}
             <span className="font-serif italic font-normal text-white">
               {" "}
               & dynamic digital display.
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            A selection of work spanning animated ad campaigns, a custom client
-            facing staging site, single page dynamic module and api digital
-            out-of-home display.
+            HTML5 banner campaigns for major brands, a client-facing staging
+            site for banner review, and live API-driven modules, alongside a
+            scroll-driven launch page, a feed-driven DCO banner set, and a
+            weather-reactive digital out-of-home billboard. Selected work also
+            includes stand alone React apps and a Shopify e-commerce site.
           </p>
         </div>
 

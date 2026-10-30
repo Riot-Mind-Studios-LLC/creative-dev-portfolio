@@ -1,0 +1,87 @@
+<!--
+=================================================================================
+Orrin Strata — DCO Template | 300x250
+Adrian Velazquez
+Creative Developer
+-----------------
+For: Orrin Strata (fictional brand, portfolio demo)
+=================================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- meta
+    ================================================================================ -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="ad.size" content="width=300,height=250" /><!-- ad.size — main.js reads banner width/height from here -->
+
+    <!-- css
+    ================================================================================ -->
+    <style>
+      body { margin: 0; }
+    </style>
+
+
+<!-- ============================================================================
+AD PLATFORM ENABLER — Standard / Self-Hosted (active)
+================================================================================
+This build runs on the portfolio, not an ad server, so no enabler loads.
+clickTag is set per feed row in main.js (window.clickTag = row.exit_url).
+
+For Campaign Manager 360 / Studio: swap in the Enabler.js block and init block
+from the machine.js index.html template, and replace feed.js with the
+platform's generated dynamic content code.
+================================================================================ -->
+
+
+<!-- ============================================================================
+GSAP 3 — core only (no plugins needed for this banner)
+================================================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" crossorigin="anonymous"></script>
+
+
+<!-- machine framework + banner logic
+================================================================================
+Load order is strict and must not change:
+  1. machine.js — framework core, must load first
+  2. feed.js    — DCO feed rows (stand-in for the ad server's dynamic content)
+  3. car.js     — inline SVG car asset
+  4. main.js    — banner logic, must load last
+================================================================================ -->
+    <script src="machine.js"></script>
+    <script src="feed.js"></script>
+    <script src="car.js"></script>
+    <script src="main.js"></script>
+
+
+<!-- INIT: Standard / Self-Hosted
+================================================================================
+Click handler for the full-size hit element. Listens on the document so it
+works no matter when main.js creates #hit, and reads window.clickTag at click
+time, so it always opens the current feed row's exit URL.
+================================================================================ -->
+    <script>
+      "use strict";
+
+      document.addEventListener("click", function(e) {
+        if (e.target.id === "hit") window.open(window.clickTag, "_blank", "noopener");
+      });
+    </script>
+
+    <title>Orrin Strata DCO | 300x250</title>
+
+  </head>
+
+<!--
+====================================================================================
+BODY
+====================================================================================
+All banner elements are created in main.js via machine.createElement().
+machine.main() is the entry point.
+====================================================================================
+-->
+  <body onload="machine.main();"></body>
+
+</html>
