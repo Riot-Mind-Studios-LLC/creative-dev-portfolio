@@ -7,6 +7,7 @@ Notes:
 
 // import components
 import Navbar from "@/layout/Navbar";
+import ScrollProgress from "@/components/ScrollProgress";
 import Hero from "@/sections/Hero";
 import About from "@/sections/About";
 import Skills from "@/sections/Skills";
@@ -21,6 +22,7 @@ function App() {
   return (
     <div className="min-h-screen overflow-x-hidden">
       <Navbar />
+      <ScrollProgress />
       {/* components / sections */}
       <main>
         <Hero />
