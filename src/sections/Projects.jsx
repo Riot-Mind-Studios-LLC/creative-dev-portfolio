@@ -200,7 +200,7 @@ const Projects = () => {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
             Animation{" "}
-            <span className="font-serif italic font-normal text-white">
+            <span className="font-serif italic font-normal text-primary">
               {" "}
               & dynamic digital display.
             </span>
@@ -231,7 +231,7 @@ const Projects = () => {
                     className="w-full h-full object-cover transition-transform duration-900 group-hover:scale-110"
                   />
                   {/* over image gradient */}
-                  <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-60" />
+                  {/* <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-60" /> */}
                   {/* overlay project links */}
                   <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <a
@@ -294,7 +294,7 @@ const Projects = () => {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
             Single page,{" "}
-            <span className="font-serif italic font-normal text-white">
+            <span className="font-serif italic font-normal text-primary">
               {" "}
               mini applications.
             </span>

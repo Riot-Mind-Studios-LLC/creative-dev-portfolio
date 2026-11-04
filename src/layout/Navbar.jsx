@@ -1,7 +1,7 @@
 // import dependancies
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
- 
+
 // import components
 import Button from "@/components/Button";
 
@@ -10,6 +10,7 @@ const navLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
+  { href: "#case-studies", label: "Case Studies" },
   { href: "#experience", label: "Experience" },
   { href: "#testimonials", label: "Testimonials" },
 ];
@@ -53,7 +54,7 @@ const Navbar = () => {
               <a
                 href={link.href}
                 key={index}
-                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-surface"
+                className="px-2 lg:px-4 py-2 text-sm whitespace-nowrap text-muted-foreground hover:text-foreground rounded-full hover:bg-secondary"
               >
                 {link.label}
               </a>

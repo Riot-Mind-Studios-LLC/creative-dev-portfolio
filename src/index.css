@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
-
 @theme {
-/* define custom colors */
-  --color-background: #16161d;
-  --color-foreground: #f0f2f5;
-  --color-card: #141a1f;
-  --color-primary: #20b2a6;
+  /* define custom colors */
+  --color-background: #ffffff;
+  --color-foreground: #2f4858;
+  --color-card: #f6f7f4;
+  --color-primary: #0bd3ae;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #1f2830;
-  --color-secondary-foreground: #20b2a6;
-  --color-muted: #252e37;
-  --color-muted-foreground: #7a8491;
-  --color-border: #242b32;
-  --color-highlight: #f5a623;
-  --color-surface: #1a2329;
-/* define custom radius */
+  --color-secondary: #e9ece7;
+  --color-secondary-foreground: #2f4858;
+  --color-muted: #e9ece7;
+  --color-muted-foreground: #566570;
+  --color-border: #dde2dc;
+  --color-highlight: #b93530;
+  --color-surface: #f6f7f4;
+  /* define custom radius */
   --radius: 0.75rem;
 }
 
@@ -52,17 +51,6 @@
     background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
     backdrop-filter: blur(24px);
     border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
-  }
-
-  .glow-text {
-    text-shadow: 0 0 30px
-      color-mix(in srgb, var(--color-primary) 50%, transparent);
-  }
-
-  .glow-border {
-    box-shadow: 0 0 20px
-        color-mix(in srgb, var(--color-primary) 20%, transparent),
-      inset 0 0 20px color-mix(in srgb, var(--color-primary) 5%, transparent);
   }
 }
 
@@ -170,15 +158,7 @@
   }
 
   .animated-border:hover {
-    background-color: color-mix(in srgb, #26c4b8 15%, transparent);
+    background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
     backdrop-filter: blur(16px);
-    box-shadow: 0 0 20px color-mix(in srgb, #26c4b8 20%, transparent);
-  }
-
-  .timeline-glow {
-    box-shadow: 0 0 40px
-        color-mix(in srgb, var(--color-primary) 35%, transparent),
-      0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
   }
 }
-

@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 // import { SiShopify } from "react-icons/si";
 
 // import assets
-import heroBg from "@/assets/hero-bg.jpg";
+// import heroBg from "@/assets/hero-bg.jpg";
 import profileImg from "@/assets/profile-image.jpg";
 
 // import components
@@ -65,36 +65,36 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* bg image */}
-      <div className="absolute inset-0">
+      {/* <div className="absolute inset-0">
         <img
           src={heroBg}
           alt="Hero Bg Image"
           className="w-full h-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-linear-to-b from-background/20 via-background/80 to-background" />
-      </div>
+      </div> */}
 
       {/* dots */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-non">
-        {/* loop through an array of 30 dots */}
-        {/* create an array by using the Array() function and define the length, in this case 30 */}
-        {/* loop through the 30 times by using map() */}
-        {/* for each item that it loops, get the index and enter a div */}
-        {/* style the div to style the dots */}
-        {particles.map((particle) => (
+      {/* <div className="absolute inset-0 overflow-hidden pointer-events-non"> */}
+      {/* loop through an array of 30 dots */}
+      {/* create an array by using the Array() function and define the length, in this case 30 */}
+      {/* loop through the 30 times by using map() */}
+      {/* for each item that it loops, get the index and enter a div */}
+      {/* style the div to style the dots */}
+      {/* {particles.map((particle) => (
           <div
             key={particle.id}
             className="absolute w-1.5 h-1.5 rounded-full opacity-40"
             style={{
-              backgroundColor: "#20b2a6",
+              backgroundColor: "#3a7d34",
               left: particle.left,
               top: particle.top,
               animation: particle.animation,
               animationDelay: particle.animationDelay,
             }}
           />
-        ))}
-      </div>
+        ))} */}
+      {/* </div> */}
 
       {/* hero section main content */}
       <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
@@ -103,9 +103,10 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="animate-fade-in">
               {/* title badge */}
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                / Front-End / Dynamic Ad / Creative Web Developer
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-highlight">
+                <span className="w-2 h-2 bg-highlight rounded-full animate-pulse" />
+                / Front-End / Dynamic Ad / Creative Web Developer / Ad Tech
+                Solutions
               </span>
             </div>
 
@@ -113,13 +114,12 @@ const Hero = () => {
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
                 Crafting
-                <span className="text-primary glow-text"> digital</span>
-                <br />
-                experiences
-                <br />
-                <span className="font-serif italic font-normal text-white">
-                  since 2015.
+                <span className="text-primary italic">
+                  {" "}
+                  digital experiences
                 </span>
+                <br />
+                <span className="font-serif font-normal">since 2015.</span>
               </h1>
 
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
@@ -133,7 +133,9 @@ const Hero = () => {
                   Applications.{" "}
                 </span>
                 I bridge design, code, and business — building products &
-                experiences end-to-end, not just interfaces.
+                experiences end-to-end, not just interfaces. I also work with
+                producers, account teams, and clients to solve ad tech problems
+                from spec through delivery.
               </p>
             </div>
 
@@ -182,7 +184,7 @@ const Hero = () => {
           <div className="relative animate-fade-in animation-delay-300">
             {/* profile image */}
             <div className="relative max-w-md mx-auto">
-              <div className="relative glass rounded-3xl p-2 glow-border">
+              <div className="relative glass rounded-3xl p-2">
                 <img
                   src={profileImg}
                   alt="Adrian Velazquez Profile Image"
@@ -192,8 +194,8 @@ const Hero = () => {
                 {/* floating badge */}
                 <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
                   <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-sm font-md">Available for work</span>
+                    <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
+                    <span className="text-sm font-md ">Available for work</span>
                   </div>
                 </div>
 
@@ -235,8 +237,10 @@ const Hero = () => {
           href="#about"
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
         >
-          <span className="text-xs uppercase tracking-wider">About me</span>
-          <ChevronDown className="w-6 h-6 animate-bounce" />
+          <span className="text-xs uppercase tracking-wider text-highlight">
+            About me
+          </span>
+          <ChevronDown className="w-6 h-6 animate-bounce text-highlight" />
         </a>
       </div>
     </section>

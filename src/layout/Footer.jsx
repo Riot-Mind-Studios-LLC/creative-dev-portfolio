@@ -19,6 +19,7 @@ const footerLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
+  { href: "#case-studies", label: "Case Studies" },
   { href: "#experience", label: "Experience" },
   { href: "#testimonials", label: "Testimonials" },
 ];
@@ -31,7 +32,7 @@ const Footer = () => {
       <div className="text-center max-w-3xl mx-auto mb-16 px-4 sm:px-6">
         <h2 className="text-2xl md:text-3xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
           Built with
-          <span className="font-serif italic font-normal text-white">
+          <span className="font-serif italic font-normal text-primary">
             {" "}
             love, using React.
           </span>

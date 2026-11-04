@@ -110,13 +110,13 @@ const Experience = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* section header */}
-        <div className="max-w-3xl mb-16">
+        <div className="text-center mx-auto max-w-3xl mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
             Career Journey
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
             Steady work.
-            <span className="font-serif italic font-normal text-white">
+            <span className="font-serif italic font-normal text-primary">
               {" "}
               Real growth.
             </span>
@@ -132,7 +132,7 @@ const Experience = () => {
         {/* timeline */}
         <div className="relative">
           {/* vertical line */}
-          <div className="timeline-glow absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary/70 via-primary/30 to-transparent md:-translate-x-1/2 shadow-[0_0_25px_rgba(32,178,166,0.8)]" />
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary/70 via-primary/30 to-transparent md:-translate-x-1/2 ]" />
 
           {/* experience items */}
           <div className="space-y-12">

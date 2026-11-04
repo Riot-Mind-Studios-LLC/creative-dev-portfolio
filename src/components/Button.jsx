@@ -1,7 +1,7 @@
 const Button = ({ className = "", size = "default", children, ...props }) => {
   // base classes
   const baseClasses =
-    "relative overflow-hidden rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/25";
+    "relative overflow-hidden rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-highlight text-primary-foreground hover:bg-highlight/90";
 
   // apply different classes based on size definition
   const sizeClasses = {
