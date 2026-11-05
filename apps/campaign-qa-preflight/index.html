@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campaign QA Preflight</title>
+  <meta name="description" content="Checks an HTML5 banner .zip against a mock insertion order and exports a trafficking sheet.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <h1>Campaign QA Preflight</h1>
+      <p class="lede">Check a banner .zip against its insertion order before it goes to trafficking.</p>
+
+      <!-- Honest label: reviewers should know this campaign is not real. -->
+      <p class="note">Simulated workflow using fictional campaign data. Files stay in your browser.</p>
+    </header>
+
+    <section class="step" aria-labelledby="campaign-heading">
+      <h2 id="campaign-heading"><span class="step-number">1</span> Insertion order</h2>
+
+      <!-- main.js fills this list with the campaign summary. -->
+      <dl id="campaign-summary" class="fields"></dl>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Placement ID</th>
+              <th scope="col">Publisher</th>
+              <th scope="col">Size</th>
+              <th scope="col">Click URL</th>
+            </tr>
+          </thead>
+
+          <!-- main.js creates one table row per placement here. -->
+          <tbody id="placement-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="workspace">
+      <section class="step" aria-labelledby="upload-heading">
+        <h2 id="upload-heading"><span class="step-number">2</span> Banner</h2>
+
+        <!-- main.js creates one dropdown option per placement. -->
+        <label for="placement-select">Placement</label>
+        <select id="placement-select"></select>
+
+        <!-- accept=".zip" filters the file picker, but users can still get around it. -->
+        <label for="banner-file">Banner .zip</label>
+        <input id="banner-file" type="file" accept=".zip">
+
+        <button id="run-check" class="primary" type="button" disabled>Run QA check</button>
+
+        <!-- role="status" lets screen readers announce upload messages. -->
+        <p id="upload-status" class="status" role="status">No file selected.</p>
+
+        <div class="samples">
+          <p>No banner on hand? Try a sample on the selected placement.</p>
+          <button id="sample-clean" type="button">Check clean sample</button>
+          <button id="sample-broken" type="button">Check broken sample</button>
+        </div>
+      </section>
+
+      <!-- tabindex="-1" lets main.js move focus here when a report finishes. -->
+      <section id="report" class="step report" aria-labelledby="report-heading" tabindex="-1">
+        <h2 id="report-heading"><span class="step-number">3</span> QA report</h2>
+        <div id="report-body"></div>
+      </section>
+    </div>
+
+    <section class="step" aria-labelledby="sheet-heading">
+      <div class="heading-row">
+        <h2 id="sheet-heading"><span class="step-number">4</span> Trafficking sheet</h2>
+        <button id="download-sheet" type="button">Download CSV</button>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Placement ID</th>
+              <th scope="col">Publisher</th>
+              <th scope="col">Size</th>
+              <th scope="col">Flight</th>
+              <th scope="col">Creative file</th>
+              <th scope="col">Weight</th>
+              <th scope="col">QA status</th>
+            </tr>
+          </thead>
+
+          <!-- main.js rebuilds these rows after every QA check. -->
+          <tbody id="sheet-rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Order matters: each file uses something from the files above it. -->
+  <script src="vendor/jszip.min.js"></script>
+  <script src="campaign-data.js"></script>
+  <script src="samples-data.js"></script>
+  <script src="qa-checks.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

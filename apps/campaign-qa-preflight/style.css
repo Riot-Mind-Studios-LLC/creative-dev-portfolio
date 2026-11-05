@@ -1,0 +1,350 @@
+/* Self-hosted so the page looks the same offline and needs no outside requests. */
+@font-face {
+  font-family: 'Archivo Variable';
+  src: url('fonts/archivo-latin-wdth-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+}
+
+/* Design tokens: one place to change the printed-form look. */
+:root {
+  --desk: #d5dfe6;
+  --paper: #fafbfc;
+  --tint: #e8eff4;
+  --ink: #12283b;
+  --ink-soft: #4b6073;
+  --rule: #b4c3cf;
+  --navy: #2b5c8a;
+  --pass: #15694a;
+  --warn: #805200;
+  --fail: #b3261e;
+  --skip: #5b6b78;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 32px 16px;
+  background: var(--desk);
+  color: var(--ink);
+  font: 400 1rem/1.5 'Archivo Variable', Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+h1, h2, h3, p, dl, dd, ul { margin: 0; padding: 0; }
+
+/* The page reads as one sheet of paper with ruled sections. */
+.sheet {
+  max-width: 1160px;
+  margin: 0 auto;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+
+.masthead {
+  padding: 32px;
+  background: var(--navy);
+  color: #fff;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-stretch: 75%;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.lede {
+  max-width: 60ch;
+  margin-top: 12px;
+  font-size: 1.125rem;
+}
+
+.note {
+  margin-top: 8px;
+  font-size: .875rem;
+  color: #d8e5ef;
+}
+
+.step {
+  min-width: 0;
+  padding: 24px 32px 32px;
+  border-top: 1px solid var(--rule);
+}
+
+.report:focus { outline: none; }
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  font-stretch: 85%;
+  font-weight: 700;
+}
+
+.step-number {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: var(--ink);
+  color: #fff;
+  font-size: .9375rem;
+}
+
+.heading-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.heading-row h2 { margin-bottom: 0; }
+
+/* Ruled cells, like the header block of a paper insertion order. */
+.fields {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  border: 1px solid var(--rule);
+  border-bottom: 0;
+}
+
+.fields div {
+  padding: 8px 12px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.fields div:last-child { border-right: 0; }
+
+dt {
+  font-size: .8125rem;
+  color: var(--ink-soft);
+}
+
+dd { font-weight: 600; }
+
+/* Wide tables scroll inside their own box instead of stretching the page. */
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+}
+
+.fields + .table-scroll { border-top: 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  background: var(--tint);
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+tbody tr:last-child td { border-bottom: 0; }
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+}
+
+.workspace .report { border-left: 1px solid var(--rule); }
+
+label {
+  display: block;
+  margin: 16px 0 4px;
+  font-size: .875rem;
+  font-weight: 600;
+}
+
+h2 + label { margin-top: 0; }
+
+select, input[type='file'] {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid var(--ink-soft);
+  border-radius: 2px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: .9375rem;
+}
+
+button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--navy);
+  border-radius: 2px;
+  background: #fff;
+  color: var(--navy);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) { background: var(--tint); }
+
+button:disabled {
+  border-color: var(--rule);
+  color: var(--skip);
+  cursor: not-allowed;
+}
+
+:is(button, select, input):focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.primary {
+  width: 100%;
+  margin-top: 20px;
+  background: var(--navy);
+  color: #fff;
+}
+
+.primary:hover:not(:disabled) { background: #204a71; }
+
+.primary:disabled {
+  background: var(--tint);
+  color: var(--skip);
+}
+
+.status {
+  min-height: 3em;
+  margin-top: 10px;
+  font-size: .9375rem;
+  overflow-wrap: anywhere;
+}
+
+.samples {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+
+.samples p {
+  font-size: .9375rem;
+  color: var(--ink-soft);
+}
+
+.empty {
+  padding: 32px;
+  border: 1px dashed var(--rule);
+  color: var(--ink-soft);
+}
+
+/* The one loud element on the page: an inked stamp on the form. */
+.verdict {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-bottom: 20px;
+}
+
+.stamp {
+  padding: 8px 16px;
+  border: 4px solid currentColor;
+  border-radius: 4px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-stretch: 75%;
+  font-weight: 800;
+  line-height: 1.1;
+  transform: rotate(-2deg);
+  animation: stamp-down .22s ease-out;
+}
+
+.stamp-cleared { color: var(--pass); }
+.stamp-review { color: var(--warn); }
+.stamp-hold { color: var(--fail); }
+
+@keyframes stamp-down {
+  from { opacity: 0; transform: rotate(-2deg) scale(1.35); }
+}
+
+.file-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.checks { list-style: none; }
+
+.check {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.check h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.check p { overflow-wrap: anywhere; }
+
+.check .fix {
+  margin-top: 4px;
+  color: var(--ink-soft);
+}
+
+.badge {
+  align-self: start;
+  padding: 2px 6px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  font-size: .8125rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.check-pass .badge { color: var(--pass); }
+.check-warn .badge { color: var(--warn); }
+.check-fail .badge { color: var(--fail); }
+.check-skip .badge { color: var(--skip); }
+
+.sheet-status { font-weight: 600; }
+.sheet-cleared { color: var(--pass); }
+.sheet-review { color: var(--warn); }
+.sheet-hold { color: var(--fail); }
+.sheet-none { color: var(--skip); font-weight: 400; }
+
+@media (max-width: 860px) {
+  .workspace { grid-template-columns: minmax(0, 1fr); }
+  .workspace .report { border-left: 0; }
+  .fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fields div:nth-child(2n) { border-right: 0; }
+  .fields div:last-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+  body { padding: 0; }
+  .sheet { border: 0; }
+  .masthead, .step { padding-left: 16px; padding-right: 16px; }
+  .check { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .badge { justify-self: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp { animation: none; }
+}

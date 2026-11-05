@@ -1,0 +1,19 @@
+body { margin: 0; }
+#banner { position: relative; overflow: hidden; box-sizing: border-box; border: 1px solid #12283b; background: linear-gradient(160deg, #12283b, #2b5c8a); color: #fff; font-family: Arial, sans-serif; cursor: pointer; }
+#hit { position: absolute; inset: 0; }
+#logo { position: absolute; width: 90px; }
+#line { position: absolute; margin: 0; font-weight: 700; line-height: 1.05; animation: rise .6s ease-out both; }
+#cta { position: absolute; margin: 0; padding: 7px 12px; background: #fff; color: #12283b; font-size: 13px; font-weight: 700; white-space: nowrap; animation: rise .6s .4s ease-out both; }
+.s300x250 { width: 300px; height: 250px; }
+.s300x250 #logo { top: 18px; left: 18px; }
+.s300x250 #line { top: 80px; left: 18px; font-size: 38px; width: 250px; }
+.s300x250 #cta { left: 18px; bottom: 18px; }
+.s728x90 { width: 728px; height: 90px; }
+.s728x90 #logo { top: 34px; left: 20px; }
+.s728x90 #line { top: 26px; left: 150px; font-size: 32px; }
+.s728x90 #cta { top: 28px; right: 20px; }
+.s160x600 { width: 160px; height: 600px; }
+.s160x600 #logo { top: 20px; left: 16px; }
+.s160x600 #line { top: 150px; left: 16px; font-size: 36px; width: 130px; }
+.s160x600 #cta { left: 16px; bottom: 24px; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } }
