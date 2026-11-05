@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 // import images
 import project1 from "@/assets/project1.png";
 import project2 from "@/assets/project2.png";
-import project3 from "@/assets/project3.png";
+// import project3 from "@/assets/project3.png";
 import project4 from "@/assets/project4.png";
 // import project5 from "@/assets/project5.png";
 // import project6 from "@/assets/project6.png";
@@ -12,6 +12,7 @@ import project7 from "@/assets/project7.png";
 import project8 from "@/assets/project8.png";
 import project9 from "@/assets/project9.png";
 import project10 from "@/assets/project10.png";
+import project11 from "@/assets/project11.png";
 
 // import mini apps
 import ListBuilder from "@/components/demos/ListBuilder.jsx";
@@ -30,6 +31,21 @@ const projects = [
     link: "/creative-dev-portfolio/apps/banner-projects/index.html",
   },
   {
+    title: "Ad Ops - Project Validator",
+    description:
+      "Campaign QA Preflight is a browser-based validator that simulates an ad operations team’s pre-trafficking check, using fictional campaign data and no ad server connection. Built in vanilla HTML, CSS, and JavaScript, it reads a banner .zip without running its code and compares it with the selected placement through 10 checks covering package structure, file weight, backup image, dimensions, clickTag setup, click URL, referenced files, and secure and external calls. Each problem includes a plain-English explanation and suggested fix. The tool then assigns a verdict and adds the banner to a trafficking sheet. To use it, select a placement, upload a banner .zip or try a built-in sample, and click Run QA check. Fix any problems, rerun the check, then repeat for each placement and download the CSV.",
+    image: project11,
+    tags: [
+      "Ad Operations",
+      "Campaign QA",
+      "Creative QA",
+      "Insertion Orders",
+      "Ad Trafficking",
+      "Click Tracking",
+    ],
+    link: "/creative-dev-portfolio/apps/campaign-qa-preflight/index.html",
+  },
+  {
     title: "Orrin Strata – Scroll-Driven Launch Page",
     description:
       "Product launch page for a fictional electric sports car, built in vanilla HTML, CSS, and JavaScript with GSAP. Features a pinned product reveal, horizontal card scroll with draw-in icons, count-up stats, a live color picker, and parallax, with lighter motion on phones and a reduced-motion fallback. Built as a single self-contained file with no framework, using gsap.matchMedia() to switch between a pinned sideways card scroll on laptops, a four-across row on wide screens, and stacked cards on phones. Card icons draw in with DrawSVG tied to the sideways scroll through ScrollTrigger's containerAnimation, and the car's paint color tweens live from the color picker.",
@@ -45,7 +61,7 @@ const projects = [
     link: "/creative-dev-portfolio/apps/orrin-strata.html",
   },
   {
-    title: "Ad Banner Staging Site",
+    title: "Digital Ad Banner Staging Site",
     description:
       "A custom-built, client-facing HTML5 banner staging and review platform that streamlines digital campaign production. Built in vanilla HTML, CSS, and JavaScript, it organizes animated banners by IAB size with fallback previews, live playback, source manifests, clickthrough URLs, and downloads. Color-coded badges track production status with automated versioning. Campaign details feed into a report featuring asset counts, status summaries, timelines, and banner breakdowns. Additional features include sticky navigation, HTML5 validation, design deck viewing, ad standards references, onboarding guides, and a JSON-driven manifest for fast campaign deployment.",
     image: project4,
@@ -97,20 +113,20 @@ const projects = [
     ],
     link: "/creative-dev-portfolio/apps/dooh-weather.html",
   },
-  {
-    title: "Shopify E-Commerce Production & Management",
-    description:
-      "Riot Mind Studios, LLC, a home-based ecommerce company built around four product studios. Label Co. handles in-house design, production, and shipping, while Print Works, Wovn Depot, and Gravity Labs use print-on-demand fulfillment for posters, apparel, and custom accessories. I manage the entire operation independently — from product design and Shopify storefront management to fulfillment logistics, customer service, marketing, and financial systems — using structured processes and disciplined cash management to keep the business lean, organized, and built for sustainable growth.",
-    image: project3,
-    tags: [
-      "Ecommerce Operations",
-      "Product Design & Development",
-      "Systems & Process Management",
-      "Shopify",
-      "Claude AI",
-    ],
-    link: "https://riotmindstudios.com/",
-  },
+  // {
+  //   title: "Shopify E-Commerce Production & Management",
+  //   description:
+  //     "Riot Mind Studios, LLC, a home-based ecommerce company built around four product studios. Label Co. handles in-house design, production, and shipping, while Print Works, Wovn Depot, and Gravity Labs use print-on-demand fulfillment for posters, apparel, and custom accessories. I manage the entire operation independently — from product design and Shopify storefront management to fulfillment logistics, customer service, marketing, and financial systems — using structured processes and disciplined cash management to keep the business lean, organized, and built for sustainable growth.",
+  //   image: project3,
+  //   tags: [
+  //     "Ecommerce Operations",
+  //     "Product Design & Development",
+  //     "Systems & Process Management",
+  //     "Shopify",
+  //     "Claude AI",
+  //   ],
+  //   link: "https://riotmindstudios.com/",
+  // },
   {
     title: "Grocery List App",
     description:
