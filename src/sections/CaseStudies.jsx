@@ -1,13 +1,21 @@
 // import dependancies
-import { ArrowUpRight } from "lucide-react";
+import {
+  ALargeSmall,
+  ArrowUpRight,
+  ClipboardCheck,
+  MousePointerClick,
+  Scale,
+} from "lucide-react";
 
 // case studies array
 // each object = one card. the Case Studies section loops through this list
 // sections = the story steps. labels can differ per card, so each step stores its own label and text
 // link is optional. a card with no link simply shows no "View project" button
+// icon stores the lucide component itself, so each card can render its own icon
 const caseStudies = [
   {
     title: "Tracking Eight Ads From One Template",
+    icon: MousePointerClick,
     type: "Marketing Technology",
     sections: [
       {
@@ -32,6 +40,7 @@ const caseStudies = [
   },
   {
     title: "Giving Clients One Place to Review Banners",
+    icon: ClipboardCheck,
     type: "Client Workflow",
     sections: [
       {
@@ -56,6 +65,7 @@ const caseStudies = [
   },
   {
     title: "Fitting Variable DCO Copy Inside a Fixed Ad",
+    icon: ALargeSmall,
     type: "Troubleshooting",
     sections: [
       {
@@ -80,6 +90,7 @@ const caseStudies = [
   },
   {
     title: "Matching Legal ISI Copy Across Design and Code",
+    icon: Scale,
     type: "Client Problem Solving",
     sections: [
       {
@@ -144,12 +155,21 @@ const CaseStudies = () => {
               className="glass rounded-2xl p-6 space-y-5 animate-fade-in"
               style={{ animationDelay: `${(idx + 1) * 100}ms` }}
             >
-              {/* case study type and title */}
-              <div className="space-y-3">
-                <span className="text-xs font-medium tracking-wider uppercase text-highlight">
-                  {study.type}
-                </span>
-                <h3 className="text-xl font-semibold">{study.title}</h3>
+              {/* case study icon, type, and title */}
+              {/* flex places the icon to the left. items-start keeps it at the top when a title wraps */}
+              <div className="flex items-start gap-4">
+                {/* aria-hidden = decorative icon, so screen readers skip it */}
+                <study.icon
+                  aria-hidden="true"
+                  strokeWidth={1.5}
+                  className="w-12 h-12 shrink-0 text-highlight"
+                />
+                <div className="space-y-3">
+                  <span className="text-xs font-medium tracking-wider uppercase text-highlight">
+                    {study.type}
+                  </span>
+                  <h3 className="text-xl font-semibold">{study.title}</h3>
+                </div>
               </div>
 
               {/* second loop: render every story step inside this one card */}
