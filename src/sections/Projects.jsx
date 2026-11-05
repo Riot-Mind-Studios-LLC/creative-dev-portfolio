@@ -195,8 +195,8 @@ const Projects = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* section header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
-          <span className="text-highlight text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Dynamic Animated Creative
+          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
+            Dynamic Creative Projects
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
             Animation{" "}
@@ -289,7 +289,7 @@ const Projects = () => {
 
         {/* section header */}
         <div className="text-center mx-auto max-w-3xl mb-16 mt-16">
-          <span className="text-highlight text-sm font-medium tracking-wider uppercase animate-fade-in">
+          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
             React Work
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">

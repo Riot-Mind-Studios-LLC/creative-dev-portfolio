@@ -103,10 +103,10 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="animate-fade-in">
               {/* title badge */}
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-highlight">
-                <span className="w-2 h-2 bg-highlight rounded-full animate-pulse" />
-                / Front-End / Dynamic Ad / Creative Web Developer / Ad Tech
-                Solutions
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-secondary-foreground">
+                <span className="w-2 h-2 bg-secondary-foreground rounded-full animate-pulse" />
+                / Front-End / Dynamic Ad / Creative Web Developer / Ad
+                Operations
               </span>
             </div>
 
@@ -213,7 +213,7 @@ const Hero = () => {
 
         {/* scrolling skills section */}
         <div className="mt-20 animate-fade-in animation-delay-600">
-          <p className="text-sm text-highlight mb-6 text-center">
+          <p className="text-sm text-secondary-foreground mb-6 text-center">
             Technologies I work with
           </p>
 
@@ -237,10 +237,10 @@ const Hero = () => {
           href="#about"
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
         >
-          <span className="text-xs uppercase tracking-wider text-highlight">
+          <span className="text-xs uppercase tracking-wider text-secondary-foreground">
             About me
           </span>
-          <ChevronDown className="w-6 h-6 animate-bounce text-highlight" />
+          <ChevronDown className="w-6 h-6 animate-bounce text-secondary-foreground" />
         </a>
       </div>
     </section>

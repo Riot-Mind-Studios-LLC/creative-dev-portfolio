@@ -70,7 +70,7 @@ const About = () => {
           {/* left column */}
           <div className="space-y-8">
             <div className="animate-fade-in">
-              <span className="text-highlight text-sm font-medium tracking-wider uppercase">
+              <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase">
                 About Me
               </span>
             </div>

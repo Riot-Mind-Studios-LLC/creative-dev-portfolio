@@ -4,55 +4,70 @@
 import { useState } from "react";
 
 const skills = [
-  // Core / Build tools & frameworks
-  { name: "HTML 5", level: 95, category: "build tools & frameworks" },
-  { name: "JSX", level: 40, category: "build tools & frameworks" },
-  { name: "CSS 3", level: 95, category: "build tools & frameworks" },
-  { name: "JavaScript ES6", level: 85, category: "build tools & frameworks" },
-  { name: "Vite", level: 40, category: "build tools & frameworks" },
-  { name: "React", level: 40, category: "build tools & frameworks" },
-  { name: "Tailwind CSS", level: 55, category: "build tools & frameworks" },
-  { name: "JSON", level: 75, category: "build tools & frameworks" },
-
-  // Software
-  { name: "VS Code", level: 95, category: "software" },
-  { name: "Chrome Dev Tools", level: 95, category: "software" },
-  { name: "Terminal CLI", level: 75, category: "software" },
-  { name: "Git / GitHub", level: 80, category: "software" },
-  { name: "Google Doubleclick", level: 65, category: "software" },
-  { name: "Adobe Creative Suite", level: 95, category: "software" },
-  { name: "Affinity", level: 85, category: "software" },
-
-  // Libraries & Platforms
-  { name: "Animated Banners", level: 100, category: "libraries & platforms" },
-  { name: "GSAP", level: 95, category: "libraries & platforms" },
+  // Development
+  { name: "HTML 5", level: 95, category: "Development" },
+  { name: "JSX", level: 40, category: "Development" },
+  { name: "CSS 3", level: 95, category: "Development" },
+  { name: "JavaScript ES6", level: 85, category: "Development" },
+  { name: "Vite", level: 40, category: "Development" },
+  { name: "React", level: 40, category: "Development" },
+  { name: "Tailwind CSS", level: 55, category: "Development" },
+  { name: "JSON", level: 75, category: "Development" },
+  { name: "GSAP", level: 95, category: "Development" },
+  { name: "Shadcn", level: 45, category: "Development" },
+  // Production
+  { name: "Rich-Media Ad Banners", level: 100, category: "Production" },
   {
     name: "Dynamic Creative Optimization",
     level: 85,
-    category: "libraries & platforms",
+    category: "Production",
   },
-  { name: "Shadcn", level: 45, category: "libraries & platforms" },
   {
     name: "Digital Out-of-Home",
     level: 85,
-    category: "libraries & platforms",
+    category: "Production",
   },
-  { name: "ESLint", level: 85, category: "libraries & platforms" },
-  { name: "RESTful APIs", level: 75, category: "libraries & platforms" },
+  { name: "RESTful APIs", level: 75, category: "Production" },
+  { name: "Programmatic Development", level: 75, category: "Production" },
+  { name: "Single-Page Applications", level: 60, category: "Production" },
+  { name: "Dynamic Creative", level: 70, category: "Production" },
+  { name: "Banner Animation", level: 95, category: "Production" },
+  { name: "Click Tags", level: 80, category: "Production" },
+  { name: "HTML 5 Validation", level: 100, category: "Production" },
+  // Operations
+  { name: "Google Doubleclick", level: 70, category: "Operations" },
+  { name: "Google Ads", level: 65, category: "Operations" },
+  { name: "Meta Business Suite", level: 85, category: "Operations" },
+  { name: "Shopify Analytics", level: 85, category: "Operations" },
+  { name: "Google Analytics", level: 65, category: "Operations" },
+  { name: "Campaign Trafficking", level: 50, category: "Operations" },
+  { name: "Ad Server Delivery", level: 75, category: "Operations" },
+  { name: "Flashtalking", level: 80, category: "Operations" },
+  { name: "Production Documentation", level: 85, category: "Operations" },
+  { name: "Meta Ads Manager", level: 65, category: "Operations" },
+  { name: "Google Business Suite", level: 90, category: "Operations" },
+  { name: "Creative QA", level: 95, category: "Operations" },
+  // Tools
+  { name: "VS Code", level: 95, category: "Tools" },
+  { name: "Chrome Dev Tools", level: 95, category: "Tools" },
+  { name: "Terminal CLI", level: 75, category: "Tools" },
+  { name: "Git / GitHub", level: 80, category: "Tools" },
+  { name: "Notion", level: 70, category: "Tools" },
+  { name: "Microsift Suite", level: 90, category: "Tools" },
+  { name: "Adobe Creative Suite", level: 95, category: "Tools" },
+  { name: "Affinity", level: 85, category: "Tools" },
+  { name: "Figma", level: 35, category: "Tools" },
+  { name: "Asana", level: 75, category: "Tools" },
+  { name: "Canva", level: 90, category: "Tools" },
 ];
 
-const categories = [
-  "all",
-  "build tools & frameworks",
-  "software",
-  "libraries & platforms",
-];
+const categories = ["Development", "Production", "Operations", "Tools"];
 
 const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("Development");
 
   const filteredSkills = skills.filter(
-    (skill) => activeCategory === "all" || skill.category === activeCategory,
+    (skill) => activeCategory === "" || skill.category === activeCategory,
   );
 
   return (
@@ -69,7 +84,7 @@ const Skills = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-highlight text-sm font-medium tracking-wider uppercase animate-fade-in">
+          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
             Skills
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
@@ -79,8 +94,9 @@ const Skills = () => {
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            A decade of hand-coded animation, a growing React foundation, and
-            the business and design tools I use to ship real work.
+            A decade of hand-coded animation, a growing production foundation,
+            marketing technologies, ad operations and the business and design
+            tools I use to ship real work.
           </p>
         </div>
 
