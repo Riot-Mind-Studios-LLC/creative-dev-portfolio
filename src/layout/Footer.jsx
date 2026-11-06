@@ -29,7 +29,7 @@ const Footer = () => {
   return (
     <footer className="py-12 border-t border-border">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16 px-4 sm:px-6">
+      {/* <div className="text-center max-w-3xl mx-auto mb-16 px-4 sm:px-6">
         <h2 className="text-2xl md:text-3xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
           Built with
           <span className="font-serif italic font-normal text-primary">
@@ -45,15 +45,15 @@ const Footer = () => {
           result isn't just a finished site; it's proof I can build, debug, and
           ship a real application.
         </p>
-      </div>
+      </div> */}
 
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
-            <a href="#" className="text-xl font-bold tracking-tight">
+            {/* <a href="#" className="text-xl font-bold tracking-tight">
               AV<span className="text-primary">.</span>
-            </a>
+            </a> */}
             <p className="text-sm text-muted-foreground mt-2">
               © {currentYear} Adrian Velazquez. All rights reserved.
             </p>

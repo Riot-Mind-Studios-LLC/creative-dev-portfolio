@@ -4,8 +4,8 @@ import {
   // Sprout,
   // Building2,
   Rocket,
-  // Package,
-  // Server,
+  Package,
+  Server,
   Laptop,
   Briefcase,
 } from "lucide-react";
@@ -48,18 +48,18 @@ const highlights = [
   //   description:
   //     "Actively expanding into React and modern app development, building on a decade of front-end fundamentals.",
   // },
-  // {
-  //   icon: Package,
-  //   title: "Agency-Grade Production",
-  //   description:
-  //     "Delivered high-volume, deadline-driven work for brands like Mercedes-Benz, Google, T-Mobile, and Starbucks.",
-  // },
-  // {
-  //   icon: Server,
-  //   title: "Data-Informed Decisions",
-  //   description:
-  //     "Hands-on with Meta Ads, Google Ads, and Google Analytics — building and reading the numbers, not just the code.",
-  // },
+  {
+    icon: Package,
+    title: "Agency-Grade Production",
+    description:
+      "Delivered high-volume, deadline-driven work for brands like Mercedes-Benz, Google, T-Mobile, and Starbucks.",
+  },
+  {
+    icon: Server,
+    title: "Data-Informed Decisions",
+    description:
+      "Hands-on with Meta Ads, Google Ads, and Google Analytics — building and reading the numbers, not just the code.",
+  },
 ];
 
 const About = () => {
@@ -76,7 +76,7 @@ const About = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold leading-tight animate-fade-in animation-delay-100 text-secondary-foreground">
-              Code. Animation. Business.
+              Development. Production. Operations.
               <span className="font-serif italic font-normal text-primary">
                 {" "}
                 I bring them together.
@@ -86,22 +86,17 @@ const About = () => {
             {/* about me copy */}
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
               <p>
-                I'm a Creative Developer with 10+ years of hand-coding HTML5
+                I’m a Creative Developer with 10+ years of hand-coding HTML5
                 animated ad units in JavaScript, CSS, and GSAP (GreenSock) for
                 major agencies and brands, including Mercedes-Benz, Google,
                 T-Mobile, and Starbucks. The work is high-volume and
                 deadline-driven, with code that has to be lightweight,
-                compliant, and pixel-precise. I build by hand, not from
-                drag-and-drop templates. If I need a template, I build one.
-              </p>
-              <p>
-                I'm now applying that foundation to React, building real
-                applications from the ground up. I'm not claiming
-                production-scale React experience; I build and reason through
-                basic to intermediate apps and grow that skill project by
-                project. A decade of animation work gives me an eye for how
-                things should move and respond, which I bring to component-based
-                architecture.
+                compliant, and pixel-precise. On the ad operations side, I set
+                up clickTags and tracking pixels, run cross-browser quality
+                assurance against IAB specs, and troubleshoot issues with
+                producers and account teams before delivery. Now applying that
+                foundation to React, building real applications from the ground
+                up.
               </p>
               {/* <p>
                 Outside of client work, I founded and run a multi-division
@@ -116,17 +111,16 @@ const About = () => {
             </div>
 
             {/* mission statement */}
-            {/* <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
+            <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
               <p className="text-lg font-medium italic text-foreground">
                 "My mission is to bridge everything I know — hand-coded
-                animation craft, front-end development, and real business
-                experience — into work that's more than experimental. I build
-                with intention: precise, reusable, and purposeful, never built
-                on shortcuts. Merging these disciplines is how I create
-                genuinely new assets businesses and platforms can actually build
-                on."
+                animation craft, front-end development, ad operations, and real
+                business experience — into work that's more than experimental. I
+                build with intention: precise, reusable, and purposeful. Merging
+                these disciplines is how I create genuinely new assets
+                businesses and platforms can actually build on."
               </p>
-            </div> */}
+            </div>
           </div>
 
           {/* right column */}

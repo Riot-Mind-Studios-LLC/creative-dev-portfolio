@@ -2,17 +2,18 @@
 const experiences = [
   {
     period: "Today",
-    role: "Dynamic Ads / React Development",
+    role: "Dynamic Ads / React Dev / Ad Operations",
     institution: "In progress...",
     description:
-      "Expanding a decade of hand-coded animation work into modern front-end development. Building real applications with React, Tailwind CSS, and RESTful APIs, and programmatic DOOH and DCO ads that pull live data into dynamic creative. Applying GSAP within React via the useGSAP hook — bridging deep animation expertise with component-based, data-driven interfaces.",
+      "Expanding a decade of hand-coded animation work into modern front-end development. Building real applications with React, Tailwind CSS, and RESTful APIs, and programmatic DOOH and DCO ads that pull live data into dynamic creative. Applying GSAP within React via the useGSAP hook — bridging deep animation expertise with component-based, data-driven interfaces. Building into ad operations including, DPSs, SSPs,VAST and OpenRTB standards.",
     technologies: [
       ".jsx",
       ".vite",
       ".tailwindcss",
       ".git",
       ".api",
-      "claude ai",
+      "dsp",
+      "ssp",
       "digital-out-of-home",
       "dynamic ads",
     ],
@@ -122,10 +123,11 @@ const Experience = () => {
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            10+ years hand-coding HTML5 ad banners for major agencies and global
-            brands, backed by a business background built from founding and
-            running my own e-commerce company. Now expanding that foundation
-            into modern front-end development, one project at a time.
+            10+ years developing rich-media ad banners and working in operations
+            with major agencies and global brands, backed by formal computer
+            science and business education. Now expanding that foundation into
+            modern front-end development, with continued exposure of
+            marketing-tech and back-end ad operations.
           </p>
         </div>
 

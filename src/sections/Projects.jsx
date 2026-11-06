@@ -226,7 +226,7 @@ const Projects = () => {
             site for banner review, and live API-driven modules, alongside a
             scroll-driven launch page, a feed-driven DCO banner set, and a
             weather-reactive digital out-of-home billboard. Selected work also
-            includes stand alone React apps and a Shopify e-commerce site.
+            includes stand alone React apps and an html5 ad validator platform.
           </p>
         </div>
 

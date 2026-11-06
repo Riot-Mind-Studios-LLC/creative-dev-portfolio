@@ -141,8 +141,7 @@ const CaseStudies = () => {
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
             How I work through tracking, client review, dynamic copy, and legal
-            requirements. This section covers one client project and three
-            builds from this portfolio.
+            requirements.
           </p>
         </div>
 

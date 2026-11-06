@@ -6,14 +6,16 @@ import { useState } from "react";
 const skills = [
   // Development
   { name: "HTML 5", level: 95, category: "Development" },
-  { name: "JSX", level: 40, category: "Development" },
+  { name: "JSX", level: 35, category: "Development" },
   { name: "CSS 3", level: 95, category: "Development" },
   { name: "JavaScript ES6", level: 85, category: "Development" },
   { name: "Vite", level: 40, category: "Development" },
   { name: "React", level: 40, category: "Development" },
   { name: "Tailwind CSS", level: 55, category: "Development" },
-  { name: "JSON", level: 75, category: "Development" },
+  { name: "JSON", level: 85, category: "Development" },
   { name: "GSAP", level: 95, category: "Development" },
+  { name: "Claude Code", level: 85, category: "Development" },
+  { name: "NPM", level: 80, category: "Development" },
   { name: "Shadcn", level: 45, category: "Development" },
   // Production
   { name: "Rich-Media Ad Banners", level: 100, category: "Production" },
@@ -31,7 +33,9 @@ const skills = [
   { name: "Programmatic Development", level: 75, category: "Production" },
   { name: "Single-Page Applications", level: 60, category: "Production" },
   { name: "Dynamic Creative", level: 70, category: "Production" },
-  { name: "Banner Animation", level: 95, category: "Production" },
+  { name: "Agentic Production", level: 90, category: "Production" },
+  { name: "IAB Specs", level: 95, category: "Production" },
+  { name: "Animation", level: 95, category: "Production" },
   { name: "Click Tags", level: 80, category: "Production" },
   { name: "HTML 5 Validation", level: 100, category: "Production" },
   // Operations
@@ -58,6 +62,7 @@ const skills = [
   { name: "Affinity", level: 85, category: "Tools" },
   { name: "Figma", level: 35, category: "Tools" },
   { name: "Asana", level: 75, category: "Tools" },
+  { name: "Shopify", level: 95, category: "Tools" },
   { name: "Canva", level: 90, category: "Tools" },
 ];
 
@@ -76,10 +81,10 @@ const Skills = () => {
       className="relative min-h-screen flex items-center overflow-hidden pt-32"
     >
       {/* bg glow */}
-      <div className="absolute top-0 left-0 w-full h-full">
+      {/* <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
-      </div>
+      </div> */}
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}

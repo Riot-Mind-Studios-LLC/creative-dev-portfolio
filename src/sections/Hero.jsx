@@ -52,15 +52,15 @@ const skills = [
 ];
 
 const Hero = () => {
-  const [particles] = useState(() => {
-    return [...Array(30)].map((_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      animation: `slow-drift ${15 + Math.random() * 20}s ease-in-out infinite`,
-      animationDelay: `${Math.random() * 5}s`,
-    }));
-  });
+  // const [particles] = useState(() => {
+  //   return [...Array(30)].map((_, i) => ({
+  //     id: i,
+  //     left: `${Math.random() * 100}%`,
+  //     top: `${Math.random() * 100}%`,
+  //     animation: `slow-drift ${15 + Math.random() * 20}s ease-in-out infinite`,
+  //     animationDelay: `${Math.random() * 5}s`,
+  //   }));
+  // });
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
